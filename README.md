@@ -75,7 +75,7 @@ make -f makefile_test_macos.mak  # macOS用例
 
 ## ドキュメント
 
-[Doxygenドキュメント（GitHub Pages公開予定）](https://github.com/chocolate-pie24/c_util)
+[Doxygenドキュメント](https://chocolate-pie24.github.io/c_util/)
 
 ### ドキュメント生成
 
