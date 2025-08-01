@@ -1,0 +1,59 @@
+\doxysection{message.\+c File Reference}
+\hypertarget{message_8c}{}\label{message_8c}\index{message.c@{message.c}}
+
+
+メッセージ標準出力機能実装  
+
+
+{\ttfamily \#include "{}message.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include "{}core\+\_\+string.\+h"{}}\newline
+{\ttfamily \#include "{}core\+\_\+memory.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{message_8c_a50714ec30bfbb1501e6a8426e9f0240a}{message\+\_\+output}} (\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}} severity\+\_\+, const char \texorpdfstring{$\ast$}{*}const format\+\_\+,...)
+\begin{DoxyCompactList}\small\item\em メッセージ出力関数(メッセージの重要度に応じて出力フォーマットを変える) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+メッセージ標準出力機能実装 
+
+\begin{DoxyAuthor}{Author}
+chocolate-\/pie24 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/07-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{message_8c_a50714ec30bfbb1501e6a8426e9f0240a}\index{message.c@{message.c}!message\_output@{message\_output}}
+\index{message\_output@{message\_output}!message.c@{message.c}}
+\doxysubsubsection{\texorpdfstring{message\_output()}{message\_output()}}
+{\footnotesize\ttfamily \label{message_8c_a50714ec30bfbb1501e6a8426e9f0240a} 
+void message\+\_\+output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}}}]{severity\+\_\+}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{fmt\+\_\+}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+メッセージ出力関数(メッセージの重要度に応じて出力フォーマットを変える) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em severity\+\_\+} & メッセージの重要度 \\
+\hline
+{\em fmt\+\_\+} & メッセージ内容(printfの"{}message \%s \%f"{}と同様のフォーマット) \\
+\hline
+{\em ...} & メッセージ内容に付加する各種値(printfのsやfに対する値に相当) \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,1209 @@
+\doxysection{core\+\_\+string.\+h File Reference}
+\hypertarget{core__string_8h}{}\label{core__string_8h}\index{core\_string.h@{core\_string.h}}
+
+
+core\+\_\+string\+\_\+tオブジェクトの定義と関連\+APIの宣言  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em core\+\_\+string ラリブラリの文字列オブジェクト構造体 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\+\_\+\+STRING\+\_\+\+INITIALIZER}}~\{ 0 \}
+\begin{DoxyCompactList}\small\item\em オブジェクト初期化用マクロ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_ae3e1acf59883e43e379257135ebd5ba6}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}}
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+t関連処理が出力するエラーコード \end{DoxyCompactList}\item 
+typedef struct core\+\_\+string\+\_\+t \mbox{\hyperlink{core__string_8h_aa56289576b37c908f931a7e6b4ba292a}{core\+\_\+string\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em core\+\_\+string ラリブラリの文字列オブジェクト構造体 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \{ \newline
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\+\_\+\+STRING\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeba49cced3f1f4d1c955e67264799cfea4e}{CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT}}
+, \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebab52cec6d7360a6f4d0d6b3600e5bf1bf}{CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR}}
+, \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeba18ce66a2018d4e613695e60f4f44babd}{CORE\+\_\+\+STRING\+\_\+\+BUFFER\+\_\+\+EMPTY}}
+, \newline
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeba52209bc2bdc5fc46a420d5c8820ce4b9}{CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+t関連処理が出力するエラーコード \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}{core\+\_\+string\+\_\+default\+\_\+create}} (\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em 引数で与えたstring\+\_\+オブジェクトを「デフォルト状態」に初期化する。 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create}} (const char \texorpdfstring{$\ast$}{*}const src\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const dst\+\_\+)
+\begin{DoxyCompactList}\small\item\em 引数で与えたsrc\+\_\+文字列をコピーしてdst\+\_\+オブジェクトを初期化する。 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a0f829e5efdb35611e67123433c36722b}{core\+\_\+string\+\_\+copy}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const src\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const dst\+\_\+)
+\begin{DoxyCompactList}\small\item\em 引数src\+\_\+で与えたcore\+\_\+string\+\_\+tオブジェクトをdst\+\_\+にコピーする \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_abae485a491f67161286376bd9355467e}{core\+\_\+string\+\_\+copy\+\_\+from\+\_\+char}} (const char \texorpdfstring{$\ast$}{*}const src\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const dst\+\_\+)
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+t型オブジェクトdst\+\_\+にchar\texorpdfstring{$\ast$}{*}型文字列をコピーする \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy}} (\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em 引数で与えた文字列型オブジェクトstring\+\_\+が保持するメモリを破棄する。 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve}} (uint64\+\_\+t buffer\+\_\+size\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+tオブジェクト内の文字列格納バッファに対し、buffer\+\_\+size\+\_\+で指定したメモリ領域を確保する \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_af32d68e2e133076debb96547c0be4f7b}{core\+\_\+string\+\_\+buffer\+\_\+resize}} (uint64\+\_\+t buffer\+\_\+size\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+tオブジェクトのバッファサイズをbuffer\+\_\+size\+\_\+に拡張する \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+tオブジェクトのバッファサイズを取得する \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{core__string_8h_a2f75582274ba14fc62dba48314aa18e9}{core\+\_\+string\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+tオブジェクトが空かどうかを判定する \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{core__string_8h_ad68b356d6a7ddfeb2cb13f8270797ad4}{core\+\_\+string\+\_\+equal}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string1\+\_\+, const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string2\+\_\+)
+\begin{DoxyCompactList}\small\item\em 2つのcore\+\_\+string\+\_\+tオブジェクトが保持する文字列が等しいかを比較する \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{core__string_8h_af0dd30489c2d7d0dba8afe011affa0ab}{core\+\_\+string\+\_\+equal\+\_\+from\+\_\+char}} (const char \texorpdfstring{$\ast$}{*}const str1\+\_\+, const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string2\+\_\+)
+\begin{DoxyCompactList}\small\item\em char\texorpdfstring{$\ast$}{*} 文字列と \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクトが保持する文字列が等しいかを比較する \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad}{core\+\_\+string\+\_\+length}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクトが保持している文字列の長さを取得する \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}{core\+\_\+string\+\_\+cstr}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+)
+\begin{DoxyCompactList}\small\item\em \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクトが保持している文字列の先頭ポインタを取得する \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a59a7bb17bb67a8430badae4b5cd830ff}{core\+\_\+string\+\_\+concat}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const dst\+\_\+)
+\begin{DoxyCompactList}\small\item\em dst\+\_\+ の末尾に string\+\_\+ の内容を連結する \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a56936fa3e107a529eb06b3382310cdc8}{core\+\_\+string\+\_\+substring\+\_\+copy}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const src\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const dst\+\_\+, uint16\+\_\+t from\+\_\+, uint16\+\_\+t to\+\_\+)
+\begin{DoxyCompactList}\small\item\em src\+\_\+ の \mbox{[}from\+\_\+, to\+\_\+\mbox{]} 範囲の部分文字列を dst\+\_\+ にコピーする \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a8c27fdf7f1465a3fccaaa4d080019868}{core\+\_\+string\+\_\+trim}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const src\+\_\+, \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const dst\+\_\+, char ltrim\+\_\+, char rtrim\+\_\+)
+\begin{DoxyCompactList}\small\item\em 指定したトリム文字を取り除いた文字列をdst\+\_\+にコピーする。 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_a0438ebc58481d2fc3b69231bdc6613e2}{core\+\_\+string\+\_\+to\+\_\+i32}} (const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const string\+\_\+, int32\+\_\+t \texorpdfstring{$\ast$}{*}out\+\_\+value\+\_\+)
+\begin{DoxyCompactList}\small\item\em core\+\_\+string\+\_\+tオブジェクトの内容をint32\+\_\+t型整数に変換する。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core__string_8h_a4fa0df60a0622a92e2d49c54702dad8a}{core\+\_\+string\+\_\+default\+\_\+create\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a52d744a79fa5fbadbe7788e427c70a91}{core\+\_\+string\+\_\+create\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a0c9f7fcf04c9eca0168ea540678a0569}{core\+\_\+string\+\_\+copy\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a196d56856f7821161398c38fc31c81ba}{core\+\_\+string\+\_\+concat\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a9edaee95c94fb9c693a8d5f05763ad21}{core\+\_\+string\+\_\+trim\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a63cac2326aff4358a911de5ab1fc163e}{core\+\_\+string\+\_\+to\+\_\+i32\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a435fa175da4e565410c9fbd56379092e}{core\+\_\+string\+\_\+equal\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a8c5d8c81ac1c3b766804c8e0bf8f63d2}{core\+\_\+string\+\_\+substring\+\_\+copy\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_aa2202e00fcfdb544a6f30e3c807cc673}{core\+\_\+string\+\_\+buffer\+\_\+reserve\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a01853d15c47c5a0f7fa4be48d03645ab}{core\+\_\+string\+\_\+is\+\_\+empty\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a7a9dd3ded43cf41443217ac65aff2f45}{core\+\_\+string\+\_\+destroy\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_af17cc9022aa050bff83af92ea566a54f}{core\+\_\+string\+\_\+buffer\+\_\+capacity\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a28d66645d9588917933f8fa44a5794b3}{core\+\_\+string\+\_\+cstr\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_ab4a12b59f006def78fa20943f41989a3}{core\+\_\+string\+\_\+length\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a635535d8c3c3ee756a79d9e118227fcd}{core\+\_\+string\+\_\+copy\+\_\+from\+\_\+char\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a220c8849d68566901e3c225a0ef7d358}{core\+\_\+string\+\_\+buffer\+\_\+resize\+\_\+test}} ()
+\item 
+void \mbox{\hyperlink{core__string_8h_a337ba6dea7e2cfea988e3d99b2892a8a}{core\+\_\+string\+\_\+equal\+\_\+from\+\_\+char\+\_\+test}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+core\+\_\+string\+\_\+tオブジェクトの定義と関連\+APIの宣言 
+
+\begin{DoxyAuthor}{Author}
+chocolate-\/pie24 
+\end{DoxyAuthor}
+core\+\_\+string\+\_\+tは、ユーザーが文字列長さやバッファ管理を意識することなく 安全かつ簡単に文字列操作を行えることを目的とした\+APIである。
+
+代表的な操作として以下が提供されます\+:
+\begin{DoxyItemize}
+\item 文字列のコピー
+\item 文字列の連結
+\item 文字列のトリミング
+\end{DoxyItemize}
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/07-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_INITIALIZER@{CORE\_STRING\_INITIALIZER}}
+\index{CORE\_STRING\_INITIALIZER@{CORE\_STRING\_INITIALIZER}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{CORE\_STRING\_INITIALIZER}{CORE\_STRING\_INITIALIZER}}
+{\footnotesize\ttfamily \label{core__string_8h_a8612384ec41e1cc811811d81e9e13a33} 
+\#define CORE\+\_\+\+STRING\+\_\+\+INITIALIZER~\{ 0 \}}
+
+
+
+オブジェクト初期化用マクロ 
+
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{core__string_8h_ae3e1acf59883e43e379257135ebd5ba6}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_ERROR\_CODE@{CORE\_STRING\_ERROR\_CODE}}
+\index{CORE\_STRING\_ERROR\_CODE@{CORE\_STRING\_ERROR\_CODE}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{CORE\_STRING\_ERROR\_CODE}{CORE\_STRING\_ERROR\_CODE}}
+{\footnotesize\ttfamily \label{core__string_8h_ae3e1acf59883e43e379257135ebd5ba6} 
+typedef enum \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}}}
+
+
+
+core\+\_\+string\+\_\+t関連処理が出力するエラーコード 
+
+\Hypertarget{core__string_8h_aa56289576b37c908f931a7e6b4ba292a}\index{core\_string.h@{core\_string.h}!core\_string\_t@{core\_string\_t}}
+\index{core\_string\_t@{core\_string\_t}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_t}{core\_string\_t}}
+{\footnotesize\ttfamily \label{core__string_8h_aa56289576b37c908f931a7e6b4ba292a} 
+typedef struct core\+\_\+string\+\_\+t core\+\_\+string\+\_\+t}
+
+
+
+core\+\_\+string ラリブラリの文字列オブジェクト構造体 
+
+文字列データとそれに付随する管理情報を格納する。 オブジェクトの初期化には以下のいずれかを使用する\+:
+\begin{DoxyItemize}
+\item \doxylink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\+\_\+\+STRING\+\_\+\+INITIALIZER}
+\item \doxylink{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}{core\+\_\+string\+\_\+default\+\_\+create()}
+\item \doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()} 
+\end{DoxyItemize}
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_ERROR\_CODE@{CORE\_STRING\_ERROR\_CODE}}
+\index{CORE\_STRING\_ERROR\_CODE@{CORE\_STRING\_ERROR\_CODE}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{CORE\_STRING\_ERROR\_CODE}{CORE\_STRING\_ERROR\_CODE}}
+{\footnotesize\ttfamily \label{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb} 
+enum \mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}}}
+
+
+
+core\+\_\+string\+\_\+t関連処理が出力するエラーコード 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CORE\_STRING\_SUCCESS@{CORE\_STRING\_SUCCESS}!core\_string.h@{core\_string.h}}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_SUCCESS@{CORE\_STRING\_SUCCESS}}}\Hypertarget{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}\label{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb} 
+CORE\+\_\+\+STRING\+\_\+\+SUCCESS&正常終了 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CORE\_STRING\_INVALID\_ARGUMENT@{CORE\_STRING\_INVALID\_ARGUMENT}!core\_string.h@{core\_string.h}}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_INVALID\_ARGUMENT@{CORE\_STRING\_INVALID\_ARGUMENT}}}\Hypertarget{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeba49cced3f1f4d1c955e67264799cfea4e}\label{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb} 
+CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT&引数異常 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CORE\_STRING\_RUNTIME\_ERROR@{CORE\_STRING\_RUNTIME\_ERROR}!core\_string.h@{core\_string.h}}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_RUNTIME\_ERROR@{CORE\_STRING\_RUNTIME\_ERROR}}}\Hypertarget{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebab52cec6d7360a6f4d0d6b3600e5bf1bf}\label{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb} 
+CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR&実行時エラー \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CORE\_STRING\_BUFFER\_EMPTY@{CORE\_STRING\_BUFFER\_EMPTY}!core\_string.h@{core\_string.h}}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_BUFFER\_EMPTY@{CORE\_STRING\_BUFFER\_EMPTY}}}\Hypertarget{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeba18ce66a2018d4e613695e60f4f44babd}\label{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb} 
+CORE\+\_\+\+STRING\+\_\+\+BUFFER\+\_\+\+EMPTY&文字列バッファが空 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CORE\_STRING\_MEMORY\_ALLOCATE\_ERROR@{CORE\_STRING\_MEMORY\_ALLOCATE\_ERROR}!core\_string.h@{core\_string.h}}\index{core\_string.h@{core\_string.h}!CORE\_STRING\_MEMORY\_ALLOCATE\_ERROR@{CORE\_STRING\_MEMORY\_ALLOCATE\_ERROR}}}\Hypertarget{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeba52209bc2bdc5fc46a420d5c8820ce4b9}\label{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb} 
+CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR&メモリアロケートエラー \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}\index{core\_string.h@{core\_string.h}!core\_string\_buffer\_capacity@{core\_string\_buffer\_capacity}}
+\index{core\_string\_buffer\_capacity@{core\_string\_buffer\_capacity}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_buffer\_capacity()}{core\_string\_buffer\_capacity()}}
+{\footnotesize\ttfamily \label{core__string_8h_a5b358a3aea52a94688d9c2264caae31a} 
+uint64\+\_\+t core\+\_\+string\+\_\+buffer\+\_\+capacity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+core\+\_\+string\+\_\+tオブジェクトのバッファサイズを取得する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item オブジェクトが未初期化の場合は 0 を返す
+\item 引数が\+NULLの場合は \doxylink{define_8h_ab8e09edc08ec19f44d43b64923b4fb9d}{INVALID\+\_\+\+VALUE\+\_\+\+U64} を返す
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string\+\_\+} & バッファサイズを取得する対象オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{uint64\_t\ capacity\ =\ \mbox{\hyperlink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\_string\_buffer\_capacity}}(\&\textcolor{keywordtype}{string});\ \textcolor{comment}{//\ 未初期化のため0が返る}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em INVALID\+\_\+\+VALUE\+\_\+\+U64} & 引数string\+\_\+が\+NULL \\
+\hline
+{\em 0} & オブジェクトが未初期化 \\
+\hline
+{\em バッファサイズ(byte)} & 正常に取得できた場合のバッファサイズを返す\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve()} 
+
+\doxylink{core__string_8h_af32d68e2e133076debb96547c0be4f7b}{core\+\_\+string\+\_\+buffer\+\_\+resize()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_af17cc9022aa050bff83af92ea566a54f}\index{core\_string.h@{core\_string.h}!core\_string\_buffer\_capacity\_test@{core\_string\_buffer\_capacity\_test}}
+\index{core\_string\_buffer\_capacity\_test@{core\_string\_buffer\_capacity\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_buffer\_capacity\_test()}{core\_string\_buffer\_capacity\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_af17cc9022aa050bff83af92ea566a54f} 
+void core\+\_\+string\+\_\+buffer\+\_\+capacity\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a919004c0d49138203ae97de414688c70}\index{core\_string.h@{core\_string.h}!core\_string\_buffer\_reserve@{core\_string\_buffer\_reserve}}
+\index{core\_string\_buffer\_reserve@{core\_string\_buffer\_reserve}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_buffer\_reserve()}{core\_string\_buffer\_reserve()}}
+{\footnotesize\ttfamily \label{core__string_8h_a919004c0d49138203ae97de414688c70} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+buffer\+\_\+reserve (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{buffer\+\_\+size\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+core\+\_\+string\+\_\+tオブジェクト内の文字列格納バッファに対し、buffer\+\_\+size\+\_\+で指定したメモリ領域を確保する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item string\+\_\+が未初期化の場合、internal\+\_\+data構造体を確保して初期化する
+\item すでに指定したサイズ以上のバッファが確保されている場合には何もせず成功を返す
+\item バッファの再確保が行われた場合、既存のデータはすべて破棄され、バッファ全体がクリアされる
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer\+\_\+size\+\_\+} & 確保するバッファサイズ(byte)(終端文字を含んだ長さを指定すること、つまり、文字列長さ+1を指定する) \\
+\hline
+\mbox{\texttt{ out}}  & {\em string\+\_\+} & メモリ確保対象オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\_string\_buffer\_reserve}}(128,\ \&\textcolor{keywordtype}{string});\ \ \ \ \textcolor{comment}{//\ 128byte確保}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ !=\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ エラー処理}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&\textcolor{keywordtype}{string});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数string\+\_\+が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR} & メモリ確保に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & メモリ確保が正常に完了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity()} 
+
+\doxylink{core__memory_8h_ad99648479589c6b3a79a7ecb3af0a850}{core\+\_\+malloc()} 
+
+\doxylink{core__memory_8h_a8255797cb8abc41798f103a726644d77}{core\+\_\+free()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+
+\doxylink{core__memory_8h_a667aa5285fa0963d6b9acf463e8c0e44}{core\+\_\+zero\+\_\+memory()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_aa2202e00fcfdb544a6f30e3c807cc673}\index{core\_string.h@{core\_string.h}!core\_string\_buffer\_reserve\_test@{core\_string\_buffer\_reserve\_test}}
+\index{core\_string\_buffer\_reserve\_test@{core\_string\_buffer\_reserve\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_buffer\_reserve\_test()}{core\_string\_buffer\_reserve\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_aa2202e00fcfdb544a6f30e3c807cc673} 
+void core\+\_\+string\+\_\+buffer\+\_\+reserve\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_af32d68e2e133076debb96547c0be4f7b}\index{core\_string.h@{core\_string.h}!core\_string\_buffer\_resize@{core\_string\_buffer\_resize}}
+\index{core\_string\_buffer\_resize@{core\_string\_buffer\_resize}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_buffer\_resize()}{core\_string\_buffer\_resize()}}
+{\footnotesize\ttfamily \label{core__string_8h_af32d68e2e133076debb96547c0be4f7b} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+buffer\+\_\+resize (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{buffer\+\_\+size\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+core\+\_\+string\+\_\+tオブジェクトのバッファサイズをbuffer\+\_\+size\+\_\+に拡張する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item この関数は既存の文字列データを保持したままバッファサイズを拡張する
+\item すでに指定サイズ以上のバッファが確保されている場合は何もせず成功を返す
+\item 内部データが未初期化の場合は \doxylink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve()} を呼び出して新規に確保する
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer\+\_\+size\+\_\+} & 新しいバッファサイズ(byte) 終端文字を含めるため「文字列長 + 1」を指定すること \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em string\+\_\+} & バッファサイズを拡張する対象オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_abae485a491f67161286376bd9355467e}{core\_string\_copy\_from\_char}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&\textcolor{keywordtype}{string});\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在\ "{}Hello"{}\ を保持}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_af32d68e2e133076debb96547c0be4f7b}{core\_string\_buffer\_resize}}(128,\ \&\textcolor{keywordtype}{string});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ バッファを128byteに拡張}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&\textcolor{keywordtype}{string});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数string\+\_\+が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR} & 一時バッファまたは新規バッファのメモリ確保に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & 一時バッファへのコピーまたは戻しに失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常にリサイズが完了、または既に十分な容量が確保されている\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve()} 
+
+\doxylink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity()} 
+
+\doxylink{core__memory_8h_ad99648479589c6b3a79a7ecb3af0a850}{core\+\_\+malloc()} 
+
+\doxylink{core__memory_8h_a8255797cb8abc41798f103a726644d77}{core\+\_\+free()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a220c8849d68566901e3c225a0ef7d358}\index{core\_string.h@{core\_string.h}!core\_string\_buffer\_resize\_test@{core\_string\_buffer\_resize\_test}}
+\index{core\_string\_buffer\_resize\_test@{core\_string\_buffer\_resize\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_buffer\_resize\_test()}{core\_string\_buffer\_resize\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a220c8849d68566901e3c225a0ef7d358} 
+void core\+\_\+string\+\_\+buffer\+\_\+resize\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a59a7bb17bb67a8430badae4b5cd830ff}\index{core\_string.h@{core\_string.h}!core\_string\_concat@{core\_string\_concat}}
+\index{core\_string\_concat@{core\_string\_concat}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_concat()}{core\_string\_concat()}}
+{\footnotesize\ttfamily \label{core__string_8h_a59a7bb17bb67a8430badae4b5cd830ff} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+concat (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{dst\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+dst\+\_\+ の末尾に string\+\_\+ の内容を連結する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 連結の結果、dst\+\_\+ のバッファサイズが不足する場合は自動でリサイズが行われる
+\item string\+\_\+ および dst\+\_\+ が未初期化の場合はエラーを返す
+\item 連結後、dst\+\_\+ の内部のバッファ末尾には必ず終端文字 \textquotesingle{}\textbackslash{}0\textquotesingle{} が付加される
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string\+\_\+} & 連結する文字列 (コピー元) \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst\+\_\+} & 連結結果を格納するオブジェクト (コピー先)\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ dst\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&dst);}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ add\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}\ World"{}},\ \&add);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a59a7bb17bb67a8430badae4b5cd830ff}{core\_string\_concat}}(\&add,\ \&dst);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ !=\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ エラー処理}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ \mbox{\hyperlink{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}{core\_string\_cstr}}(\&dst));\ \textcolor{comment}{//\ Hello\ World}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&add);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&dst);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & string\+\_\+ または dst\+\_\+ が NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & string\+\_\+ または dst\+\_\+ が未初期化、もしくはリサイズに失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 連結が正常に完了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity()} 
+
+\doxylink{core__string_8h_af32d68e2e133076debb96547c0be4f7b}{core\+\_\+string\+\_\+buffer\+\_\+resize()} 
+
+\doxylink{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}{core\+\_\+string\+\_\+cstr()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a196d56856f7821161398c38fc31c81ba}\index{core\_string.h@{core\_string.h}!core\_string\_concat\_test@{core\_string\_concat\_test}}
+\index{core\_string\_concat\_test@{core\_string\_concat\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_concat\_test()}{core\_string\_concat\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a196d56856f7821161398c38fc31c81ba} 
+void core\+\_\+string\+\_\+concat\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a0f829e5efdb35611e67123433c36722b}\index{core\_string.h@{core\_string.h}!core\_string\_copy@{core\_string\_copy}}
+\index{core\_string\_copy@{core\_string\_copy}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_copy()}{core\_string\_copy()}}
+{\footnotesize\ttfamily \label{core__string_8h_a0f829e5efdb35611e67123433c36722b} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{src\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{dst\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+引数src\+\_\+で与えたcore\+\_\+string\+\_\+tオブジェクトをdst\+\_\+にコピーする 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item dst\+\_\+が未初期化またはバッファサイズ不足の場合、必要なサイズにバッファが再確保される
+\item dst\+\_\+のバッファサイズがsrc\+\_\+のバッファサイズ以上の場合、既存バッファを再利用し内容を上書きする
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em src\+\_\+} & コピー元オブジェクト(初期化済みである必要あり) \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst\+\_\+} & コピー先オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ src\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ dst\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&src);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ コピー元を作成}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a0f829e5efdb35611e67123433c36722b}{core\_string\_copy}}(\&src,\ \&dst);\ \textcolor{comment}{//\ src→dstへコピー}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ !=\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ エラー処理}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&src);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&dst);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数src\+\_\+またはdst\+\_\+が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & コピー元src\+\_\+が未初期化、または文字列コピーに失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+BUFFER\+\_\+\+EMPTY} & コピー元オブジェクトsrc\+\_\+が内部で保持している文字列が空 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR} & コピー先オブジェクトのメモリ確保に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常にコピーが完了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()} 
+
+\doxylink{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}{core\+\_\+string\+\_\+default\+\_\+create()} 
+
+\doxylink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity()} 
+
+\doxylink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve()} 
+
+\doxylink{core__memory_8h_a667aa5285fa0963d6b9acf463e8c0e44}{core\+\_\+zero\+\_\+memory()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_abae485a491f67161286376bd9355467e}\index{core\_string.h@{core\_string.h}!core\_string\_copy\_from\_char@{core\_string\_copy\_from\_char}}
+\index{core\_string\_copy\_from\_char@{core\_string\_copy\_from\_char}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_copy\_from\_char()}{core\_string\_copy\_from\_char()}}
+{\footnotesize\ttfamily \label{core__string_8h_abae485a491f67161286376bd9355467e} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+copy\+\_\+from\+\_\+char (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{src\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{dst\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+core\+\_\+string\+\_\+t型オブジェクトdst\+\_\+にchar\texorpdfstring{$\ast$}{*}型文字列をコピーする 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item src\+\_\+の文字列長がdst\+\_\+のバッファサイズより大きい場合、dst\+\_\+のバッファは拡張される
+\item dst\+\_\+のバッファサイズがsrc\+\_\+の文字列長以上の場合、既存バッファを再利用し内容を上書きする
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em src\+\_\+\mbox{[}in\mbox{]}} & コピー元文字列 \\
+\hline
+{\em dst\+\_\+\mbox{[}out\mbox{]}} & コピー先文字列オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ dst\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_abae485a491f67161286376bd9355467e}{core\_string\_copy\_from\_char}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&dst);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ !=\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ エラー処理}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&dst);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数src\+\_\+またはdst\+\_\+が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR} & コピー先オブジェクトのメモリ確保に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & 文字列のコピーに失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常にコピーが完了 \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{core__string_8h_a635535d8c3c3ee756a79d9e118227fcd}\index{core\_string.h@{core\_string.h}!core\_string\_copy\_from\_char\_test@{core\_string\_copy\_from\_char\_test}}
+\index{core\_string\_copy\_from\_char\_test@{core\_string\_copy\_from\_char\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_copy\_from\_char\_test()}{core\_string\_copy\_from\_char\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a635535d8c3c3ee756a79d9e118227fcd} 
+void core\+\_\+string\+\_\+copy\+\_\+from\+\_\+char\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a0c9f7fcf04c9eca0168ea540678a0569}\index{core\_string.h@{core\_string.h}!core\_string\_copy\_test@{core\_string\_copy\_test}}
+\index{core\_string\_copy\_test@{core\_string\_copy\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_copy\_test()}{core\_string\_copy\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a0c9f7fcf04c9eca0168ea540678a0569} 
+void core\+\_\+string\+\_\+copy\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a2315ba27fe660a229700ed42941e7853}\index{core\_string.h@{core\_string.h}!core\_string\_create@{core\_string\_create}}
+\index{core\_string\_create@{core\_string\_create}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_create()}{core\_string\_create()}}
+{\footnotesize\ttfamily \label{core__string_8h_a2315ba27fe660a229700ed42941e7853} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+create (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{src\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{dst\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+引数で与えたsrc\+\_\+文字列をコピーしてdst\+\_\+オブジェクトを初期化する。 
+
+\begin{DoxyNote}{Note}
+この関数の内部では \doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} が呼び出されるため、 dst\+\_\+がすでに初期化済みで内部にデータを保持している場合は、 保持しているメモリがすべて解放された後に再初期化される。
+\end{DoxyNote}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ dst\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトの初期化}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&dst);\ \ \ \textcolor{comment}{//\ dstにHelloが格納される}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ !=\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ここにエラー処理を書く}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&dst);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em src\+\_\+} & 初期化文字列(終端文字まで含めてコピーされる) \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst\+\_\+} & 初期化対象オブジェクト\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数src\+\_\+またはdst\+\_\+が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & 文字列のコピーに失敗(これが発生したら本関数のバグ) \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR} & 文字列バッファメモリの確保に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常に初期化とコピーが完了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+
+\doxylink{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}{core\+\_\+string\+\_\+default\+\_\+create()} 
+
+\doxylink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a52d744a79fa5fbadbe7788e427c70a91}\index{core\_string.h@{core\_string.h}!core\_string\_create\_test@{core\_string\_create\_test}}
+\index{core\_string\_create\_test@{core\_string\_create\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_create\_test()}{core\_string\_create\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a52d744a79fa5fbadbe7788e427c70a91} 
+void core\+\_\+string\+\_\+create\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}\index{core\_string.h@{core\_string.h}!core\_string\_cstr@{core\_string\_cstr}}
+\index{core\_string\_cstr@{core\_string\_cstr}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_cstr()}{core\_string\_cstr()}}
+{\footnotesize\ttfamily \label{core__string_8h_a7817b25a44830b3ac8998c49af78ca71} 
+const char \texorpdfstring{$\ast$}{*} core\+\_\+string\+\_\+cstr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクトが保持している文字列の先頭ポインタを取得する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 戻り値は内部バッファへのポインタであり、\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}呼び出し側が解放してはいけない\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item オブジェクトが未初期化、または引数が NULL の場合は NULL を返す
+\item 戻り値は不変ではなく、core\+\_\+string\+\_\+t の内容が変更されると無効になる可能性がある
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string\+\_\+} & c文字列を取得する対象の \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ str\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&str);}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ cstr\ =\ \mbox{\hyperlink{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}{core\_string\_cstr}}(\&str);\ \textcolor{comment}{//\ cstr\ =\ "{}Hello"{}}}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ cstr);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&str);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em NULL} & 引数が NULL または未初期化のオブジェクトが渡された場合 \\
+\hline
+{\em その他} & 内部バッファの先頭アドレス\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+
+\doxylink{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad}{core\+\_\+string\+\_\+length()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a28d66645d9588917933f8fa44a5794b3}\index{core\_string.h@{core\_string.h}!core\_string\_cstr\_test@{core\_string\_cstr\_test}}
+\index{core\_string\_cstr\_test@{core\_string\_cstr\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_cstr\_test()}{core\_string\_cstr\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a28d66645d9588917933f8fa44a5794b3} 
+void core\+\_\+string\+\_\+cstr\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}\index{core\_string.h@{core\_string.h}!core\_string\_default\_create@{core\_string\_default\_create}}
+\index{core\_string\_default\_create@{core\_string\_default\_create}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_default\_create()}{core\_string\_default\_create()}}
+{\footnotesize\ttfamily \label{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c} 
+void core\+\_\+string\+\_\+default\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+引数で与えたstring\+\_\+オブジェクトを「デフォルト状態」に初期化する。 
+
+\begin{DoxyNote}{Note}
+オブジェクトのデフォルト状態とは、core\+\_\+string\+\_\+t.\+internal\+\_\+dataが\+NULLであり、 いかなるデータも保持していない状態を指す。
+
+内部にデータを保持している初期化済みオブジェクトに対して本関数を直接呼ぶと、 内部データのメモリが解放されず、メモリリークの原因となる可能性がある。 再利用する場合は、必ず事前に \doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} を呼んでメモリを解放してから使用すること。
+
+引数string\+\_\+に\+NULLを与えた場合には、以下のワーニングメッセージを出力し、処理を終了する。 {\ttfamily  \mbox{[}WARNING\mbox{]} core\+\_\+string\+\_\+default\+\_\+create -\/ Argument string\+\_\+ requires a valid pointer. }
+\end{DoxyNote}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ string;}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}{core\_string\_default\_create}}(\&\textcolor{keywordtype}{string});\ \textcolor{comment}{//\ オブジェクトが初期化される(internal\_dataはNULLとなる)。}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&\textcolor{keywordtype}{string});}
+
+\end{DoxyCode}
+
+
+なお、上記コードは下記のコードと等価である。 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&\textcolor{keywordtype}{string});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em string\+\_\+} & 初期化対象オブジェクト\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+
+\doxylink{core__memory_8h_a667aa5285fa0963d6b9acf463e8c0e44}{core\+\_\+zero\+\_\+memory()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a4fa0df60a0622a92e2d49c54702dad8a}\index{core\_string.h@{core\_string.h}!core\_string\_default\_create\_test@{core\_string\_default\_create\_test}}
+\index{core\_string\_default\_create\_test@{core\_string\_default\_create\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_default\_create\_test()}{core\_string\_default\_create\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a4fa0df60a0622a92e2d49c54702dad8a} 
+void core\+\_\+string\+\_\+default\+\_\+create\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}\index{core\_string.h@{core\_string.h}!core\_string\_destroy@{core\_string\_destroy}}
+\index{core\_string\_destroy@{core\_string\_destroy}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_destroy()}{core\_string\_destroy()}}
+{\footnotesize\ttfamily \label{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7} 
+void core\+\_\+string\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+引数で与えた文字列型オブジェクトstring\+\_\+が保持するメモリを破棄する。 
+
+\begin{DoxyNote}{Note}
+この関数を呼ぶことで、core\+\_\+string\+\_\+t型オブジェクトが保持しているinternal\+\_\+dataのメモリおよび、 internal\+\_\+data内に保持しているメモリ領域が解放される。 これにより、internal\+\_\+dataには\+NULLが設定される。なお、メモリの解放にはcore\+\_\+free()を使用している。
+
+本関数により破棄したオブジェクトを再度使用する場合には、下記の関数を使用する。
+\begin{DoxyItemize}
+\item \doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()}
+\item \doxylink{core__string_8h_a35af0c7da23e790d3666f3a5d9ae838c}{core\+\_\+string\+\_\+default\+\_\+create()}
+\end{DoxyItemize}
+
+引数string\+\_\+に\+NULLを与えた場合には、以下のワーニングメッセージを出力し、処理を終了する。 {\ttfamily  \mbox{[}WARNING\mbox{]} core\+\_\+string\+\_\+destroy -\/ Argument string\+\_\+ requires a valid pointer. }
+\end{DoxyNote}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&\textcolor{keywordtype}{string});\ \ \ \ \textcolor{comment}{//\ stringが保持するメモリが解放される}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em string\+\_\+} & 破棄対象オブジェクト\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__memory_8h_a8255797cb8abc41798f103a726644d77}{core\+\_\+free()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a7a9dd3ded43cf41443217ac65aff2f45}\index{core\_string.h@{core\_string.h}!core\_string\_destroy\_test@{core\_string\_destroy\_test}}
+\index{core\_string\_destroy\_test@{core\_string\_destroy\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_destroy\_test()}{core\_string\_destroy\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a7a9dd3ded43cf41443217ac65aff2f45} 
+void core\+\_\+string\+\_\+destroy\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_ad68b356d6a7ddfeb2cb13f8270797ad4}\index{core\_string.h@{core\_string.h}!core\_string\_equal@{core\_string\_equal}}
+\index{core\_string\_equal@{core\_string\_equal}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_equal()}{core\_string\_equal()}}
+{\footnotesize\ttfamily \label{core__string_8h_ad68b356d6a7ddfeb2cb13f8270797ad4} 
+bool core\+\_\+string\+\_\+equal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string1\+\_\+}{, }\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string2\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+2つのcore\+\_\+string\+\_\+tオブジェクトが保持する文字列が等しいかを比較する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item どちらかの引数が未初期化または\+NULLの場合はfalseを返す
+\item 比較はバッファの長さと各文字列の中身が完全一致するかどうかで判定される
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string1\+\_\+} & 比較対象1 \\
+\hline
+\mbox{\texttt{ in}}  & {\em string2\+\_\+} & 比較対象2\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ str1\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ str2\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&str1);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&str2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\mbox{\hyperlink{core__string_8h_ad68b356d6a7ddfeb2cb13f8270797ad4}{core\_string\_equal}}(\&str1,\ \&str2))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 文字列が一致}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&str1);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&str2);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & 2つの文字列が等しい \\
+\hline
+{\em false} & 引数が\+NULL/未初期化、または文字列が異なる\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_af0dd30489c2d7d0dba8afe011affa0ab}\index{core\_string.h@{core\_string.h}!core\_string\_equal\_from\_char@{core\_string\_equal\_from\_char}}
+\index{core\_string\_equal\_from\_char@{core\_string\_equal\_from\_char}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_equal\_from\_char()}{core\_string\_equal\_from\_char()}}
+{\footnotesize\ttfamily \label{core__string_8h_af0dd30489c2d7d0dba8afe011affa0ab} 
+bool core\+\_\+string\+\_\+equal\+\_\+from\+\_\+char (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{str1\+\_\+}{, }\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string2\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+char\texorpdfstring{$\ast$}{*} 文字列と \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクトが保持する文字列が等しいかを比較する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 引数のどちらかが NULL または未初期化の場合は false を返す
+\item 比較は文字列長と各文字が完全一致するかどうかで判定される
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str1\+\_\+} & 比較対象の C 文字列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em string2\+\_\+} & 比較対象の \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ str2\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&str2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{if}(\mbox{\hyperlink{core__string_8h_af0dd30489c2d7d0dba8afe011affa0ab}{core\_string\_equal\_from\_char}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&str2))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 一致}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&str2);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & 文字列が等しい \\
+\hline
+{\em false} & 引数が NULL / 未初期化、または文字列が異なる\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_ad68b356d6a7ddfeb2cb13f8270797ad4}{core\+\_\+string\+\_\+equal()} 
+
+\doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a337ba6dea7e2cfea988e3d99b2892a8a}\index{core\_string.h@{core\_string.h}!core\_string\_equal\_from\_char\_test@{core\_string\_equal\_from\_char\_test}}
+\index{core\_string\_equal\_from\_char\_test@{core\_string\_equal\_from\_char\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_equal\_from\_char\_test()}{core\_string\_equal\_from\_char\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a337ba6dea7e2cfea988e3d99b2892a8a} 
+void core\+\_\+string\+\_\+equal\+\_\+from\+\_\+char\+\_\+test (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a435fa175da4e565410c9fbd56379092e}\index{core\_string.h@{core\_string.h}!core\_string\_equal\_test@{core\_string\_equal\_test}}
+\index{core\_string\_equal\_test@{core\_string\_equal\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_equal\_test()}{core\_string\_equal\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a435fa175da4e565410c9fbd56379092e} 
+void core\+\_\+string\+\_\+equal\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a2f75582274ba14fc62dba48314aa18e9}\index{core\_string.h@{core\_string.h}!core\_string\_is\_empty@{core\_string\_is\_empty}}
+\index{core\_string\_is\_empty@{core\_string\_is\_empty}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_is\_empty()}{core\_string\_is\_empty()}}
+{\footnotesize\ttfamily \label{core__string_8h_a2f75582274ba14fc62dba48314aa18e9} 
+bool core\+\_\+string\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+core\+\_\+string\+\_\+tオブジェクトが空かどうかを判定する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 引数が\+NULLまたは未初期化の場合は true を返す
+\item 長さが0の文字列を保持している場合も true を返す
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string\+\_\+} & 判定対象オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ \textcolor{keywordtype}{string}\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{core__string_8h_a2f75582274ba14fc62dba48314aa18e9}{core\_string\_is\_empty}}(\&\textcolor{keywordtype}{string}))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ まだ初期化されていない\ or\ 空文字列}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & オブジェクトが\+NULL / 未初期化 / 空文字列である \\
+\hline
+{\em false} & 文字列が1文字以上存在する\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad}{core\+\_\+string\+\_\+length()} 
+
+\doxylink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a01853d15c47c5a0f7fa4be48d03645ab}\index{core\_string.h@{core\_string.h}!core\_string\_is\_empty\_test@{core\_string\_is\_empty\_test}}
+\index{core\_string\_is\_empty\_test@{core\_string\_is\_empty\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_is\_empty\_test()}{core\_string\_is\_empty\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a01853d15c47c5a0f7fa4be48d03645ab} 
+void core\+\_\+string\+\_\+is\+\_\+empty\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad}\index{core\_string.h@{core\_string.h}!core\_string\_length@{core\_string\_length}}
+\index{core\_string\_length@{core\_string\_length}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_length()}{core\_string\_length()}}
+{\footnotesize\ttfamily \label{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad} 
+uint64\+\_\+t core\+\_\+string\+\_\+length (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクトが保持している文字列の長さを取得する 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 文字列の長さは終端文字 (\textquotesingle{}\textbackslash{}0\textquotesingle{}) を含まない
+\item 引数が NULL の場合は \doxylink{define_8h_ab8e09edc08ec19f44d43b64923b4fb9d}{INVALID\+\_\+\+VALUE\+\_\+\+U64} を返す
+\item 未初期化のオブジェクトが渡された場合は 0 を返す
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string\+\_\+} & 長さを取得する対象の \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} オブジェクト\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ str\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello"{}},\ \&str);}
+\DoxyCodeLine{uint64\_t\ len\ =\ \mbox{\hyperlink{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad}{core\_string\_length}}(\&str);\ \textcolor{comment}{//\ len\ =\ 5}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&str);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em INVALID\+\_\+\+VALUE\+\_\+\+U64} & 引数が NULL の場合 \\
+\hline
+{\em 0} & 未初期化のオブジェクトが渡された場合 \\
+\hline
+{\em その他} & 保持している文字列の長さ\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\+\_\+string\+\_\+create()} 
+
+\doxylink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\+\_\+string\+\_\+destroy()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_ab4a12b59f006def78fa20943f41989a3}\index{core\_string.h@{core\_string.h}!core\_string\_length\_test@{core\_string\_length\_test}}
+\index{core\_string\_length\_test@{core\_string\_length\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_length\_test()}{core\_string\_length\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_ab4a12b59f006def78fa20943f41989a3} 
+void core\+\_\+string\+\_\+length\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a56936fa3e107a529eb06b3382310cdc8}\index{core\_string.h@{core\_string.h}!core\_string\_substring\_copy@{core\_string\_substring\_copy}}
+\index{core\_string\_substring\_copy@{core\_string\_substring\_copy}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_substring\_copy()}{core\_string\_substring\_copy()}}
+{\footnotesize\ttfamily \label{core__string_8h_a56936fa3e107a529eb06b3382310cdc8} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+substring\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{src\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{dst\+\_\+}{, }\item[{uint16\+\_\+t}]{from\+\_\+}{, }\item[{uint16\+\_\+t}]{to\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+src\+\_\+ の \mbox{[}from\+\_\+, to\+\_\+\mbox{]} 範囲の部分文字列を dst\+\_\+ にコピーする 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item from\+\_\+ から to\+\_\+ の範囲は \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}両端を含むインデックス\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}として扱われる
+\item dst\+\_\+ のバッファサイズが不足している場合は自動でリサイズが行われる
+\item 部分文字列のコピー後、dst\+\_\+ の末尾には必ず終端文字 \textquotesingle{}\textbackslash{}0\textquotesingle{} が付加される
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em src\+\_\+} & 部分文字列を抽出する元の文字列オブジェクト \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst\+\_\+} & 抽出結果を格納する文字列オブジェクト \\
+\hline
+\mbox{\texttt{ in}}  & {\em from\+\_\+} & 抽出を開始するインデックス (0-\/based) \\
+\hline
+\mbox{\texttt{ in}}  & {\em to\+\_\+} & 抽出を終了するインデックス (0-\/based, inclusive)\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ src\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}Hello\ World"{}},\ \&src);}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ dst\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a56936fa3e107a529eb06b3382310cdc8}{core\_string\_substring\_copy}}(\&src,\ \&dst,\ 6,\ 10);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ !=\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ エラー処理}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ \mbox{\hyperlink{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}{core\_string\_cstr}}(\&dst));\ \textcolor{comment}{//\ "{}World"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&dst);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&src);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 
+\begin{DoxyItemize}
+\item from\+\_\+ または to\+\_\+ が不正 (from\+\_\+ \texorpdfstring{$>$}{>} to\+\_\+)
+\item to\+\_\+ が src\+\_\+ の範囲を超えている 
+\end{DoxyItemize}\\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & 
+\begin{DoxyItemize}
+\item src\+\_\+ または dst\+\_\+ が未初期化
+\item バッファのリサイズに失敗 
+\end{DoxyItemize}\\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常に部分文字列のコピーが完了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a5b358a3aea52a94688d9c2264caae31a}{core\+\_\+string\+\_\+buffer\+\_\+capacity()} 
+
+\doxylink{core__string_8h_af32d68e2e133076debb96547c0be4f7b}{core\+\_\+string\+\_\+buffer\+\_\+resize()} 
+
+\doxylink{core__string_8h_a7817b25a44830b3ac8998c49af78ca71}{core\+\_\+string\+\_\+cstr()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a8c5d8c81ac1c3b766804c8e0bf8f63d2}\index{core\_string.h@{core\_string.h}!core\_string\_substring\_copy\_test@{core\_string\_substring\_copy\_test}}
+\index{core\_string\_substring\_copy\_test@{core\_string\_substring\_copy\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_substring\_copy\_test()}{core\_string\_substring\_copy\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a8c5d8c81ac1c3b766804c8e0bf8f63d2} 
+void core\+\_\+string\+\_\+substring\+\_\+copy\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a0438ebc58481d2fc3b69231bdc6613e2}\index{core\_string.h@{core\_string.h}!core\_string\_to\_i32@{core\_string\_to\_i32}}
+\index{core\_string\_to\_i32@{core\_string\_to\_i32}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_to\_i32()}{core\_string\_to\_i32()}}
+{\footnotesize\ttfamily \label{core__string_8h_a0438ebc58481d2fc3b69231bdc6613e2} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+to\+\_\+i32 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{string\+\_\+}{, }\item[{int32\+\_\+t \texorpdfstring{$\ast$}{*}}]{out\+\_\+value\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+core\+\_\+string\+\_\+tオブジェクトの内容をint32\+\_\+t型整数に変換する。 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 文字列が整数として解釈できない場合はエラーを返す
+\item 変換結果がint32\+\_\+tの範囲外の場合もエラーを返す
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string\+\_\+} & 変換対象の文字列オブジェクト \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+value\+\_\+} & 変換結果を格納するポインタ\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ str\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}1234"{}},\ \&str);}
+\DoxyCodeLine{int32\_t\ value\ =\ 0;}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a0438ebc58481d2fc3b69231bdc6613e2}{core\_string\_to\_i32}}(\&str,\ \&value);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ ==\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ value\ ==\ 1234}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&str);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数string\+\_\+またはout\+\_\+value\+\_\+が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & string\+\_\+が未初期化、空文字列、変換失敗、または範囲外の値 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常に変換が完了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+strtol() 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a63cac2326aff4358a911de5ab1fc163e}\index{core\_string.h@{core\_string.h}!core\_string\_to\_i32\_test@{core\_string\_to\_i32\_test}}
+\index{core\_string\_to\_i32\_test@{core\_string\_to\_i32\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_to\_i32\_test()}{core\_string\_to\_i32\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a63cac2326aff4358a911de5ab1fc163e} 
+void core\+\_\+string\+\_\+to\+\_\+i32\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{core__string_8h_a8c27fdf7f1465a3fccaaa4d080019868}\index{core\_string.h@{core\_string.h}!core\_string\_trim@{core\_string\_trim}}
+\index{core\_string\_trim@{core\_string\_trim}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_trim()}{core\_string\_trim()}}
+{\footnotesize\ttfamily \label{core__string_8h_a8c27fdf7f1465a3fccaaa4d080019868} 
+\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\+\_\+\+STRING\+\_\+\+ERROR\+\_\+\+CODE}} core\+\_\+string\+\_\+trim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{src\+\_\+}{, }\item[{\mbox{\hyperlink{structcore__string__t}{core\+\_\+string\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{dst\+\_\+}{, }\item[{char}]{ltrim\+\_\+}{, }\item[{char}]{rtrim\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+指定したトリム文字を取り除いた文字列をdst\+\_\+にコピーする。 
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item 左端の連続するltrim\+\_\+文字と右端の連続するrtrim\+\_\+文字を削除する
+\item トリム後の文字列長が0になる場合、空文字列としてdst\+\_\+に格納する
+\item 必要に応じてdst\+\_\+のバッファサイズを再確保する
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em src\+\_\+} & トリム対象の文字列オブジェクト \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst\+\_\+} & トリム結果の出力先オブジェクト \\
+\hline
+\mbox{\texttt{ in}}  & {\em ltrim\+\_\+} & 左端のトリム対象文字 \\
+\hline
+\mbox{\texttt{ in}}  & {\em rtrim\+\_\+} & 右端のトリム対象文字\\
+\hline
+\end{DoxyParams}
+使用例\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ src\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{structcore__string__t}{core\_string\_t}}\ dst\ =\ \mbox{\hyperlink{core__string_8h_a8612384ec41e1cc811811d81e9e13a33}{CORE\_STRING\_INITIALIZER}};}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_a2315ba27fe660a229700ed42941e7853}{core\_string\_create}}(\textcolor{stringliteral}{"{}\ \ hello\ \ "{}},\ \&src);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eeb}{CORE\_STRING\_ERROR\_CODE}}\ result\ =\ \mbox{\hyperlink{core__string_8h_a8c27fdf7f1465a3fccaaa4d080019868}{core\_string\_trim}}(\&src,\ \&dst,\ \textcolor{charliteral}{'\ '},\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{core__string_8h_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301}{CORE\_STRING\_SUCCESS}}\ ==\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ dstには\ "{}hello"{}\ が格納される}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&src);}
+\DoxyCodeLine{\mbox{\hyperlink{core__string_8h_afca6eec986d7ac34a2c62f1071ecefe7}{core\_string\_destroy}}(\&dst);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em CORE\+\_\+\+STRING\+\_\+\+INVALID\+\_\+\+ARGUMENT} & 引数が\+NULL \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+RUNTIME\+\_\+\+ERROR} & src\+\_\+が未初期化 または長さ取得に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+MEMORY\+\_\+\+ALLOCATE\+\_\+\+ERROR} & メモリ再確保に失敗 \\
+\hline
+{\em CORE\+\_\+\+STRING\+\_\+\+SUCCESS} & 正常終了\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxySeeAlso}{See also}
+\doxylink{core__string_8h_a2745d8d1a6f8de8f14e872db9fe382ad}{core\+\_\+string\+\_\+length()} 
+
+\doxylink{core__string_8h_a56936fa3e107a529eb06b3382310cdc8}{core\+\_\+string\+\_\+substring\+\_\+copy()} 
+
+\doxylink{core__string_8h_a919004c0d49138203ae97de414688c70}{core\+\_\+string\+\_\+buffer\+\_\+reserve()} 
+\end{DoxySeeAlso}
+\Hypertarget{core__string_8h_a9edaee95c94fb9c693a8d5f05763ad21}\index{core\_string.h@{core\_string.h}!core\_string\_trim\_test@{core\_string\_trim\_test}}
+\index{core\_string\_trim\_test@{core\_string\_trim\_test}!core\_string.h@{core\_string.h}}
+\doxysubsubsection{\texorpdfstring{core\_string\_trim\_test()}{core\_string\_trim\_test()}}
+{\footnotesize\ttfamily \label{core__string_8h_a9edaee95c94fb9c693a8d5f05763ad21} 
+void core\+\_\+string\+\_\+trim\+\_\+test (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+

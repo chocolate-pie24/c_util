@@ -1,0 +1,51 @@
+\doxysection{core\+\_\+string\+\_\+internal\+\_\+data\+\_\+t Struct Reference}
+\hypertarget{structcore__string__internal__data__t}{}\label{structcore__string__internal__data__t}\index{core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}}
+
+
+core\+\_\+string\+\_\+tの内部構造体。文字列バッファとメタ情報を保持する。  
+
+
+
+
+{\ttfamily \#include $<$core\+\_\+string\+\_\+internal\+\_\+data.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcore__string__internal__data__t_aebebae22d64686220a03c5f61a41cee5}{buffer}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structcore__string__internal__data__t_a6afd88bf55fa2dac25ad2ed87ccf7503}{length}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structcore__string__internal__data__t_a64a32d66acbd1c55289d919d08a5c38f}{buff\+\_\+size}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+core\+\_\+string\+\_\+tの内部構造体。文字列バッファとメタ情報を保持する。 
+
+この構造体は \doxylink{structcore__string__t}{core\+\_\+string\+\_\+t} の実装における内部状態を表す。 利用者が直接この構造体にアクセスすることは想定されておらず、 core\+\_\+string.\+c内でのみ使用される。 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcore__string__internal__data__t_a64a32d66acbd1c55289d919d08a5c38f}\index{core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}!buff\_size@{buff\_size}}
+\index{buff\_size@{buff\_size}!core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}}
+\doxysubsubsection{\texorpdfstring{buff\_size}{buff\_size}}
+{\footnotesize\ttfamily \label{structcore__string__internal__data__t_a64a32d66acbd1c55289d919d08a5c38f} 
+uint64\+\_\+t core\+\_\+string\+\_\+internal\+\_\+data\+\_\+t\+::buff\+\_\+size}
+
+バッファサイズ（終端文字含む） \Hypertarget{structcore__string__internal__data__t_aebebae22d64686220a03c5f61a41cee5}\index{core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}!buffer@{buffer}}
+\index{buffer@{buffer}!core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily \label{structcore__string__internal__data__t_aebebae22d64686220a03c5f61a41cee5} 
+char\texorpdfstring{$\ast$}{*} core\+\_\+string\+\_\+internal\+\_\+data\+\_\+t\+::buffer}
+
+ヌル終端された文字列バッファ \Hypertarget{structcore__string__internal__data__t_a6afd88bf55fa2dac25ad2ed87ccf7503}\index{core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}!length@{length}}
+\index{length@{length}!core\_string\_internal\_data\_t@{core\_string\_internal\_data\_t}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \label{structcore__string__internal__data__t_a6afd88bf55fa2dac25ad2ed87ccf7503} 
+uint64\+\_\+t core\+\_\+string\+\_\+internal\+\_\+data\+\_\+t\+::length}
+
+文字列長（終端文字を除く） 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{core__string__internal__data_8h}{core\+\_\+string\+\_\+internal\+\_\+data.\+h}}\end{DoxyCompactItemize}

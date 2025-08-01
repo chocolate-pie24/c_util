@@ -1,0 +1,255 @@
+\doxysection{message.\+h File Reference}
+\hypertarget{message_8h}{}\label{message_8h}\index{message.h@{message.h}}
+
+
+メッセージ標準出力機能定義  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{message_8h_a00ae1da9736f3e785960f355d98d64ac}{ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+ERROR}}~1
+\begin{DoxyCompactList}\small\item\em ビルドモードによるエラーメッセージ出力切り替えスイッチ用マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_aaf0903e0451ce76e653238582e5288e9}{ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+WARNING}}~1
+\begin{DoxyCompactList}\small\item\em ビルドモードによるワーニングメッセージ出力切り替えスイッチ用マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_a1f141fcf96d4ba3865867f98094de172}{ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+INFORMATION}}~1
+\begin{DoxyCompactList}\small\item\em デバッグメッセージよりは重要だが、ワーニングほど重要でないメッセージに関する出力切り替えスイッチ用マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_a25d28f616ef8dae6e6d50c863683cf16}{ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+DEBUG}}~1
+\begin{DoxyCompactList}\small\item\em デバッグ用メッセージに関する出力切り替えスイッチ用マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_acae5c74c245f8d601504d3224915c614}{ERROR\+\_\+\+MESSAGE}}(...)
+\begin{DoxyCompactList}\small\item\em エラーメッセージ出力処理マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_aa9550cb10d06bed989f8b23a02a85bd5}{WARN\+\_\+\+MESSAGE}}(...)
+\begin{DoxyCompactList}\small\item\em ワーニングメッセージ出力処理マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_a4c628ba83b95ee332bbdb6965b85a084}{INFO\+\_\+\+MESSAGE}}(...)
+\begin{DoxyCompactList}\small\item\em インフォメーションメッセージ出力処理マクロ定義 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{message_8h_aed691840fce0de5a081b5e84e4ebb64a}{DEBUG\+\_\+\+MESSAGE}}(...)
+\begin{DoxyCompactList}\small\item\em デバッグメッセージ出力処理マクロ定義 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}} \mbox{\hyperlink{message_8h_a999dd1c1bcf962289fa33f060b3abc6b}{MESSAGE\+\_\+\+SEVERITY}}
+\begin{DoxyCompactList}\small\item\em 出力メッセージ重要度リスト \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}} \{ \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a10786deae7593f84d95ecb32064adde3}{MESSAGE\+\_\+\+SEVERITY\+\_\+\+ERROR}}
+, \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6ac548308b4b08756ecc04752a1770cf4f}{MESSAGE\+\_\+\+SEVERITY\+\_\+\+WARNING}}
+, \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a65f2e2256eeb8d64f31eef2cea967b6b}{MESSAGE\+\_\+\+SEVERITY\+\_\+\+INFORMATION}}
+, \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a526d661abd650668750b45d973095da6}{MESSAGE\+\_\+\+SEVERITY\+\_\+\+DEBUG}}
+ \}
+\begin{DoxyCompactList}\small\item\em 出力メッセージ重要度リスト \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e}{message\+\_\+output}} (\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}} severity\+\_\+, const char \texorpdfstring{$\ast$}{*}const fmt\+\_\+,...)
+\begin{DoxyCompactList}\small\item\em メッセージ出力関数(メッセージの重要度に応じて出力フォーマットを変える) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+メッセージ標準出力機能定義 
+
+\begin{DoxyAuthor}{Author}
+chocolate-\/pie24 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/07-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{message_8h_aed691840fce0de5a081b5e84e4ebb64a}\index{message.h@{message.h}!DEBUG\_MESSAGE@{DEBUG\_MESSAGE}}
+\index{DEBUG\_MESSAGE@{DEBUG\_MESSAGE}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_MESSAGE}{DEBUG\_MESSAGE}}
+{\footnotesize\ttfamily \label{message_8h_aed691840fce0de5a081b5e84e4ebb64a} 
+\#define DEBUG\+\_\+\+MESSAGE(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e}{message\_output}}(\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a526d661abd650668750b45d973095da6}{MESSAGE\_SEVERITY\_DEBUG}},\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+デバッグメッセージ出力処理マクロ定義 
+
+\Hypertarget{message_8h_a25d28f616ef8dae6e6d50c863683cf16}\index{message.h@{message.h}!ENABLE\_MESSAGE\_SEVERITY\_DEBUG@{ENABLE\_MESSAGE\_SEVERITY\_DEBUG}}
+\index{ENABLE\_MESSAGE\_SEVERITY\_DEBUG@{ENABLE\_MESSAGE\_SEVERITY\_DEBUG}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_MESSAGE\_SEVERITY\_DEBUG}{ENABLE\_MESSAGE\_SEVERITY\_DEBUG}}
+{\footnotesize\ttfamily \label{message_8h_a25d28f616ef8dae6e6d50c863683cf16} 
+\#define ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+DEBUG~1}
+
+
+
+デバッグ用メッセージに関する出力切り替えスイッチ用マクロ定義 
+
+\begin{DoxyNote}{Note}
+現状はリリースビルド時には出力を有効にする 
+\end{DoxyNote}
+\Hypertarget{message_8h_a00ae1da9736f3e785960f355d98d64ac}\index{message.h@{message.h}!ENABLE\_MESSAGE\_SEVERITY\_ERROR@{ENABLE\_MESSAGE\_SEVERITY\_ERROR}}
+\index{ENABLE\_MESSAGE\_SEVERITY\_ERROR@{ENABLE\_MESSAGE\_SEVERITY\_ERROR}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_MESSAGE\_SEVERITY\_ERROR}{ENABLE\_MESSAGE\_SEVERITY\_ERROR}}
+{\footnotesize\ttfamily \label{message_8h_a00ae1da9736f3e785960f355d98d64ac} 
+\#define ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+ERROR~1}
+
+
+
+ビルドモードによるエラーメッセージ出力切り替えスイッチ用マクロ定義 
+
+\begin{DoxyNote}{Note}
+エラーメッセージなのでデバッグビルド/リリースビルド共に出力を有効化するが、無効化できるようにもしておく 
+\end{DoxyNote}
+\Hypertarget{message_8h_a1f141fcf96d4ba3865867f98094de172}\index{message.h@{message.h}!ENABLE\_MESSAGE\_SEVERITY\_INFORMATION@{ENABLE\_MESSAGE\_SEVERITY\_INFORMATION}}
+\index{ENABLE\_MESSAGE\_SEVERITY\_INFORMATION@{ENABLE\_MESSAGE\_SEVERITY\_INFORMATION}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_MESSAGE\_SEVERITY\_INFORMATION}{ENABLE\_MESSAGE\_SEVERITY\_INFORMATION}}
+{\footnotesize\ttfamily \label{message_8h_a1f141fcf96d4ba3865867f98094de172} 
+\#define ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+INFORMATION~1}
+
+
+
+デバッグメッセージよりは重要だが、ワーニングほど重要でないメッセージに関する出力切り替えスイッチ用マクロ定義 
+
+\begin{DoxyNote}{Note}
+現状はデバッグビルド時には出力を有効にする 
+\end{DoxyNote}
+\Hypertarget{message_8h_aaf0903e0451ce76e653238582e5288e9}\index{message.h@{message.h}!ENABLE\_MESSAGE\_SEVERITY\_WARNING@{ENABLE\_MESSAGE\_SEVERITY\_WARNING}}
+\index{ENABLE\_MESSAGE\_SEVERITY\_WARNING@{ENABLE\_MESSAGE\_SEVERITY\_WARNING}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_MESSAGE\_SEVERITY\_WARNING}{ENABLE\_MESSAGE\_SEVERITY\_WARNING}}
+{\footnotesize\ttfamily \label{message_8h_aaf0903e0451ce76e653238582e5288e9} 
+\#define ENABLE\+\_\+\+MESSAGE\+\_\+\+SEVERITY\+\_\+\+WARNING~1}
+
+
+
+ビルドモードによるワーニングメッセージ出力切り替えスイッチ用マクロ定義 
+
+\begin{DoxyNote}{Note}
+ワーニングメッセージなのでデバッグビルド/リリースビルド共に出力を有効化するが、無効化できるようにもしておく 
+\end{DoxyNote}
+\Hypertarget{message_8h_acae5c74c245f8d601504d3224915c614}\index{message.h@{message.h}!ERROR\_MESSAGE@{ERROR\_MESSAGE}}
+\index{ERROR\_MESSAGE@{ERROR\_MESSAGE}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{ERROR\_MESSAGE}{ERROR\_MESSAGE}}
+{\footnotesize\ttfamily \label{message_8h_acae5c74c245f8d601504d3224915c614} 
+\#define ERROR\+\_\+\+MESSAGE(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e}{message\_output}}(\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a10786deae7593f84d95ecb32064adde3}{MESSAGE\_SEVERITY\_ERROR}},\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+エラーメッセージ出力処理マクロ定義 
+
+\Hypertarget{message_8h_a4c628ba83b95ee332bbdb6965b85a084}\index{message.h@{message.h}!INFO\_MESSAGE@{INFO\_MESSAGE}}
+\index{INFO\_MESSAGE@{INFO\_MESSAGE}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{INFO\_MESSAGE}{INFO\_MESSAGE}}
+{\footnotesize\ttfamily \label{message_8h_a4c628ba83b95ee332bbdb6965b85a084} 
+\#define INFO\+\_\+\+MESSAGE(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e}{message\_output}}(\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a65f2e2256eeb8d64f31eef2cea967b6b}{MESSAGE\_SEVERITY\_INFORMATION}},\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+インフォメーションメッセージ出力処理マクロ定義 
+
+\Hypertarget{message_8h_aa9550cb10d06bed989f8b23a02a85bd5}\index{message.h@{message.h}!WARN\_MESSAGE@{WARN\_MESSAGE}}
+\index{WARN\_MESSAGE@{WARN\_MESSAGE}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{WARN\_MESSAGE}{WARN\_MESSAGE}}
+{\footnotesize\ttfamily \label{message_8h_aa9550cb10d06bed989f8b23a02a85bd5} 
+\#define WARN\+\_\+\+MESSAGE(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e}{message\_output}}(\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6ac548308b4b08756ecc04752a1770cf4f}{MESSAGE\_SEVERITY\_WARNING}},\ \_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+ワーニングメッセージ出力処理マクロ定義 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{message_8h_a999dd1c1bcf962289fa33f060b3abc6b}\index{message.h@{message.h}!MESSAGE\_SEVERITY@{MESSAGE\_SEVERITY}}
+\index{MESSAGE\_SEVERITY@{MESSAGE\_SEVERITY}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{MESSAGE\_SEVERITY}{MESSAGE\_SEVERITY}}
+{\footnotesize\ttfamily \label{message_8h_a999dd1c1bcf962289fa33f060b3abc6b} 
+typedef enum \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}} \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}}}
+
+
+
+出力メッセージ重要度リスト 
+
+\begin{DoxyAuthor}{Author}
+chocolate-\/pie24 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024-\/10-\/13 
+\end{DoxyDate}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}\index{message.h@{message.h}!MESSAGE\_SEVERITY@{MESSAGE\_SEVERITY}}
+\index{MESSAGE\_SEVERITY@{MESSAGE\_SEVERITY}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{MESSAGE\_SEVERITY}{MESSAGE\_SEVERITY}}
+{\footnotesize\ttfamily \label{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6} 
+enum \mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}}}
+
+
+
+出力メッセージ重要度リスト 
+
+\begin{DoxyAuthor}{Author}
+chocolate-\/pie24 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024-\/10-\/13 
+\end{DoxyDate}
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MESSAGE\_SEVERITY\_ERROR@{MESSAGE\_SEVERITY\_ERROR}!message.h@{message.h}}\index{message.h@{message.h}!MESSAGE\_SEVERITY\_ERROR@{MESSAGE\_SEVERITY\_ERROR}}}\Hypertarget{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a10786deae7593f84d95ecb32064adde3}\label{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6} 
+MESSAGE\+\_\+\+SEVERITY\+\_\+\+ERROR&重要度\+:エラー \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MESSAGE\_SEVERITY\_WARNING@{MESSAGE\_SEVERITY\_WARNING}!message.h@{message.h}}\index{message.h@{message.h}!MESSAGE\_SEVERITY\_WARNING@{MESSAGE\_SEVERITY\_WARNING}}}\Hypertarget{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6ac548308b4b08756ecc04752a1770cf4f}\label{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6} 
+MESSAGE\+\_\+\+SEVERITY\+\_\+\+WARNING&重要度\+:ワーニング \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MESSAGE\_SEVERITY\_INFORMATION@{MESSAGE\_SEVERITY\_INFORMATION}!message.h@{message.h}}\index{message.h@{message.h}!MESSAGE\_SEVERITY\_INFORMATION@{MESSAGE\_SEVERITY\_INFORMATION}}}\Hypertarget{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a65f2e2256eeb8d64f31eef2cea967b6b}\label{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6} 
+MESSAGE\+\_\+\+SEVERITY\+\_\+\+INFORMATION&重要度\+:情報 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MESSAGE\_SEVERITY\_DEBUG@{MESSAGE\_SEVERITY\_DEBUG}!message.h@{message.h}}\index{message.h@{message.h}!MESSAGE\_SEVERITY\_DEBUG@{MESSAGE\_SEVERITY\_DEBUG}}}\Hypertarget{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6a526d661abd650668750b45d973095da6}\label{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6} 
+MESSAGE\+\_\+\+SEVERITY\+\_\+\+DEBUG&重要度\+:デバッグ情報 \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e}\index{message.h@{message.h}!message\_output@{message\_output}}
+\index{message\_output@{message\_output}!message.h@{message.h}}
+\doxysubsubsection{\texorpdfstring{message\_output()}{message\_output()}}
+{\footnotesize\ttfamily \label{message_8h_a5a863f3d1674d0577d9ebe02bb7d5d5e} 
+void message\+\_\+output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{message_8h_ab3fcfd0985e9a86f32cdd48572daf3c6}{MESSAGE\+\_\+\+SEVERITY}}}]{severity\+\_\+}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{fmt\+\_\+}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+メッセージ出力関数(メッセージの重要度に応じて出力フォーマットを変える) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em severity\+\_\+} & メッセージの重要度 \\
+\hline
+{\em fmt\+\_\+} & メッセージ内容(printfの"{}message \%s \%f"{}と同様のフォーマット) \\
+\hline
+{\em ...} & メッセージ内容に付加する各種値(printfのsやfに対する値に相当) \\
+\hline
+\end{DoxyParams}

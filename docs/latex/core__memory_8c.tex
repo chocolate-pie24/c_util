@@ -1,0 +1,99 @@
+\doxysection{core\+\_\+memory.\+c File Reference}
+\hypertarget{core__memory_8c}{}\label{core__memory_8c}\index{core\_memory.c@{core\_memory.c}}
+
+
+メモリ関連処理実装  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}core\+\_\+memory.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{core__memory_8c_ac14d7c038da77644a89a33d24d1c4500}{core\+\_\+zero\+\_\+memory}} (void \texorpdfstring{$\ast$}{*}const buff\+\_\+, uint32\+\_\+t buff\+\_\+size\+\_\+)
+\begin{DoxyCompactList}\small\item\em 対象バッファを全て0でクリアする \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{core__memory_8c_ad99648479589c6b3a79a7ecb3af0a850}{core\+\_\+malloc}} (size\+\_\+t memory\+\_\+size\+\_\+)
+\begin{DoxyCompactList}\small\item\em 要求されたメモリを確保し、出力する \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core__memory_8c_a8255797cb8abc41798f103a726644d77}{core\+\_\+free}} (void \texorpdfstring{$\ast$}{*}memory\+\_\+pool\+\_\+)
+\begin{DoxyCompactList}\small\item\em 指定されたメモリ領域を破棄する \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+メモリ関連処理実装 
+
+\begin{DoxyAuthor}{Author}
+chocolate-\/pie24 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/07-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{core__memory_8c_a8255797cb8abc41798f103a726644d77}\index{core\_memory.c@{core\_memory.c}!core\_free@{core\_free}}
+\index{core\_free@{core\_free}!core\_memory.c@{core\_memory.c}}
+\doxysubsubsection{\texorpdfstring{core\_free()}{core\_free()}}
+{\footnotesize\ttfamily \label{core__memory_8c_a8255797cb8abc41798f103a726644d77} 
+void core\+\_\+free (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{memory\+\_\+pool\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+指定されたメモリ領域を破棄する 
+
+\begin{DoxyNote}{Note}
+TODO\+: メモリトラッキング用メモリ種別追加
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+\_\+pool\+\_\+} & 破棄対象メモリ領域 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{core__memory_8c_ad99648479589c6b3a79a7ecb3af0a850}\index{core\_memory.c@{core\_memory.c}!core\_malloc@{core\_malloc}}
+\index{core\_malloc@{core\_malloc}!core\_memory.c@{core\_memory.c}}
+\doxysubsubsection{\texorpdfstring{core\_malloc()}{core\_malloc()}}
+{\footnotesize\ttfamily \label{core__memory_8c_ad99648479589c6b3a79a7ecb3af0a850} 
+void \texorpdfstring{$\ast$}{*} core\+\_\+malloc (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{memory\+\_\+size\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+要求されたメモリを確保し、出力する 
+
+\begin{DoxyNote}{Note}
+TODO\+: メモリトラッキング用メモリ種別追加
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+\_\+size\+\_\+} & 確保メモリ領域 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void\texorpdfstring{$\ast$}{*} 確保されたメモリ領域へのポインタ 
+\end{DoxyReturn}
+\Hypertarget{core__memory_8c_ac14d7c038da77644a89a33d24d1c4500}\index{core\_memory.c@{core\_memory.c}!core\_zero\_memory@{core\_zero\_memory}}
+\index{core\_zero\_memory@{core\_zero\_memory}!core\_memory.c@{core\_memory.c}}
+\doxysubsubsection{\texorpdfstring{core\_zero\_memory()}{core\_zero\_memory()}}
+{\footnotesize\ttfamily \label{core__memory_8c_ac14d7c038da77644a89a33d24d1c4500} 
+void core\+\_\+zero\+\_\+memory (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{buff\+\_\+}{, }\item[{uint32\+\_\+t}]{buff\+\_\+size\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+対象バッファを全て0でクリアする 
+
+\begin{DoxyNote}{Note}
+できるだけ標準ライブラリを使用しないで自作で行きたいので自作した
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em buff\+\_\+} & クリア対象バッファ \\
+\hline
+{\em buff\+\_\+size\+\_\+} & クリアバッファサイズ(byte) \\
+\hline
+\end{DoxyParams}
