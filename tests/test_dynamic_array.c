@@ -153,7 +153,7 @@ static void test_uninitialized_dynamic_array(void) {
 
     // ref from uninitialized array
     res = dynamic_array_element_ref(0, &array, &dummy);
-    assert(res == DYNAMIC_ARRAY_INVALID_ARGUMENT);
+    assert(res == DYNAMIC_ARRAY_INVALID_DARRAY);
 
     // size/capacity from uninitialized array
     uint64_t size;

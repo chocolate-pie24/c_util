@@ -95,8 +95,6 @@ DYNAMIC_ARRAY_ERROR_CODE dynamic_array_reserve(uint64_t max_element_count_, dyna
     return DYNAMIC_ARRAY_SUCCESS;
 }
 
-// resize() は「現在格納されている要素数以上」への拡張のみサポートしています。
-// より小さい容量への縮小を希望する場合は、別途新しいdynamic_array_tオブジェクトを作成し、そちらに値をコピーしてください。
 DYNAMIC_ARRAY_ERROR_CODE dynamic_array_resize(uint64_t max_element_count_, dynamic_array_t* const dynamic_array_) {
     CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_resize", "dynamic_array_", dynamic_array_);
     if(0 == max_element_count_) {
@@ -142,6 +140,7 @@ DYNAMIC_ARRAY_ERROR_CODE dynamic_array_resize(uint64_t max_element_count_, dynam
 
 DYNAMIC_ARRAY_ERROR_CODE dynamic_array_capacity(const dynamic_array_t* const dynamic_array_, uint64_t* const out_capacity_) {
     CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_capacity", "dynamic_array_", dynamic_array_);
+    CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_capacity", "out_capacity_", out_capacity_);
     if(0 == dynamic_array_->internal_data) {
         ERROR_MESSAGE("dynamic_array_capacity - Provided dynamic_array_ is not initialized. Call dynamic_array_create.");
         return DYNAMIC_ARRAY_INVALID_DARRAY;
@@ -154,6 +153,7 @@ DYNAMIC_ARRAY_ERROR_CODE dynamic_array_capacity(const dynamic_array_t* const dyn
 
 DYNAMIC_ARRAY_ERROR_CODE dynamic_array_size(const dynamic_array_t* const dynamic_array_, uint64_t* const out_size_) {
     CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_size", "dynamic_array_", dynamic_array_);
+    CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_size", "out_size_", out_size_);
     if(0 == dynamic_array_->internal_data) {
         ERROR_MESSAGE("dynamic_array_size - Provided dynamic_array_ is not initialized. Call dynamic_array_create.");
         return DYNAMIC_ARRAY_INVALID_DARRAY;
@@ -166,6 +166,7 @@ DYNAMIC_ARRAY_ERROR_CODE dynamic_array_size(const dynamic_array_t* const dynamic
 
 DYNAMIC_ARRAY_ERROR_CODE dynamic_array_element_push(const void* const object_, dynamic_array_t* const dynamic_array_) {
     CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_element_push", "dynamic_array_", dynamic_array_);
+    CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_element_push", "object_", object_);
     if(0 == dynamic_array_->internal_data) {
         ERROR_MESSAGE("dynamic_array_element_push - Provided dynamic_array_ is not initialized. Call dynamic_array_create.");
         return DYNAMIC_ARRAY_INVALID_DARRAY;
@@ -187,9 +188,10 @@ DYNAMIC_ARRAY_ERROR_CODE dynamic_array_element_push(const void* const object_, d
 
 DYNAMIC_ARRAY_ERROR_CODE dynamic_array_element_ref(uint64_t element_index_, const dynamic_array_t* const dynamic_array_, void* const out_object_) {
     CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_element_ref", "dynamic_array_", dynamic_array_);
+    CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_element_ref", "out_object_", out_object_);
     if(0 == dynamic_array_->internal_data) {
         ERROR_MESSAGE("dynamic_array_element_ref - Provided dynamic_array_ is not initialized.");
-        return DYNAMIC_ARRAY_INVALID_ARGUMENT;
+        return DYNAMIC_ARRAY_INVALID_DARRAY;
     }
     dynamic_array_internal_data_t* internal_data = (dynamic_array_internal_data_t*)(dynamic_array_->internal_data);
     if(element_index_ >= internal_data->element_count) {
@@ -207,9 +209,10 @@ DYNAMIC_ARRAY_ERROR_CODE dynamic_array_element_ref(uint64_t element_index_, cons
 
 DYNAMIC_ARRAY_ERROR_CODE dynamic_array_element_set(uint64_t element_index_, void* object_, dynamic_array_t* const dynamic_array_) {
     CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_element_set", "dynamic_array_", dynamic_array_);
+    CHECK_ARG_NULL_RETURN_ERROR("dynamic_array_element_set", "object_", object_);
     if(0 == dynamic_array_->internal_data) {
         ERROR_MESSAGE("dynamic_array_element_set - Provided dynamic_array_ is not initialized.");
-        return DYNAMIC_ARRAY_INVALID_ARGUMENT;
+        return DYNAMIC_ARRAY_INVALID_DARRAY;
     }
     dynamic_array_internal_data_t* internal_data = (dynamic_array_internal_data_t*)(dynamic_array_->internal_data);
     if(element_index_ >= internal_data->element_count) {
