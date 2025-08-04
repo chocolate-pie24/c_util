@@ -1,30 +1,33 @@
+#include "include/test_core_string.h"
+
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "../../core/include/core_string.h"
+
 #include "../../include/define.h"
 
-static void test_core_string_default_create();
-static void test_core_string_create();
-static void test_core_string_destroy();
-static void test_core_string_concat();
-static void test_core_string_substring_copy();
-static void test_core_string_trim();
-static void test_core_string_to_i32();
-static void test_core_string_trim_all_spaces();
-static void test_core_string_equal_partial_mismatch();
-static void test_core_string_to_i32_failure_cases();
-static void test_core_string_substring_copy_empty_result();
-static void test_trim_all_spaces_returns_empty();
-static void test_equal_partial_mismatch();
-static void test_to_i32_strtol_fail_and_range_overflow();
-static void test_substring_copy_from_greater_than_to();
-static void test_concat_resize_failure_simulation();
-static void test_concat_invalid_capacity_case();
-static void test_destroy_double_free_safe();
+static void test_core_string_default_create(void);
+static void test_core_string_create(void);
+static void test_core_string_destroy(void);
+static void test_core_string_concat(void);
+static void test_core_string_substring_copy(void);
+static void test_core_string_trim(void);
+static void test_core_string_to_i32(void);
+static void test_core_string_trim_all_spaces(void);
+static void test_core_string_equal_partial_mismatch(void);
+static void test_core_string_to_i32_failure_cases(void);
+static void test_core_string_substring_copy_empty_result(void);
+static void test_trim_all_spaces_returns_empty(void);
+static void test_equal_partial_mismatch(void);
+static void test_to_i32_strtol_fail_and_range_overflow(void);
+static void test_substring_copy_from_greater_than_to(void);
+static void test_concat_resize_failure_simulation(void);
+static void test_concat_invalid_capacity_case(void);
+static void test_destroy_double_free_safe(void);
 
-int main(void) {
+void test_core_string(void) {
     test_core_string_default_create();
     test_core_string_create();
     test_core_string_destroy();
@@ -81,18 +84,16 @@ int main(void) {
     core_string_destroy(NULL);   // NULLでも落ちない
     core_string_destroy(&s1);    // 未初期化
     core_string_destroy(&s1);    // 二回目の呼び出し（安全性）
-
-    return 0;
 }
 
-static void test_core_string_default_create() {
+static void test_core_string_default_create(void) {
     core_string_default_create(NULL); // 異常系: NULL引数でもクラッシュしないこと（void関数）
     core_string_t str;
     core_string_default_create(&str);
     assert(str.internal_data == NULL);
 }
 
-static void test_core_string_create() {
+static void test_core_string_create(void) {
     core_string_t str = CORE_STRING_INITIALIZER;
     assert(core_string_create(NULL, &str) == CORE_STRING_INVALID_ARGUMENT); // src_ NULL
     assert(core_string_create("ok", NULL) == CORE_STRING_INVALID_ARGUMENT); // dst_ NULL
@@ -102,7 +103,7 @@ static void test_core_string_create() {
     core_string_destroy(&str);
 }
 
-static void test_core_string_destroy() {
+static void test_core_string_destroy(void) {
     // NULLポインタ渡し → 安全に return できるか
     core_string_destroy(NULL);
 
@@ -124,7 +125,7 @@ static void test_core_string_destroy() {
     assert(str2.internal_data == NULL);
 }
 
-static void test_core_string_concat() {
+static void test_core_string_concat(void) {
     assert(core_string_concat(NULL, NULL) == CORE_STRING_INVALID_ARGUMENT);
 
     core_string_t dst = CORE_STRING_INITIALIZER;
@@ -141,7 +142,7 @@ static void test_core_string_concat() {
     core_string_destroy(&dst);
 }
 
-static void test_core_string_substring_copy() {
+static void test_core_string_substring_copy(void) {
     assert(core_string_substring_copy(NULL, NULL, 0, 0) == CORE_STRING_INVALID_ARGUMENT);
 
     core_string_t src = CORE_STRING_INITIALIZER;
@@ -160,7 +161,7 @@ static void test_core_string_substring_copy() {
     core_string_destroy(&dst);
 }
 
-static void test_core_string_trim() {
+static void test_core_string_trim(void) {
     assert(core_string_trim(NULL, NULL, ' ', ' ') == CORE_STRING_INVALID_ARGUMENT);
 
     core_string_t src = CORE_STRING_INITIALIZER;
@@ -177,7 +178,7 @@ static void test_core_string_trim() {
     core_string_destroy(&dst);
 }
 
-static void test_core_string_to_i32() {
+static void test_core_string_to_i32(void) {
     assert(core_string_to_i32(NULL, NULL) == CORE_STRING_INVALID_ARGUMENT);
 
     core_string_t str = CORE_STRING_INITIALIZER;
@@ -200,7 +201,7 @@ static void test_core_string_to_i32() {
     core_string_destroy(&str);
 }
 
-static void test_core_string_trim_all_spaces() {
+static void test_core_string_trim_all_spaces(void) {
     core_string_t src = CORE_STRING_INITIALIZER;
     core_string_t dst = CORE_STRING_INITIALIZER;
     core_string_create("     ", &src); // すべて空白
@@ -213,7 +214,7 @@ static void test_core_string_trim_all_spaces() {
     core_string_destroy(&dst);
 }
 
-static void test_core_string_equal_partial_mismatch() {
+static void test_core_string_equal_partial_mismatch(void) {
     core_string_t a = CORE_STRING_INITIALIZER;
     core_string_t b = CORE_STRING_INITIALIZER;
     core_string_create("abc", &a);
@@ -223,7 +224,7 @@ static void test_core_string_equal_partial_mismatch() {
     core_string_destroy(&b);
 }
 
-static void test_core_string_to_i32_failure_cases() {
+static void test_core_string_to_i32_failure_cases(void) {
     core_string_t str = CORE_STRING_INITIALIZER;
     int32_t val = 0;
 
@@ -239,7 +240,7 @@ static void test_core_string_to_i32_failure_cases() {
     core_string_destroy(&str);
 }
 
-static void test_core_string_substring_copy_empty_result() {
+static void test_core_string_substring_copy_empty_result(void) {
     core_string_t src = CORE_STRING_INITIALIZER;
     core_string_t dst = CORE_STRING_INITIALIZER;
 
@@ -250,7 +251,7 @@ static void test_core_string_substring_copy_empty_result() {
     core_string_destroy(&dst);
 }
 
-static void test_trim_all_spaces_returns_empty() {
+static void test_trim_all_spaces_returns_empty(void) {
     core_string_t src = CORE_STRING_INITIALIZER;
     core_string_t dst = CORE_STRING_INITIALIZER;
 
@@ -263,7 +264,7 @@ static void test_trim_all_spaces_returns_empty() {
     core_string_destroy(&dst);
 }
 
-static void test_equal_partial_mismatch() {
+static void test_equal_partial_mismatch(void) {
     core_string_t a = CORE_STRING_INITIALIZER;
     core_string_t b = CORE_STRING_INITIALIZER;
     core_string_create("abc", &a);
@@ -273,7 +274,7 @@ static void test_equal_partial_mismatch() {
     core_string_destroy(&b);
 }
 
-static void test_to_i32_strtol_fail_and_range_overflow() {
+static void test_to_i32_strtol_fail_and_range_overflow(void) {
     core_string_t str = CORE_STRING_INITIALIZER;
     int32_t val = 0;
 
@@ -289,7 +290,7 @@ static void test_to_i32_strtol_fail_and_range_overflow() {
     core_string_destroy(&str);
 }
 
-static void test_substring_copy_from_greater_than_to() {
+static void test_substring_copy_from_greater_than_to(void) {
     core_string_t src = CORE_STRING_INITIALIZER;
     core_string_t dst = CORE_STRING_INITIALIZER;
 
@@ -300,7 +301,7 @@ static void test_substring_copy_from_greater_than_to() {
     core_string_destroy(&dst);
 }
 
-static void test_concat_resize_failure_simulation() {
+static void test_concat_resize_failure_simulation(void) {
     core_string_t a = CORE_STRING_INITIALIZER;
     core_string_t b = CORE_STRING_INITIALIZER;
     core_string_create("abc", &a);
@@ -314,12 +315,12 @@ static void test_concat_resize_failure_simulation() {
     core_string_destroy(&b);
 }
 
-static void test_concat_invalid_capacity_case() {
+static void test_concat_invalid_capacity_case(void) {
     // capacity == INVALID_VALUE_U64 を得るには dst == NULL が必要
     assert(core_string_concat(&(core_string_t){.internal_data = NULL}, NULL) == CORE_STRING_INVALID_ARGUMENT);
 }
 
-static void test_destroy_double_free_safe() {
+static void test_destroy_double_free_safe(void) {
     core_string_t s = CORE_STRING_INITIALIZER;
     core_string_create("destroy-me", &s);
     core_string_destroy(&s);

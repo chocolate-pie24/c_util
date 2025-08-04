@@ -1,14 +1,14 @@
-TARGET = test_core_string.o
+TARGET = test
 
-SRC_DIR = core/src
+SRC_DIR = core/src containers/src tests
 BUILD_DIR = bin
 OBJ_DIR = obj
 
-SRC_FILES = tests/core/core_string_test.c $(shell find $(SRC_DIR) -name '*.c')
-DIRECTORIES = $(shell find $(SRC_DIR) tests/core -type d)
+SRC_FILES = $(shell find core/src containers/src tests -name '*.c')
+DIRECTORIES = $(shell find $(SRC_DIR) tests -type d)
 OBJ_FILES = $(SRC_FILES:%=$(OBJ_DIR)/%.o)
 
-INCLUDE_FLAGS = -Iinclude -Icore/include
+INCLUDE_FLAGS = -Iinclude -Icore/include -Icontainers/include -Itests/include
 
 LINKER_FLAGS += -fprofile-instr-generate -fcoverage-mapping
 CC = /opt/homebrew/opt/llvm/bin/clang
