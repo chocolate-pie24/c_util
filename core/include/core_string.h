@@ -4,13 +4,34 @@
  * @brief core_string_tオブジェクトの定義と関連APIの宣言
  *
  * @details
- * core_string_tは、ユーザーが文字列長さやバッファ管理を意識することなく
+ * core_string_tは、ユーザーが文字列長さやバッファ管理を意識することなく、
  * 安全かつ簡単に文字列操作を行えることを目的としたAPIである。
  *
- * 代表的な操作として以下が提供されます:
+ * 代表的な操作として以下が提供される:
+ *
  * - 文字列のコピー
  * - 文字列の連結
  * - 文字列のトリミング
+ *
+ * @anchor core_string_initialization_rule
+ * 本APIでは、core_string_t型の扱いにおいて以下の状態を区別する:
+ *
+ * - NULLポインタ: オブジェクト自体がNULLの場合(例: core_string_t* object = 0)
+ * - 未初期化状態: オブジェクト自体は存在するが、メンバの初期化がされていない状態(例: core_string_t object;)
+ * - デフォルト状態: オブジェクト内部管理データinternal_data == NULLの状態。使用前に明示的な初期化が必要。
+ * - 初期化済み状態: internal_dataが有効な領域を指しており、APIでの使用が可能な状態。
+ *
+ * 未初期化状態のオブジェクトをAPIに渡すと未定義の動作を引き起こす可能性があるため、
+ * 必ず次のいずれかの方法で「デフォルト状態」に初期化してから使用すること:
+ * - @ref core_string_default_create()
+ * - @ref CORE_STRING_INITIALIZER
+ *
+ * その後、以下のいずれかの関数で「初期化済み状態」に遷移させる必要がある:
+ * - @ref core_string_create()
+ * - @ref core_string_buffer_reserve()
+ * - @ref core_string_buffer_resize()
+ *
+ * 再初期化する場合は、先に @ref core_string_destroy() を呼び、メモリを解放すること。
  *
  * @version 0.1
  * @date 2025-07-20
@@ -38,14 +59,10 @@ typedef enum CORE_STRING_ERROR_CODE {
 } CORE_STRING_ERROR_CODE;
 
 /**
- * @brief core_string ラリブラリの文字列オブジェクト構造体
+ * @brief 文字列オブジェクト構造体
  *
  * 文字列データとそれに付随する管理情報を格納する。
- * オブジェクトの初期化には以下のいずれかを使用する:
- * - @ref CORE_STRING_INITIALIZER
- * - @ref core_string_default_create()
- * - @ref core_string_create()
- *
+ * オブジェクトの初期化については、 @ref core_string_initialization_rule を参照のこと。
  */
 typedef struct core_string_t {
     void* internal_data;    /**< オブジェクト内部データ */
@@ -63,8 +80,7 @@ typedef struct core_string_t {
 /**
  * @brief 引数で与えたstring_オブジェクトを「デフォルト状態」に初期化する。
  *
- * @note オブジェクトのデフォルト状態とは、core_string_t.internal_dataがNULLであり、
- *       いかなるデータも保持していない状態を指す。
+ * @note オブジェクトのデフォルト状態については、 @ref core_string_initialization_rule を参照のこと。
  *
  * @note 内部にデータを保持している初期化済みオブジェクトに対して本関数を直接呼ぶと、
  *       内部データのメモリが解放されず、メモリリークの原因となる可能性がある。
@@ -78,7 +94,7 @@ typedef struct core_string_t {
  * 使用例:
  * @code
  * core_string_t string;
- * core_string_default_create(&string); // オブジェクトが初期化される(internal_dataはNULLとなる)。
+ * core_string_default_create(&string); // オブジェクトがデフォルト状態となる(internal_dataはNULLとなる)。
  * core_string_destroy(&string);
  * @endcode
  *
@@ -88,7 +104,7 @@ typedef struct core_string_t {
  * core_string_destroy(&string);
  * @endcode
  *
- * @param[in,out] string_ 初期化対象オブジェクト
+ * @param[in,out] string_ デフォルト状態とするオブジェクト
  *
  * @see core_string_destroy()
  * @see core_zero_memory()
@@ -96,7 +112,10 @@ typedef struct core_string_t {
 void core_string_default_create(core_string_t* const string_);
 
 /**
- * @brief 引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。
+ * @brief 引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。
+ *
+ * @note 本関数は、未初期化状態・デフォルト状態いずれのオブジェクトにも使用可能である。
+ *       各状態の詳細については、@ref core_string_initialization_rule を参照のこと。
  *
  * @note この関数の内部では @ref core_string_destroy() が呼び出されるため、
  *       dst_がすでに初期化済みで内部にデータを保持している場合は、
@@ -104,8 +123,8 @@ void core_string_default_create(core_string_t* const string_);
  *
  * 使用例:
  * @code
- * core_string_t dst = CORE_STRING_INITIALIZER;                         // オブジェクトの初期化
- * CORE_STRING_ERROR_CODE result = core_string_create("Hello", &dst);   // dstにHelloが格納される
+ * core_string_t dst = CORE_STRING_INITIALIZER;                         // オブジェクトをデフォルト状態にする
+ * CORE_STRING_ERROR_CODE result = core_string_create("Hello", &dst);   // dstにHelloが格納され、オブジェクトが初期化済み状態となる
  * if(CORE_STRING_SUCCESS != result) {
  *     // ここにエラー処理を書く
  * }
@@ -127,14 +146,11 @@ void core_string_default_create(core_string_t* const string_);
 CORE_STRING_ERROR_CODE core_string_create(const char* const src_, core_string_t* const dst_);
 
 /**
- * @brief 引数src_で与えたcore_string_tオブジェクトをdst_にコピーする
+ * @brief コピー元src_の文字列内容を、コピー先dst_に複製する。
  *
  * @note
- * - dst_が未初期化またはバッファサイズ不足の場合、必要なサイズにバッファが再確保される
- * - dst_のバッファサイズがsrc_のバッファサイズ以上の場合、既存バッファを再利用し内容を上書きする
- *
- * @param[in] src_ コピー元オブジェクト(初期化済みである必要あり)
- * @param[out] dst_ コピー先オブジェクト
+ * - dst_がデフォルト状態( @ref core_string_initialization_rule 参照)またはバッファサイズ不足の場合、必要なサイズでバッファを再確保する。
+ * - dst_のバッファサイズが src_以上の場合、既存バッファを再利用して内容を上書きする。
  *
  * 使用例:
  * @code
@@ -151,8 +167,11 @@ CORE_STRING_ERROR_CODE core_string_create(const char* const src_, core_string_t*
  * core_string_destroy(&dst);
  * @endcode
  *
+ * @param[in]  src_ コピー元オブジェクト(初期化済み状態である必要あり)( @ref core_string_initialization_rule 参照)
+ * @param[out] dst_ コピー先オブジェクト
+ *
  * @retval CORE_STRING_INVALID_ARGUMENT 引数src_またはdst_がNULL
- * @retval CORE_STRING_RUNTIME_ERROR コピー元src_が未初期化、または文字列コピーに失敗
+ * @retval CORE_STRING_RUNTIME_ERROR コピー元src_がデフォルト状態( @ref core_string_initialization_rule 参照)、または文字列コピーに失敗
  * @retval CORE_STRING_BUFFER_EMPTY コピー元オブジェクトsrc_が内部で保持している文字列が空
  * @retval CORE_STRING_MEMORY_ALLOCATE_ERROR コピー先オブジェクトのメモリ確保に失敗
  * @retval CORE_STRING_SUCCESS 正常にコピーが完了
@@ -167,14 +186,11 @@ CORE_STRING_ERROR_CODE core_string_create(const char* const src_, core_string_t*
 CORE_STRING_ERROR_CODE core_string_copy(const core_string_t* const src_, core_string_t* const dst_);
 
 /**
- * @brief core_string_t型オブジェクトdst_にchar*型文字列をコピーする
+ * @brief dst_にchar*型文字列をコピーする
  *
  * @note
- * - src_の文字列長がdst_のバッファサイズより大きい場合、dst_のバッファは拡張される
- * - dst_のバッファサイズがsrc_の文字列長以上の場合、既存バッファを再利用し内容を上書きする
- *
- * @param src_[in] コピー元文字列
- * @param dst_[out] コピー先文字列オブジェクト
+ * - dst_デフォルト状態( @ref core_string_initialization_rule 参照)またはバッファサイズ不足の場合、必要なサイズでバッファを再確保する。
+ * - dst_のバッファサイズが src_以上の場合、既存バッファを再利用して内容を上書きする。
  *
  * 使用例:
  * @code
@@ -186,18 +202,25 @@ CORE_STRING_ERROR_CODE core_string_copy(const core_string_t* const src_, core_st
  * core_string_destroy(&dst);
  * @endcode
  *
+ * @param[in]  src_ コピー元文字列
+ * @param[out] dst_ コピー先文字列オブジェクト(デフォルト状態または初期化済み状態である必要あり)( @ref core_string_initialization_rule 参照)
+ *
  * @retval CORE_STRING_INVALID_ARGUMENT 引数src_またはdst_がNULL
  * @retval CORE_STRING_MEMORY_ALLOCATE_ERROR コピー先オブジェクトのメモリ確保に失敗
  * @retval CORE_STRING_RUNTIME_ERROR 文字列のコピーに失敗
  * @retval CORE_STRING_SUCCESS 正常にコピーが完了
+ *
+ * @see core_string_buffer_reserve()
+ * @see core_zero_memory()
+ * @see core_string_destroy()
  */
 CORE_STRING_ERROR_CODE core_string_copy_from_char(const char* const src_, core_string_t* const dst_);
 
 /**
- * @brief 引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。
+ * @brief string_が保持するメモリを破棄する。
  *
  * @note この関数を呼ぶことで、core_string_t型オブジェクトが保持しているinternal_dataのメモリおよび、
- *       internal_data内に保持しているメモリ領域が解放される。
+ *       internal_data内に保持しているメモリ領域が解放され、NULLが設定される。
  *       これにより、internal_dataにはNULLが設定される。なお、メモリの解放にはcore_free()を使用している。
  *
  * @note 本関数により破棄したオブジェクトを再度使用する場合には、下記の関数を使用する。
@@ -215,22 +238,19 @@ CORE_STRING_ERROR_CODE core_string_copy_from_char(const char* const src_, core_s
  * core_string_destroy(&string);    // stringが保持するメモリが解放される
  * @endcode
  *
- * @param[in,out] string_ 破棄対象オブジェクト
+ * @param[in,out] string_ 破棄対象オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
  *
  * @see core_free()
  */
 void core_string_destroy(core_string_t* const string_);
 
 /**
- * @brief core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する
+ * @brief string_オブジェクトに指定サイズの文字列バッファを確保する。
  *
  * @note
- * - string_が未初期化の場合、internal_data構造体を確保して初期化する
+ * - string_がデフォルト状態( @ref core_string_initialization_rule 参照)の場合、internal_data構造体を確保して初期化する
  * - すでに指定したサイズ以上のバッファが確保されている場合には何もせず成功を返す
  * - バッファの再確保が行われた場合、既存のデータはすべて破棄され、バッファ全体がクリアされる
- *
- * @param[in] buffer_size_ 確保するバッファサイズ(byte)(終端文字を含んだ長さを指定すること、つまり、文字列長さ+1を指定する)
- * @param[out] string_ メモリ確保対象オブジェクト
  *
  * 使用例:
  * @code
@@ -241,6 +261,9 @@ void core_string_destroy(core_string_t* const string_);
  * }
  * core_string_destroy(&string);
  * @endcode
+ *
+ * @param[in]  buffer_size_ 確保するバッファサイズ(byte)(終端文字を含むサイズを指定する)(文字列長 + 1)
+ * @param[out] string_      メモリ確保対象オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
  *
  * @retval CORE_STRING_INVALID_ARGUMENT 引数string_がNULL
  * @retval CORE_STRING_MEMORY_ALLOCATE_ERROR メモリ確保に失敗
@@ -260,11 +283,7 @@ CORE_STRING_ERROR_CODE core_string_buffer_reserve(uint64_t buffer_size_, core_st
  * @note
  * - この関数は既存の文字列データを保持したままバッファサイズを拡張する
  * - すでに指定サイズ以上のバッファが確保されている場合は何もせず成功を返す
- * - 内部データが未初期化の場合は @ref core_string_buffer_reserve() を呼び出して新規に確保する
- *
- * @param[in] buffer_size_ 新しいバッファサイズ(byte)
- *                         終端文字を含めるため「文字列長 + 1」を指定すること
- * @param[in,out] string_ バッファサイズを拡張する対象オブジェクト
+ * - オブジェクトがデフォルト状態の場合は @ref core_string_buffer_reserve() を呼び出して新規に確保する( @ref core_string_initialization_rule 参照)
  *
  * 使用例:
  * @code
@@ -273,6 +292,10 @@ CORE_STRING_ERROR_CODE core_string_buffer_reserve(uint64_t buffer_size_, core_st
  * core_string_buffer_resize(128, &string);              // バッファを128byteに拡張
  * core_string_destroy(&string);
  * @endcode
+ *
+ * @param[in]     buffer_size_ 新しいバッファサイズ(byte)
+ *                             終端文字を含めるため「文字列長 + 1」を指定すること
+ * @param[in,out] string_ バッファサイズを拡張する対象オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
  *
  * @retval CORE_STRING_INVALID_ARGUMENT 引数string_がNULL
  * @retval CORE_STRING_MEMORY_ALLOCATE_ERROR 一時バッファまたは新規バッファのメモリ確保に失敗
@@ -287,13 +310,11 @@ CORE_STRING_ERROR_CODE core_string_buffer_reserve(uint64_t buffer_size_, core_st
 CORE_STRING_ERROR_CODE core_string_buffer_resize(uint64_t buffer_size_, core_string_t* const string_);
 
 /**
- * @brief core_string_tオブジェクトのバッファサイズを取得する
+ * @brief core_string_tオブジェクトのバッファサイズを取得する。
  *
  * @note
- * - オブジェクトが未初期化の場合は 0 を返す
+ * - オブジェクトがデフォルト状態の場合は0を返す( @ref core_string_initialization_rule 参照)
  * - 引数がNULLの場合は @ref INVALID_VALUE_U64 を返す
- *
- * @param[in] string_ バッファサイズを取得する対象オブジェクト
  *
  * 使用例:
  * @code
@@ -301,8 +322,10 @@ CORE_STRING_ERROR_CODE core_string_buffer_resize(uint64_t buffer_size_, core_str
  * uint64_t capacity = core_string_buffer_capacity(&string); // 未初期化のため0が返る
  * @endcode
  *
+ * @param[in] string_ バッファサイズを取得する対象オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
  * @retval INVALID_VALUE_U64 引数string_がNULL
- * @retval 0 オブジェクトが未初期化
+ * @retval 0 オブジェクトがデフォルト状態、またはバッファサイズが0
  * @retval バッファサイズ(byte) 正常に取得できた場合のバッファサイズを返す
  *
  * @see core_string_buffer_reserve()
@@ -311,13 +334,11 @@ CORE_STRING_ERROR_CODE core_string_buffer_resize(uint64_t buffer_size_, core_str
 uint64_t core_string_buffer_capacity(const core_string_t* const string_);
 
 /**
- * @brief core_string_tオブジェクトが空かどうかを判定する
+ * @brief core_string_tオブジェクトが保持する文字列格納バッファが空かどうかを判定する
  *
  * @note
- * - 引数がNULLまたは未初期化の場合は true を返す
+ * - 引数がNULLまたはデフォルト状態( @ref core_string_initialization_rule 参照)の場合は true を返す
  * - 長さが0の文字列を保持している場合も true を返す
- *
- * @param[in] string_ 判定対象オブジェクト
  *
  * 使用例:
  * @code
@@ -327,7 +348,9 @@ uint64_t core_string_buffer_capacity(const core_string_t* const string_);
  * }
  * @endcode
  *
- * @retval true オブジェクトがNULL / 未初期化 / 空文字列である
+ * @param[in] string_ 判定対象オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
+ * @retval true オブジェクトがNULL / デフォルト状態( @ref core_string_initialization_rule 参照) / 空文字列である
  * @retval false 文字列が1文字以上存在する
  *
  * @see core_string_length()
@@ -339,11 +362,8 @@ bool core_string_is_empty(const core_string_t* const string_);
  * @brief 2つのcore_string_tオブジェクトが保持する文字列が等しいかを比較する
  *
  * @note
- * - どちらかの引数が未初期化またはNULLの場合はfalseを返す
+ * - どちらかの引数がデフォルト状態またはNULLの場合はfalseを返す( @ref core_string_initialization_rule 参照)
  * - 比較はバッファの長さと各文字列の中身が完全一致するかどうかで判定される
- *
- * @param[in] string1_ 比較対象1
- * @param[in] string2_ 比較対象2
  *
  * 使用例:
  * @code
@@ -359,8 +379,11 @@ bool core_string_is_empty(const core_string_t* const string_);
  * core_string_destroy(&str2);
  * @endcode
  *
+ * @param[in] string1_ 比較対象1。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ * @param[in] string2_ 比較対象2。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
  * @retval true  2つの文字列が等しい
- * @retval false 引数がNULL/未初期化、または文字列が異なる
+ * @retval false 引数がNULL/デフォルト状態( @ref core_string_initialization_rule 参照) / 文字列長や中身が一致しない場合
  *
  * @see core_string_create()
  * @see core_string_destroy()
@@ -368,14 +391,11 @@ bool core_string_is_empty(const core_string_t* const string_);
 bool core_string_equal(const core_string_t* const string1_, const core_string_t* const string2_);
 
 /**
- * @brief char* 文字列と core_string_t オブジェクトが保持する文字列が等しいかを比較する
+ * @brief char*型文字列とcore_string_tオブジェクトが保持する文字列が等しいかを比較する
  *
  * @note
- * - 引数のどちらかが NULL または未初期化の場合は false を返す
+ * - 引数のどちらかが NULL またはデフォルト状態( @ref core_string_initialization_rule 参照)の場合は false を返す
  * - 比較は文字列長と各文字が完全一致するかどうかで判定される
- *
- * @param[in] str1_ 比較対象の C 文字列
- * @param[in] string2_ 比較対象の core_string_t オブジェクト
  *
  * 使用例:
  * @code
@@ -388,8 +408,11 @@ bool core_string_equal(const core_string_t* const string1_, const core_string_t*
  * core_string_destroy(&str2);
  * @endcode
  *
+ * @param[in] str1_    比較対象の文字列
+ * @param[in] string2_ 比較対象のcore_string_tオブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
  * @retval true  文字列が等しい
- * @retval false 引数が NULL / 未初期化、または文字列が異なる
+ * @retval false 引数が NULL / デフォルト状態( @ref core_string_initialization_rule 参照) / 文字列長や中身が一致しない場合
  *
  * @see core_string_equal()
  * @see core_string_create()
@@ -398,14 +421,12 @@ bool core_string_equal(const core_string_t* const string1_, const core_string_t*
 bool core_string_equal_from_char(const char* const str1_, const core_string_t* const string2_);
 
 /**
- * @brief core_string_t オブジェクトが保持している文字列の長さを取得する
+ * @brief core_string_tオブジェクトが保持している文字列の長さを取得する
  *
  * @note
  * - 文字列の長さは終端文字 ('\0') を含まない
  * - 引数が NULL の場合は @ref INVALID_VALUE_U64 を返す
- * - 未初期化のオブジェクトが渡された場合は 0 を返す
- *
- * @param[in] string_ 長さを取得する対象の core_string_t オブジェクト
+ * - デフォルト状態( @ref core_string_initialization_rule 参照)のオブジェクトが渡された場合は 0 を返す
  *
  * 使用例:
  * @code
@@ -415,9 +436,11 @@ bool core_string_equal_from_char(const char* const str1_, const core_string_t* c
  * core_string_destroy(&str);
  * @endcode
  *
+ * @param[in] string_ 長さを取得する対象のcore_string_tオブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
  * @retval INVALID_VALUE_U64 引数が NULL の場合
  * @retval 0                 未初期化のオブジェクトが渡された場合
- * @retval その他            保持している文字列の長さ
+ * @retval その他             保持している文字列の長さ
  *
  * @see core_string_create()
  * @see core_string_destroy()
@@ -425,14 +448,12 @@ bool core_string_equal_from_char(const char* const str1_, const core_string_t* c
 uint64_t core_string_length(const core_string_t* const string_);
 
 /**
- * @brief core_string_t オブジェクトが保持している文字列の先頭ポインタを取得する
+ * @brief core_string_tオブジェクトが保持している文字列の先頭ポインタを取得する
  *
  * @note
- * - 戻り値は内部バッファへのポインタであり、**呼び出し側が解放してはいけない**
- * - オブジェクトが未初期化、または引数が NULL の場合は NULL を返す
- * - 戻り値は不変ではなく、core_string_t の内容が変更されると無効になる可能性がある
- *
- * @param[in] string_ c文字列を取得する対象の core_string_t オブジェクト
+ * - 戻り値は内部バッファへのポインタであり、呼び出し側が解放してはいけない
+ * - オブジェクトがデフォルト状態( @ref core_string_initialization_rule 参照)、または引数が NULL の場合は NULL を返す
+ * - 戻り値は不変ではなく、core_string_tの内容が変更されると無効になる可能性がある
  *
  * 使用例:
  * @code
@@ -443,7 +464,9 @@ uint64_t core_string_length(const core_string_t* const string_);
  * core_string_destroy(&str);
  * @endcode
  *
- * @retval NULL 引数が NULL または未初期化のオブジェクトが渡された場合
+ * @param[in] string_ c文字列を取得する対象のcore_string_tオブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
+ * @retval NULL 引数がNULLまたはデフォルト状態( @ref core_string_initialization_rule 参照)のオブジェクトが渡された場合
  * @retval その他 内部バッファの先頭アドレス
  *
  * @see core_string_create()
@@ -453,15 +476,12 @@ uint64_t core_string_length(const core_string_t* const string_);
 const char* core_string_cstr(const core_string_t* const string_);
 
 /**
- * @brief dst_ の末尾に string_ の内容を連結する
+ * @brief dst_の末尾にstring_の内容を連結する
  *
  * @note
- * - 連結の結果、dst_ のバッファサイズが不足する場合は自動でリサイズが行われる
- * - string_ および dst_ が未初期化の場合はエラーを返す
- * - 連結後、dst_ の内部のバッファ末尾には必ず終端文字 '\0' が付加される
- *
- * @param[in]  string_  連結する文字列 (コピー元)
- * @param[out] dst_     連結結果を格納するオブジェクト (コピー先)
+ * - 連結の結果、dst_のバッファサイズが不足する場合は自動でリサイズが行われる
+ * - string_およびdst_がデフォルト状態( @ref core_string_initialization_rule 参照)の場合はエラーを返す
+ * - 連結後、dst_の内部のバッファ末尾には必ず終端文字 '\0' が付加される
  *
  * 使用例:
  * @code
@@ -480,8 +500,11 @@ const char* core_string_cstr(const core_string_t* const string_);
  * core_string_destroy(&dst);
  * @endcode
  *
- * @retval CORE_STRING_INVALID_ARGUMENT string_ または dst_ が NULL
- * @retval CORE_STRING_RUNTIME_ERROR string_ または dst_ が未初期化、もしくはリサイズに失敗
+ * @param[in]  string_  連結する文字列 (コピー元)。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ * @param[out] dst_     連結結果を格納するオブジェクト (コピー先)。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ *
+ * @retval CORE_STRING_INVALID_ARGUMENT string_またはdst_が NULL
+ * @retval CORE_STRING_RUNTIME_ERROR string_ またはdst_がデフォルト状態( @ref core_string_initialization_rule 参照)、または一時バッファの生成やコピーに失敗した場合
  * @retval CORE_STRING_SUCCESS 連結が正常に完了
  *
  * @see core_string_buffer_capacity()
@@ -495,14 +518,9 @@ CORE_STRING_ERROR_CODE core_string_concat(const core_string_t* const string_, co
  * @brief src_ の [from_, to_] 範囲の部分文字列を dst_ にコピーする
  *
  * @note
- * - from_ から to_ の範囲は **両端を含むインデックス**として扱われる
- * - dst_ のバッファサイズが不足している場合は自動でリサイズが行われる
- * - 部分文字列のコピー後、dst_ の末尾には必ず終端文字 '\0' が付加される
- *
- * @param[in]  src_   部分文字列を抽出する元の文字列オブジェクト
- * @param[out] dst_   抽出結果を格納する文字列オブジェクト
- * @param[in]  from_  抽出を開始するインデックス (0-based)
- * @param[in]  to_    抽出を終了するインデックス (0-based, inclusive)
+ * - from_からto_ の範囲は両端を含むインデックスとして扱われる
+ * - dst_のバッファサイズが不足している場合は自動でリサイズが行われる
+ * - 部分文字列のコピー後、dst_の末尾には必ず終端文字'\0'が付加される
  *
  * 使用例:
  * @code
@@ -520,11 +538,16 @@ CORE_STRING_ERROR_CODE core_string_concat(const core_string_t* const string_, co
  * core_string_destroy(&src);
  * @endcode
  *
+ * @param[in]  src_   部分文字列を抽出する元の文字列オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ * @param[out] dst_   抽出結果を格納する文字列オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ * @param[in]  from_  抽出を開始するインデックス (0-based)
+ * @param[in]  to_    抽出を終了するインデックス (0-based, inclusive)
+ *
  * @retval CORE_STRING_INVALID_ARGUMENT
  * - from_ または to_ が不正 (from_ > to_)
  * - to_ が src_ の範囲を超えている
  * @retval CORE_STRING_RUNTIME_ERROR
- * - src_ または dst_ が未初期化
+ * - src_または dst_がデフォルト状態( @ref core_string_initialization_rule 参照)
  * - バッファのリサイズに失敗
  * @retval CORE_STRING_SUCCESS 正常に部分文字列のコピーが完了
  *
@@ -542,11 +565,6 @@ CORE_STRING_ERROR_CODE core_string_substring_copy(const core_string_t* const src
  * - トリム後の文字列長が0になる場合、空文字列としてdst_に格納する
  * - 必要に応じてdst_のバッファサイズを再確保する
  *
- * @param[in]  src_   トリム対象の文字列オブジェクト
- * @param[out] dst_   トリム結果の出力先オブジェクト
- * @param[in]  ltrim_ 左端のトリム対象文字
- * @param[in]  rtrim_ 右端のトリム対象文字
- *
  * 使用例:
  * @code
  * core_string_t src = CORE_STRING_INITIALIZER;
@@ -560,8 +578,13 @@ CORE_STRING_ERROR_CODE core_string_substring_copy(const core_string_t* const src
  * core_string_destroy(&dst);
  * @endcode
  *
+ * @param[in]  src_   トリム対象の文字列オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ * @param[out] dst_   トリム結果の出力先オブジェクト。未初期化状態は不可。( @ref core_string_initialization_rule 参照)
+ * @param[in]  ltrim_ 左端のトリム対象文字
+ * @param[in]  rtrim_ 右端のトリム対象文字
+ *
  * @retval CORE_STRING_INVALID_ARGUMENT 引数がNULL
- * @retval CORE_STRING_RUNTIME_ERROR    src_が未初期化 または長さ取得に失敗
+ * @retval CORE_STRING_RUNTIME_ERROR    src_がデフォルト状態( @ref core_string_initialization_rule 参照)または長さ取得に失敗
  * @retval CORE_STRING_MEMORY_ALLOCATE_ERROR メモリ再確保に失敗
  * @retval CORE_STRING_SUCCESS          正常終了
  *
@@ -578,9 +601,6 @@ CORE_STRING_ERROR_CODE core_string_trim(const core_string_t* const src_, core_st
  * - 文字列が整数として解釈できない場合はエラーを返す
  * - 変換結果がint32_tの範囲外の場合もエラーを返す
  *
- * @param[in]  string_   変換対象の文字列オブジェクト
- * @param[out] out_value_ 変換結果を格納するポインタ
- *
  * 使用例:
  * @code
  * core_string_t str = CORE_STRING_INITIALIZER;
@@ -593,29 +613,13 @@ CORE_STRING_ERROR_CODE core_string_trim(const core_string_t* const src_, core_st
  * core_string_destroy(&str);
  * @endcode
  *
+ * @param[in]  string_   変換対象の文字列オブジェクト。( @ref core_string_initialization_rule 参照)
+ * @param[out] out_value_ 変換結果を格納するポインタ
+ *
  * @retval CORE_STRING_INVALID_ARGUMENT 引数string_またはout_value_がNULL
- * @retval CORE_STRING_RUNTIME_ERROR    string_が未初期化、空文字列、変換失敗、または範囲外の値
+ * @retval CORE_STRING_RUNTIME_ERROR    string_がデフォルト状態( @ref core_string_initialization_rule 参照)、空文字列、変換失敗、または範囲外の値
  * @retval CORE_STRING_SUCCESS          正常に変換が完了
  *
  * @see strtol()
  */
 CORE_STRING_ERROR_CODE core_string_to_i32(const core_string_t* const string_, int32_t* out_value_);
-
-// test code(chat gptでテストコードを生成)
-void core_string_default_create_test();
-void core_string_create_test();
-void core_string_copy_test();
-void core_string_concat_test();
-void core_string_trim_test();
-void core_string_to_i32_test();
-void core_string_equal_test();
-void core_string_substring_copy_test();
-void core_string_buffer_reserve_test();
-void core_string_is_empty_test();
-void core_string_destroy_test();
-void core_string_buffer_capacity_test();
-void core_string_cstr_test();
-void core_string_length_test();
-void core_string_copy_from_char_test();
-void core_string_buffer_resize_test();
-void core_string_equal_from_char_test(void);

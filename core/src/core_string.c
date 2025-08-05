@@ -1,7 +1,7 @@
 /**
  * @file core_string.c
  * @author chocolate-pie24
- * @brief 文字列操作用ラリブラリ関数 core_string の実装ファイル
+ * @brief 文字列操作用API関数 core_string の実装ファイル
  *
  * @details
  * このファイルでは core_string_t オブジェクトを用いた文字列操作関数群を実装する。
