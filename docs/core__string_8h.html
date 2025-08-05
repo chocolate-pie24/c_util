@@ -105,7 +105,7 @@ $(function(){ initResizable(false); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcore__string__t.html">core_string_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string ラリブラリの文字列オブジェクト構造体  <a href="structcore__string__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列オブジェクト構造体  <a href="structcore__string__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -120,7 +120,7 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:ae3e1acf59883e43e379257135ebd5ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_t関連処理が出力するエラーコード  <br /></td></tr>
 <tr class="separator:ae3e1acf59883e43e379257135ebd5ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa56289576b37c908f931a7e6b4ba292a" id="r_aa56289576b37c908f931a7e6b4ba292a"><td class="memItemLeft" align="right" valign="top">typedef struct core_string_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa56289576b37c908f931a7e6b4ba292a">core_string_t</a></td></tr>
-<tr class="memdesc:aa56289576b37c908f931a7e6b4ba292a"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string ラリブラリの文字列オブジェクト構造体  <br /></td></tr>
+<tr class="memdesc:aa56289576b37c908f931a7e6b4ba292a"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列オブジェクト構造体  <br /></td></tr>
 <tr class="separator:aa56289576b37c908f931a7e6b4ba292a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -143,43 +143,43 @@ Functions</h2></td></tr>
 <tr class="memdesc:a35af0c7da23e790d3666f3a5d9ae838c"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数で与えたstring_オブジェクトを「デフォルト状態」に初期化する。  <br /></td></tr>
 <tr class="separator:a35af0c7da23e790d3666f3a5d9ae838c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2315ba27fe660a229700ed42941e7853" id="r_a2315ba27fe660a229700ed42941e7853"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a> (const char *const src_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const dst_)</td></tr>
-<tr class="memdesc:a2315ba27fe660a229700ed42941e7853"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。  <br /></td></tr>
+<tr class="memdesc:a2315ba27fe660a229700ed42941e7853"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。  <br /></td></tr>
 <tr class="separator:a2315ba27fe660a229700ed42941e7853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f829e5efdb35611e67123433c36722b" id="r_a0f829e5efdb35611e67123433c36722b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f829e5efdb35611e67123433c36722b">core_string_copy</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const src_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const dst_)</td></tr>
-<tr class="memdesc:a0f829e5efdb35611e67123433c36722b"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数src_で与えたcore_string_tオブジェクトをdst_にコピーする  <br /></td></tr>
+<tr class="memdesc:a0f829e5efdb35611e67123433c36722b"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピー元src_の文字列内容を、コピー先dst_に複製する。  <br /></td></tr>
 <tr class="separator:a0f829e5efdb35611e67123433c36722b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abae485a491f67161286376bd9355467e" id="r_abae485a491f67161286376bd9355467e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abae485a491f67161286376bd9355467e">core_string_copy_from_char</a> (const char *const src_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const dst_)</td></tr>
-<tr class="memdesc:abae485a491f67161286376bd9355467e"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_t型オブジェクトdst_にchar*型文字列をコピーする  <br /></td></tr>
+<tr class="memdesc:abae485a491f67161286376bd9355467e"><td class="mdescLeft">&#160;</td><td class="mdescRight">dst_にchar*型文字列をコピーする  <br /></td></tr>
 <tr class="separator:abae485a491f67161286376bd9355467e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afca6eec986d7ac34a2c62f1071ecefe7" id="r_afca6eec986d7ac34a2c62f1071ecefe7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a> (<a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
-<tr class="memdesc:afca6eec986d7ac34a2c62f1071ecefe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。  <br /></td></tr>
+<tr class="memdesc:afca6eec986d7ac34a2c62f1071ecefe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">string_が保持するメモリを破棄する。  <br /></td></tr>
 <tr class="separator:afca6eec986d7ac34a2c62f1071ecefe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a919004c0d49138203ae97de414688c70" id="r_a919004c0d49138203ae97de414688c70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve</a> (uint64_t buffer_size_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
-<tr class="memdesc:a919004c0d49138203ae97de414688c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する  <br /></td></tr>
+<tr class="memdesc:a919004c0d49138203ae97de414688c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">string_オブジェクトに指定サイズの文字列バッファを確保する。  <br /></td></tr>
 <tr class="separator:a919004c0d49138203ae97de414688c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af32d68e2e133076debb96547c0be4f7b" id="r_af32d68e2e133076debb96547c0be4f7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af32d68e2e133076debb96547c0be4f7b">core_string_buffer_resize</a> (uint64_t buffer_size_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
 <tr class="memdesc:af32d68e2e133076debb96547c0be4f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトのバッファサイズをbuffer_size_に拡張する  <br /></td></tr>
 <tr class="separator:af32d68e2e133076debb96547c0be4f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b358a3aea52a94688d9c2264caae31a" id="r_a5b358a3aea52a94688d9c2264caae31a"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a">core_string_buffer_capacity</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
-<tr class="memdesc:a5b358a3aea52a94688d9c2264caae31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトのバッファサイズを取得する  <br /></td></tr>
+<tr class="memdesc:a5b358a3aea52a94688d9c2264caae31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトのバッファサイズを取得する。  <br /></td></tr>
 <tr class="separator:a5b358a3aea52a94688d9c2264caae31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f75582274ba14fc62dba48314aa18e9" id="r_a2f75582274ba14fc62dba48314aa18e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f75582274ba14fc62dba48314aa18e9">core_string_is_empty</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
-<tr class="memdesc:a2f75582274ba14fc62dba48314aa18e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトが空かどうかを判定する  <br /></td></tr>
+<tr class="memdesc:a2f75582274ba14fc62dba48314aa18e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトが保持する文字列格納バッファが空かどうかを判定する  <br /></td></tr>
 <tr class="separator:a2f75582274ba14fc62dba48314aa18e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad68b356d6a7ddfeb2cb13f8270797ad4" id="r_ad68b356d6a7ddfeb2cb13f8270797ad4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad68b356d6a7ddfeb2cb13f8270797ad4">core_string_equal</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string1_, const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string2_)</td></tr>
 <tr class="memdesc:ad68b356d6a7ddfeb2cb13f8270797ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">2つのcore_string_tオブジェクトが保持する文字列が等しいかを比較する  <br /></td></tr>
 <tr class="separator:ad68b356d6a7ddfeb2cb13f8270797ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0dd30489c2d7d0dba8afe011affa0ab" id="r_af0dd30489c2d7d0dba8afe011affa0ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0dd30489c2d7d0dba8afe011affa0ab">core_string_equal_from_char</a> (const char *const str1_, const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string2_)</td></tr>
-<tr class="memdesc:af0dd30489c2d7d0dba8afe011affa0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">char* 文字列と <a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクトが保持する文字列が等しいかを比較する  <br /></td></tr>
+<tr class="memdesc:af0dd30489c2d7d0dba8afe011affa0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">char*型文字列とcore_string_tオブジェクトが保持する文字列が等しいかを比較する  <br /></td></tr>
 <tr class="separator:af0dd30489c2d7d0dba8afe011affa0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2745d8d1a6f8de8f14e872db9fe382ad" id="r_a2745d8d1a6f8de8f14e872db9fe382ad"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad">core_string_length</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
-<tr class="memdesc:a2745d8d1a6f8de8f14e872db9fe382ad"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクトが保持している文字列の長さを取得する  <br /></td></tr>
+<tr class="memdesc:a2745d8d1a6f8de8f14e872db9fe382ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトが保持している文字列の長さを取得する  <br /></td></tr>
 <tr class="separator:a2745d8d1a6f8de8f14e872db9fe382ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7817b25a44830b3ac8998c49af78ca71" id="r_a7817b25a44830b3ac8998c49af78ca71"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7817b25a44830b3ac8998c49af78ca71">core_string_cstr</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_)</td></tr>
-<tr class="memdesc:a7817b25a44830b3ac8998c49af78ca71"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクトが保持している文字列の先頭ポインタを取得する  <br /></td></tr>
+<tr class="memdesc:a7817b25a44830b3ac8998c49af78ca71"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトが保持している文字列の先頭ポインタを取得する  <br /></td></tr>
 <tr class="separator:a7817b25a44830b3ac8998c49af78ca71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59a7bb17bb67a8430badae4b5cd830ff" id="r_a59a7bb17bb67a8430badae4b5cd830ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59a7bb17bb67a8430badae4b5cd830ff">core_string_concat</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const dst_)</td></tr>
-<tr class="memdesc:a59a7bb17bb67a8430badae4b5cd830ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">dst_ の末尾に string_ の内容を連結する  <br /></td></tr>
+<tr class="memdesc:a59a7bb17bb67a8430badae4b5cd830ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">dst_の末尾にstring_の内容を連結する  <br /></td></tr>
 <tr class="separator:a59a7bb17bb67a8430badae4b5cd830ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56936fa3e107a529eb06b3382310cdc8" id="r_a56936fa3e107a529eb06b3382310cdc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56936fa3e107a529eb06b3382310cdc8">core_string_substring_copy</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const src_, <a class="el" href="structcore__string__t.html">core_string_t</a> *const dst_, uint16_t from_, uint16_t to_)</td></tr>
 <tr class="memdesc:a56936fa3e107a529eb06b3382310cdc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">src_ の [from_, to_] 範囲の部分文字列を dst_ にコピーする  <br /></td></tr>
@@ -190,50 +190,34 @@ Functions</h2></td></tr>
 <tr class="memitem:a0438ebc58481d2fc3b69231bdc6613e2" id="r_a0438ebc58481d2fc3b69231bdc6613e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0438ebc58481d2fc3b69231bdc6613e2">core_string_to_i32</a> (const <a class="el" href="structcore__string__t.html">core_string_t</a> *const string_, int32_t *out_value_)</td></tr>
 <tr class="memdesc:a0438ebc58481d2fc3b69231bdc6613e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">core_string_tオブジェクトの内容をint32_t型整数に変換する。  <br /></td></tr>
 <tr class="separator:a0438ebc58481d2fc3b69231bdc6613e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fa0df60a0622a92e2d49c54702dad8a" id="r_a4fa0df60a0622a92e2d49c54702dad8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fa0df60a0622a92e2d49c54702dad8a">core_string_default_create_test</a> ()</td></tr>
-<tr class="separator:a4fa0df60a0622a92e2d49c54702dad8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52d744a79fa5fbadbe7788e427c70a91" id="r_a52d744a79fa5fbadbe7788e427c70a91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52d744a79fa5fbadbe7788e427c70a91">core_string_create_test</a> ()</td></tr>
-<tr class="separator:a52d744a79fa5fbadbe7788e427c70a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c9f7fcf04c9eca0168ea540678a0569" id="r_a0c9f7fcf04c9eca0168ea540678a0569"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c9f7fcf04c9eca0168ea540678a0569">core_string_copy_test</a> ()</td></tr>
-<tr class="separator:a0c9f7fcf04c9eca0168ea540678a0569"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a196d56856f7821161398c38fc31c81ba" id="r_a196d56856f7821161398c38fc31c81ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a196d56856f7821161398c38fc31c81ba">core_string_concat_test</a> ()</td></tr>
-<tr class="separator:a196d56856f7821161398c38fc31c81ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9edaee95c94fb9c693a8d5f05763ad21" id="r_a9edaee95c94fb9c693a8d5f05763ad21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9edaee95c94fb9c693a8d5f05763ad21">core_string_trim_test</a> ()</td></tr>
-<tr class="separator:a9edaee95c94fb9c693a8d5f05763ad21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63cac2326aff4358a911de5ab1fc163e" id="r_a63cac2326aff4358a911de5ab1fc163e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63cac2326aff4358a911de5ab1fc163e">core_string_to_i32_test</a> ()</td></tr>
-<tr class="separator:a63cac2326aff4358a911de5ab1fc163e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a435fa175da4e565410c9fbd56379092e" id="r_a435fa175da4e565410c9fbd56379092e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a435fa175da4e565410c9fbd56379092e">core_string_equal_test</a> ()</td></tr>
-<tr class="separator:a435fa175da4e565410c9fbd56379092e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c5d8c81ac1c3b766804c8e0bf8f63d2" id="r_a8c5d8c81ac1c3b766804c8e0bf8f63d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c5d8c81ac1c3b766804c8e0bf8f63d2">core_string_substring_copy_test</a> ()</td></tr>
-<tr class="separator:a8c5d8c81ac1c3b766804c8e0bf8f63d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2202e00fcfdb544a6f30e3c807cc673" id="r_aa2202e00fcfdb544a6f30e3c807cc673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2202e00fcfdb544a6f30e3c807cc673">core_string_buffer_reserve_test</a> ()</td></tr>
-<tr class="separator:aa2202e00fcfdb544a6f30e3c807cc673"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01853d15c47c5a0f7fa4be48d03645ab" id="r_a01853d15c47c5a0f7fa4be48d03645ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01853d15c47c5a0f7fa4be48d03645ab">core_string_is_empty_test</a> ()</td></tr>
-<tr class="separator:a01853d15c47c5a0f7fa4be48d03645ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a9dd3ded43cf41443217ac65aff2f45" id="r_a7a9dd3ded43cf41443217ac65aff2f45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a9dd3ded43cf41443217ac65aff2f45">core_string_destroy_test</a> ()</td></tr>
-<tr class="separator:a7a9dd3ded43cf41443217ac65aff2f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af17cc9022aa050bff83af92ea566a54f" id="r_af17cc9022aa050bff83af92ea566a54f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af17cc9022aa050bff83af92ea566a54f">core_string_buffer_capacity_test</a> ()</td></tr>
-<tr class="separator:af17cc9022aa050bff83af92ea566a54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28d66645d9588917933f8fa44a5794b3" id="r_a28d66645d9588917933f8fa44a5794b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28d66645d9588917933f8fa44a5794b3">core_string_cstr_test</a> ()</td></tr>
-<tr class="separator:a28d66645d9588917933f8fa44a5794b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4a12b59f006def78fa20943f41989a3" id="r_ab4a12b59f006def78fa20943f41989a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4a12b59f006def78fa20943f41989a3">core_string_length_test</a> ()</td></tr>
-<tr class="separator:ab4a12b59f006def78fa20943f41989a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a635535d8c3c3ee756a79d9e118227fcd" id="r_a635535d8c3c3ee756a79d9e118227fcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635535d8c3c3ee756a79d9e118227fcd">core_string_copy_from_char_test</a> ()</td></tr>
-<tr class="separator:a635535d8c3c3ee756a79d9e118227fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a220c8849d68566901e3c225a0ef7d358" id="r_a220c8849d68566901e3c225a0ef7d358"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a220c8849d68566901e3c225a0ef7d358">core_string_buffer_resize_test</a> ()</td></tr>
-<tr class="separator:a220c8849d68566901e3c225a0ef7d358"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a337ba6dea7e2cfea988e3d99b2892a8a" id="r_a337ba6dea7e2cfea988e3d99b2892a8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a337ba6dea7e2cfea988e3d99b2892a8a">core_string_equal_from_char_test</a> (void)</td></tr>
-<tr class="separator:a337ba6dea7e2cfea988e3d99b2892a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>core_string_tオブジェクトの定義と関連APIの宣言 </p>
 <dl class="section author"><dt>Author</dt><dd>chocolate-pie24 </dd></dl>
-<p>core_string_tは、ユーザーが文字列長さやバッファ管理を意識することなく 安全かつ簡単に文字列操作を行えることを目的としたAPIである。</p>
-<p>代表的な操作として以下が提供されます:</p><ul>
+<p>core_string_tは、ユーザーが文字列長さやバッファ管理を意識することなく、 安全かつ簡単に文字列操作を行えることを目的としたAPIである。</p>
+<p>代表的な操作として以下が提供される:</p>
+<ul>
 <li>文字列のコピー</li>
 <li>文字列の連結</li>
 <li>文字列のトリミング</li>
 </ul>
+<p><a class="anchor" id="core_string_initialization_rule"></a>本APIでは、core_string_t型の扱いにおいて以下の状態を区別する:</p>
+<ul>
+<li>NULLポインタ: オブジェクト自体がNULLの場合(例: core_string_t* object = 0)</li>
+<li>未初期化状態: オブジェクト自体は存在するが、メンバの初期化がされていない状態(例: <a class="el" href="structcore__string__t.html" title="文字列オブジェクト構造体">core_string_t</a> object;)</li>
+<li>デフォルト状態: オブジェクト内部管理データinternal_data == NULLの状態。使用前に明示的な初期化が必要。</li>
+<li>初期化済み状態: internal_dataが有効な領域を指しており、APIでの使用が可能な状態。</li>
+</ul>
+<p>未初期化状態のオブジェクトをAPIに渡すと未定義の動作を引き起こす可能性があるため、 必ず次のいずれかの方法で「デフォルト状態」に初期化してから使用すること:</p><ul>
+<li><a class="el" href="#a35af0c7da23e790d3666f3a5d9ae838c">core_string_default_create()</a></li>
+<li><a class="el" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a></li>
+</ul>
+<p>その後、以下のいずれかの関数で「初期化済み状態」に遷移させる必要がある:</p><ul>
+<li><a class="el" href="#a2315ba27fe660a229700ed42941e7853">core_string_create()</a></li>
+<li><a class="el" href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve()</a></li>
+<li><a class="el" href="#af32d68e2e133076debb96547c0be4f7b">core_string_buffer_resize()</a></li>
+</ul>
+<p>再初期化する場合は、先に <a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy()</a> を呼び、メモリを解放すること。</p>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025-07-20</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
@@ -252,8 +236,8 @@ Functions</h2></td></tr>
 
 <p>オブジェクト初期化用マクロ </p>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
-<div class="ttc" id="acore__string_8h_html_a8612384ec41e1cc811811d81e9e13a33"><div class="ttname"><a href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a></div><div class="ttdeci">#define CORE_STRING_INITIALIZER</div><div class="ttdoc">オブジェクト初期化用マクロ</div><div class="ttdef"><b>Definition</b> core_string.h:61</div></div>
-<div class="ttc" id="astructcore__string__t_html"><div class="ttname"><a href="structcore__string__t.html">core_string_t</a></div><div class="ttdoc">core_string ラリブラリの文字列オブジェクト構造体</div><div class="ttdef"><b>Definition</b> core_string.h:50</div></div>
+<div class="ttc" id="acore__string_8h_html_a8612384ec41e1cc811811d81e9e13a33"><div class="ttname"><a href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a></div><div class="ttdeci">#define CORE_STRING_INITIALIZER</div><div class="ttdoc">オブジェクト初期化用マクロ</div><div class="ttdef"><b>Definition</b> core_string.h:78</div></div>
+<div class="ttc" id="astructcore__string__t_html"><div class="ttname"><a href="structcore__string__t.html">core_string_t</a></div><div class="ttdoc">文字列オブジェクト構造体</div><div class="ttdef"><b>Definition</b> core_string.h:67</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -286,12 +270,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>core_string ラリブラリの文字列オブジェクト構造体 </p>
-<p>文字列データとそれに付随する管理情報を格納する。 オブジェクトの初期化には以下のいずれかを使用する:</p><ul>
-<li><a class="el" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a></li>
-<li><a class="el" href="#a35af0c7da23e790d3666f3a5d9ae838c">core_string_default_create()</a></li>
-<li><a class="el" href="#a2315ba27fe660a229700ed42941e7853">core_string_create()</a> </li>
-</ul>
+<p>文字列オブジェクト構造体 </p>
+<p>文字列データとそれに付随する管理情報を格納する。 オブジェクトの初期化については、 <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> を参照のこと。 </p>
 
 </div>
 </div>
@@ -340,49 +320,32 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>core_string_tオブジェクトのバッファサイズを取得する </p>
+<p>core_string_tオブジェクトのバッファサイズを取得する。 </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>オブジェクトが未初期化の場合は 0 を返す</li>
+<li>オブジェクトがデフォルト状態の場合は0を返す( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</li>
 <li>引数がNULLの場合は <a class="el" href="define_8h.html#ab8e09edc08ec19f44d43b64923b4fb9d">INVALID_VALUE_U64</a> を返す</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
+<div class="line">uint64_t capacity = <a class="code hl_function" href="#a5b358a3aea52a94688d9c2264caae31a">core_string_buffer_capacity</a>(&amp;<span class="keywordtype">string</span>); <span class="comment">// 未初期化のため0が返る</span></div>
+<div class="ttc" id="acore__string_8h_html_a5b358a3aea52a94688d9c2264caae31a"><div class="ttname"><a href="#a5b358a3aea52a94688d9c2264caae31a">core_string_buffer_capacity</a></div><div class="ttdeci">uint64_t core_string_buffer_capacity(const core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトのバッファサイズを取得する。</div><div class="ttdef"><b>Definition</b> core_string.c:248</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>バッファサイズを取得する対象オブジェクト</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>バッファサイズを取得する対象オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
   </table>
   </dd>
 </dl>
-<p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
-<div class="line">uint64_t capacity = <a class="code hl_function" href="#a5b358a3aea52a94688d9c2264caae31a">core_string_buffer_capacity</a>(&amp;<span class="keywordtype">string</span>); <span class="comment">// 未初期化のため0が返る</span></div>
-<div class="ttc" id="acore__string_8h_html_a5b358a3aea52a94688d9c2264caae31a"><div class="ttname"><a href="#a5b358a3aea52a94688d9c2264caae31a">core_string_buffer_capacity</a></div><div class="ttdeci">uint64_t core_string_buffer_capacity(const core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトのバッファサイズを取得する</div><div class="ttdef"><b>Definition</b> core_string.c:248</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">INVALID_VALUE_U64</td><td>引数string_がNULL </td></tr>
-    <tr><td class="paramname">0</td><td>オブジェクトが未初期化 </td></tr>
+    <tr><td class="paramname">0</td><td>オブジェクトがデフォルト状態、またはバッファサイズが0 </td></tr>
     <tr><td class="paramname">バッファサイズ(byte)</td><td>正常に取得できた場合のバッファサイズを返す</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a919004c0d49138203ae97de414688c70" title="core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する">core_string_buffer_reserve()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a919004c0d49138203ae97de414688c70" title="string_オブジェクトに指定サイズの文字列バッファを確保する。">core_string_buffer_reserve()</a> </dd>
 <dd>
 <a class="el" href="#af32d68e2e133076debb96547c0be4f7b" title="core_string_tオブジェクトのバッファサイズをbuffer_size_に拡張する">core_string_buffer_resize()</a> </dd></dl>
-
-</div>
-</div>
-<a id="af17cc9022aa050bff83af92ea566a54f" name="af17cc9022aa050bff83af92ea566a54f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af17cc9022aa050bff83af92ea566a54f">&#9670;&#160;</a></span>core_string_buffer_capacity_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_buffer_capacity_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -405,31 +368,31 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する </p>
+<p>string_オブジェクトに指定サイズの文字列バッファを確保する。 </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>string_が未初期化の場合、internal_data構造体を確保して初期化する</li>
+<li>string_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)の場合、internal_data構造体を確保して初期化する</li>
 <li>すでに指定したサイズ以上のバッファが確保されている場合には何もせず成功を返す</li>
 <li>バッファの再確保が行われた場合、既存のデータはすべて破棄され、バッファ全体がクリアされる</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_size_</td><td>確保するバッファサイズ(byte)(終端文字を含んだ長さを指定すること、つまり、文字列長さ+1を指定する) </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">string_</td><td>メモリ確保対象オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_enumeration" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a> result = <a class="code hl_function" href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve</a>(128, &amp;<span class="keywordtype">string</span>);    <span class="comment">// 128byte確保</span></div>
 <div class="line"><span class="keywordflow">if</span>(<a class="code hl_enumvalue" href="#adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301">CORE_STRING_SUCCESS</a> != result) {</div>
 <div class="line">    <span class="comment">// エラー処理</span></div>
 <div class="line">}</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;<span class="keywordtype">string</span>);</div>
-<div class="ttc" id="acore__string_8h_html_a919004c0d49138203ae97de414688c70"><div class="ttname"><a href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_buffer_reserve(uint64_t buffer_size_, core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する</div><div class="ttdef"><b>Definition</b> core_string.c:168</div></div>
-<div class="ttc" id="acore__string_8h_html_adca60fb23e0d2f4d5fe15f6c525a2eeb"><div class="ttname"><a href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE</div><div class="ttdoc">core_string_t関連処理が出力するエラーコード</div><div class="ttdef"><b>Definition</b> core_string.h:32</div></div>
-<div class="ttc" id="acore__string_8h_html_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301"><div class="ttname"><a href="#adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301">CORE_STRING_SUCCESS</a></div><div class="ttdeci">@ CORE_STRING_SUCCESS</div><div class="ttdef"><b>Definition</b> core_string.h:33</div></div>
-<div class="ttc" id="acore__string_8h_html_afca6eec986d7ac34a2c62f1071ecefe7"><div class="ttname"><a href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a></div><div class="ttdeci">void core_string_destroy(core_string_t *const string_)</div><div class="ttdoc">引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。</div><div class="ttdef"><b>Definition</b> core_string.c:155</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<div class="ttc" id="acore__string_8h_html_a919004c0d49138203ae97de414688c70"><div class="ttname"><a href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_buffer_reserve(uint64_t buffer_size_, core_string_t *const string_)</div><div class="ttdoc">string_オブジェクトに指定サイズの文字列バッファを確保する。</div><div class="ttdef"><b>Definition</b> core_string.c:168</div></div>
+<div class="ttc" id="acore__string_8h_html_adca60fb23e0d2f4d5fe15f6c525a2eeb"><div class="ttname"><a href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE</div><div class="ttdoc">core_string_t関連処理が出力するエラーコード</div><div class="ttdef"><b>Definition</b> core_string.h:53</div></div>
+<div class="ttc" id="acore__string_8h_html_adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301"><div class="ttname"><a href="#adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301">CORE_STRING_SUCCESS</a></div><div class="ttdeci">@ CORE_STRING_SUCCESS</div><div class="ttdef"><b>Definition</b> core_string.h:54</div></div>
+<div class="ttc" id="acore__string_8h_html_afca6eec986d7ac34a2c62f1071ecefe7"><div class="ttname"><a href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a></div><div class="ttdeci">void core_string_destroy(core_string_t *const string_)</div><div class="ttdoc">string_が保持するメモリを破棄する。</div><div class="ttdef"><b>Definition</b> core_string.c:155</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_size_</td><td>確保するバッファサイズ(byte)(終端文字を含むサイズを指定する)(文字列長 + 1) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">string_</td><td>メモリ確保対象オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>引数string_がNULL </td></tr>
     <tr><td class="paramname">CORE_STRING_MEMORY_ALLOCATE_ERROR</td><td>メモリ確保に失敗 </td></tr>
@@ -437,32 +400,15 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する">core_string_buffer_capacity()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する。">core_string_buffer_capacity()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#ad99648479589c6b3a79a7ecb3af0a850" title="要求されたメモリを確保し、出力する">core_malloc()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#a8255797cb8abc41798f103a726644d77" title="指定されたメモリ領域を破棄する">core_free()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#a667aa5285fa0963d6b9acf463e8c0e44" title="対象バッファを全て0でクリアする">core_zero_memory()</a> </dd></dl>
-
-</div>
-</div>
-<a id="aa2202e00fcfdb544a6f30e3c807cc673" name="aa2202e00fcfdb544a6f30e3c807cc673"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2202e00fcfdb544a6f30e3c807cc673">&#9670;&#160;</a></span>core_string_buffer_reserve_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_buffer_reserve_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -489,23 +435,23 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd><ul>
 <li>この関数は既存の文字列データを保持したままバッファサイズを拡張する</li>
 <li>すでに指定サイズ以上のバッファが確保されている場合は何もせず成功を返す</li>
-<li>内部データが未初期化の場合は <a class="el" href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve()</a> を呼び出して新規に確保する</li>
+<li>オブジェクトがデフォルト状態の場合は <a class="el" href="#a919004c0d49138203ae97de414688c70">core_string_buffer_reserve()</a> を呼び出して新規に確保する( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_size_</td><td>新しいバッファサイズ(byte) 終端文字を含めるため「文字列長 + 1」を指定すること </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">string_</td><td>バッファサイズを拡張する対象オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#abae485a491f67161286376bd9355467e">core_string_copy_from_char</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;<span class="keywordtype">string</span>);         <span class="comment">// 現在 &quot;Hello&quot; を保持</span></div>
 <div class="line"><a class="code hl_function" href="#af32d68e2e133076debb96547c0be4f7b">core_string_buffer_resize</a>(128, &amp;<span class="keywordtype">string</span>);              <span class="comment">// バッファを128byteに拡張</span></div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;<span class="keywordtype">string</span>);</div>
-<div class="ttc" id="acore__string_8h_html_abae485a491f67161286376bd9355467e"><div class="ttname"><a href="#abae485a491f67161286376bd9355467e">core_string_copy_from_char</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_copy_from_char(const char *const src_, core_string_t *const dst_)</div><div class="ttdoc">core_string_t型オブジェクトdst_にchar*型文字列をコピーする</div><div class="ttdef"><b>Definition</b> core_string.c:129</div></div>
+<div class="ttc" id="acore__string_8h_html_abae485a491f67161286376bd9355467e"><div class="ttname"><a href="#abae485a491f67161286376bd9355467e">core_string_copy_from_char</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_copy_from_char(const char *const src_, core_string_t *const dst_)</div><div class="ttdoc">dst_にchar*型文字列をコピーする</div><div class="ttdef"><b>Definition</b> core_string.c:129</div></div>
 <div class="ttc" id="acore__string_8h_html_af32d68e2e133076debb96547c0be4f7b"><div class="ttname"><a href="#af32d68e2e133076debb96547c0be4f7b">core_string_buffer_resize</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_buffer_resize(uint64_t buffer_size_, core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトのバッファサイズをbuffer_size_に拡張する</div><div class="ttdef"><b>Definition</b> core_string.c:198</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer_size_</td><td>新しいバッファサイズ(byte) 終端文字を含めるため「文字列長 + 1」を指定すること </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">string_</td><td>バッファサイズを拡張する対象オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>引数string_がNULL </td></tr>
     <tr><td class="paramname">CORE_STRING_MEMORY_ALLOCATE_ERROR</td><td>一時バッファまたは新規バッファのメモリ確保に失敗 </td></tr>
@@ -514,30 +460,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a919004c0d49138203ae97de414688c70" title="core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する">core_string_buffer_reserve()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a919004c0d49138203ae97de414688c70" title="string_オブジェクトに指定サイズの文字列バッファを確保する。">core_string_buffer_reserve()</a> </dd>
 <dd>
-<a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する">core_string_buffer_capacity()</a> </dd>
+<a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する。">core_string_buffer_capacity()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#ad99648479589c6b3a79a7ecb3af0a850" title="要求されたメモリを確保し、出力する">core_malloc()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#a8255797cb8abc41798f103a726644d77" title="指定されたメモリ領域を破棄する">core_free()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a220c8849d68566901e3c225a0ef7d358" name="a220c8849d68566901e3c225a0ef7d358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a220c8849d68566901e3c225a0ef7d358">&#9670;&#160;</a></span>core_string_buffer_resize_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_buffer_resize_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -560,20 +489,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>dst_ の末尾に string_ の内容を連結する </p>
+<p>dst_の末尾にstring_の内容を連結する </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>連結の結果、dst_ のバッファサイズが不足する場合は自動でリサイズが行われる</li>
-<li>string_ および dst_ が未初期化の場合はエラーを返す</li>
-<li>連結後、dst_ の内部のバッファ末尾には必ず終端文字 '\0' が付加される</li>
+<li>連結の結果、dst_のバッファサイズが不足する場合は自動でリサイズが行われる</li>
+<li>string_およびdst_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)の場合はエラーを返す</li>
+<li>連結後、dst_の内部のバッファ末尾には必ず終端文字 '\0' が付加される</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>連結する文字列 (コピー元) </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>連結結果を格納するオブジェクト (コピー先)</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;dst);</div>
 <div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> add = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
@@ -587,41 +509,31 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;add);</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;dst);</div>
-<div class="ttc" id="acore__string_8h_html_a2315ba27fe660a229700ed42941e7853"><div class="ttname"><a href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_create(const char *const src_, core_string_t *const dst_)</div><div class="ttdoc">引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。</div><div class="ttdef"><b>Definition</b> core_string.c:68</div></div>
-<div class="ttc" id="acore__string_8h_html_a59a7bb17bb67a8430badae4b5cd830ff"><div class="ttname"><a href="#a59a7bb17bb67a8430badae4b5cd830ff">core_string_concat</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_concat(const core_string_t *const string_, core_string_t *const dst_)</div><div class="ttdoc">dst_ の末尾に string_ の内容を連結する</div><div class="ttdef"><b>Definition</b> core_string.c:349</div></div>
-<div class="ttc" id="acore__string_8h_html_a7817b25a44830b3ac8998c49af78ca71"><div class="ttname"><a href="#a7817b25a44830b3ac8998c49af78ca71">core_string_cstr</a></div><div class="ttdeci">const char * core_string_cstr(const core_string_t *const string_)</div><div class="ttdoc">core_string_t オブジェクトが保持している文字列の先頭ポインタを取得する</div><div class="ttdef"><b>Definition</b> core_string.c:336</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<div class="ttc" id="acore__string_8h_html_a2315ba27fe660a229700ed42941e7853"><div class="ttname"><a href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_create(const char *const src_, core_string_t *const dst_)</div><div class="ttdoc">引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。</div><div class="ttdef"><b>Definition</b> core_string.c:68</div></div>
+<div class="ttc" id="acore__string_8h_html_a59a7bb17bb67a8430badae4b5cd830ff"><div class="ttname"><a href="#a59a7bb17bb67a8430badae4b5cd830ff">core_string_concat</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_concat(const core_string_t *const string_, core_string_t *const dst_)</div><div class="ttdoc">dst_の末尾にstring_の内容を連結する</div><div class="ttdef"><b>Definition</b> core_string.c:349</div></div>
+<div class="ttc" id="acore__string_8h_html_a7817b25a44830b3ac8998c49af78ca71"><div class="ttname"><a href="#a7817b25a44830b3ac8998c49af78ca71">core_string_cstr</a></div><div class="ttdeci">const char * core_string_cstr(const core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトが保持している文字列の先頭ポインタを取得する</div><div class="ttdef"><b>Definition</b> core_string.c:336</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>連結する文字列 (コピー元)。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>連結結果を格納するオブジェクト (コピー先)。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>string_ または dst_ が NULL </td></tr>
-    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>string_ または dst_ が未初期化、もしくはリサイズに失敗 </td></tr>
+    <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>string_またはdst_が NULL </td></tr>
+    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>string_ またはdst_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)、または一時バッファの生成やコピーに失敗した場合 </td></tr>
     <tr><td class="paramname">CORE_STRING_SUCCESS</td><td>連結が正常に完了</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する">core_string_buffer_capacity()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する。">core_string_buffer_capacity()</a> </dd>
 <dd>
 <a class="el" href="#af32d68e2e133076debb96547c0be4f7b" title="core_string_tオブジェクトのバッファサイズをbuffer_size_に拡張する">core_string_buffer_resize()</a> </dd>
 <dd>
-<a class="el" href="#a7817b25a44830b3ac8998c49af78ca71" title="core_string_t オブジェクトが保持している文字列の先頭ポインタを取得する">core_string_cstr()</a> </dd>
+<a class="el" href="#a7817b25a44830b3ac8998c49af78ca71" title="core_string_tオブジェクトが保持している文字列の先頭ポインタを取得する">core_string_cstr()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a196d56856f7821161398c38fc31c81ba" name="a196d56856f7821161398c38fc31c81ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a196d56856f7821161398c38fc31c81ba">&#9670;&#160;</a></span>core_string_concat_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_concat_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
 
 </div>
 </div>
@@ -644,19 +556,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>引数src_で与えたcore_string_tオブジェクトをdst_にコピーする </p>
+<p>コピー元src_の文字列内容を、コピー先dst_に複製する。 </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>dst_が未初期化またはバッファサイズ不足の場合、必要なサイズにバッファが再確保される</li>
-<li>dst_のバッファサイズがsrc_のバッファサイズ以上の場合、既存バッファを再利用し内容を上書きする</li>
+<li>dst_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)またはバッファサイズ不足の場合、必要なサイズでバッファを再確保する。</li>
+<li>dst_のバッファサイズが src_以上の場合、既存バッファを再利用して内容を上書きする。</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>コピー元オブジェクト(初期化済みである必要あり) </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>コピー先オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> src = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"> </div>
@@ -668,28 +573,35 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;src);</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;dst);</div>
-<div class="ttc" id="acore__string_8h_html_a0f829e5efdb35611e67123433c36722b"><div class="ttname"><a href="#a0f829e5efdb35611e67123433c36722b">core_string_copy</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_copy(const core_string_t *const src_, core_string_t *const dst_)</div><div class="ttdoc">引数src_で与えたcore_string_tオブジェクトをdst_にコピーする</div><div class="ttdef"><b>Definition</b> core_string.c:92</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<div class="ttc" id="acore__string_8h_html_a0f829e5efdb35611e67123433c36722b"><div class="ttname"><a href="#a0f829e5efdb35611e67123433c36722b">core_string_copy</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_copy(const core_string_t *const src_, core_string_t *const dst_)</div><div class="ttdoc">コピー元src_の文字列内容を、コピー先dst_に複製する。</div><div class="ttdef"><b>Definition</b> core_string.c:92</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>コピー元オブジェクト(初期化済み状態である必要あり)( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>コピー先オブジェクト</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>引数src_またはdst_がNULL </td></tr>
-    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>コピー元src_が未初期化、または文字列コピーに失敗 </td></tr>
+    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>コピー元src_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)、または文字列コピーに失敗 </td></tr>
     <tr><td class="paramname">CORE_STRING_BUFFER_EMPTY</td><td>コピー元オブジェクトsrc_が内部で保持している文字列が空 </td></tr>
     <tr><td class="paramname">CORE_STRING_MEMORY_ALLOCATE_ERROR</td><td>コピー先オブジェクトのメモリ確保に失敗 </td></tr>
     <tr><td class="paramname">CORE_STRING_SUCCESS</td><td>正常にコピーが完了</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。">core_string_create()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。">core_string_create()</a> </dd>
 <dd>
 <a class="el" href="#a35af0c7da23e790d3666f3a5d9ae838c" title="引数で与えたstring_オブジェクトを「デフォルト状態」に初期化する。">core_string_default_create()</a> </dd>
 <dd>
-<a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する">core_string_buffer_capacity()</a> </dd>
+<a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する。">core_string_buffer_capacity()</a> </dd>
 <dd>
-<a class="el" href="#a919004c0d49138203ae97de414688c70" title="core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する">core_string_buffer_reserve()</a> </dd>
+<a class="el" href="#a919004c0d49138203ae97de414688c70" title="string_オブジェクトに指定サイズの文字列バッファを確保する。">core_string_buffer_reserve()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#a667aa5285fa0963d6b9acf463e8c0e44" title="対象バッファを全て0でクリアする">core_zero_memory()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
 
 </div>
 </div>
@@ -712,68 +624,39 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>core_string_t型オブジェクトdst_にchar*型文字列をコピーする </p>
+<p>dst_にchar*型文字列をコピーする </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>src_の文字列長がdst_のバッファサイズより大きい場合、dst_のバッファは拡張される</li>
-<li>dst_のバッファサイズがsrc_の文字列長以上の場合、既存バッファを再利用し内容を上書きする</li>
+<li>dst_デフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)またはバッファサイズ不足の場合、必要なサイズでバッファを再確保する。</li>
+<li>dst_のバッファサイズが src_以上の場合、既存バッファを再利用して内容を上書きする。</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">src_[in]</td><td>コピー元文字列 </td></tr>
-    <tr><td class="paramname">dst_[out]</td><td>コピー先文字列オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_enumeration" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a> result = <a class="code hl_function" href="#abae485a491f67161286376bd9355467e">core_string_copy_from_char</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;dst);</div>
 <div class="line"><span class="keywordflow">if</span>(<a class="code hl_enumvalue" href="#adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301">CORE_STRING_SUCCESS</a> != result) {</div>
 <div class="line">    <span class="comment">// エラー処理</span></div>
 <div class="line">}</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;dst);</div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>コピー元文字列 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>コピー先文字列オブジェクト(デフォルト状態または初期化済み状態である必要あり)( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>引数src_またはdst_がNULL </td></tr>
     <tr><td class="paramname">CORE_STRING_MEMORY_ALLOCATE_ERROR</td><td>コピー先オブジェクトのメモリ確保に失敗 </td></tr>
     <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>文字列のコピーに失敗 </td></tr>
-    <tr><td class="paramname">CORE_STRING_SUCCESS</td><td>正常にコピーが完了 </td></tr>
+    <tr><td class="paramname">CORE_STRING_SUCCESS</td><td>正常にコピーが完了</td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a635535d8c3c3ee756a79d9e118227fcd" name="a635535d8c3c3ee756a79d9e118227fcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a635535d8c3c3ee756a79d9e118227fcd">&#9670;&#160;</a></span>core_string_copy_from_char_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_copy_from_char_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0c9f7fcf04c9eca0168ea540678a0569" name="a0c9f7fcf04c9eca0168ea540678a0569"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c9f7fcf04c9eca0168ea540678a0569">&#9670;&#160;</a></span>core_string_copy_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_copy_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a919004c0d49138203ae97de414688c70" title="string_オブジェクトに指定サイズの文字列バッファを確保する。">core_string_buffer_reserve()</a> </dd>
+<dd>
+<a class="el" href="core__memory_8h.html#a667aa5285fa0963d6b9acf463e8c0e44" title="対象バッファを全て0でクリアする">core_zero_memory()</a> </dd>
+<dd>
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
 
 </div>
 </div>
@@ -796,10 +679,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。 </p>
-<dl class="section note"><dt>Note</dt><dd>この関数の内部では <a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy()</a> が呼び出されるため、 dst_がすでに初期化済みで内部にデータを保持している場合は、 保持しているメモリがすべて解放された後に再初期化される。</dd></dl>
-<p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;                         <span class="comment">// オブジェクトの初期化</span></div>
-<div class="line"><a class="code hl_enumeration" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a> result = <a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;dst);   <span class="comment">// dstにHelloが格納される</span></div>
+<p>引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。 </p>
+<dl class="section note"><dt>Note</dt><dd>本関数は、未初期化状態・デフォルト状態いずれのオブジェクトにも使用可能である。 各状態の詳細については、<a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> を参照のこと。</dd>
+<dd>
+この関数の内部では <a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy()</a> が呼び出されるため、 dst_がすでに初期化済みで内部にデータを保持している場合は、 保持しているメモリがすべて解放された後に再初期化される。</dd></dl>
+<p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;                         <span class="comment">// オブジェクトをデフォルト状態にする</span></div>
+<div class="line"><a class="code hl_enumeration" href="#adca60fb23e0d2f4d5fe15f6c525a2eeb">CORE_STRING_ERROR_CODE</a> result = <a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;dst);   <span class="comment">// dstにHelloが格納され、オブジェクトが初期化済み状態となる</span></div>
 <div class="line"><span class="keywordflow">if</span>(<a class="code hl_enumvalue" href="#adca60fb23e0d2f4d5fe15f6c525a2eebaea1f99fd1b4e30e416bd88878f47a301">CORE_STRING_SUCCESS</a> != result) {</div>
 <div class="line">    <span class="comment">// ここにエラー処理を書く</span></div>
 <div class="line">}</div>
@@ -820,28 +705,11 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
 <dd>
 <a class="el" href="#a35af0c7da23e790d3666f3a5d9ae838c" title="引数で与えたstring_オブジェクトを「デフォルト状態」に初期化する。">core_string_default_create()</a> </dd>
 <dd>
-<a class="el" href="#a919004c0d49138203ae97de414688c70" title="core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する">core_string_buffer_reserve()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a52d744a79fa5fbadbe7788e427c70a91" name="a52d744a79fa5fbadbe7788e427c70a91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52d744a79fa5fbadbe7788e427c70a91">&#9670;&#160;</a></span>core_string_create_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_create_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#a919004c0d49138203ae97de414688c70" title="string_オブジェクトに指定サイズの文字列バッファを確保する。">core_string_buffer_reserve()</a> </dd></dl>
 
 </div>
 </div>
@@ -860,53 +728,36 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクトが保持している文字列の先頭ポインタを取得する </p>
+<p>core_string_tオブジェクトが保持している文字列の先頭ポインタを取得する </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>戻り値は内部バッファへのポインタであり、**呼び出し側が解放してはいけない**</li>
-<li>オブジェクトが未初期化、または引数が NULL の場合は NULL を返す</li>
-<li>戻り値は不変ではなく、core_string_t の内容が変更されると無効になる可能性がある</li>
+<li>戻り値は内部バッファへのポインタであり、呼び出し側が解放してはいけない</li>
+<li>オブジェクトがデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)、または引数が NULL の場合は NULL を返す</li>
+<li>戻り値は不変ではなく、core_string_tの内容が変更されると無効になる可能性がある</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>c文字列を取得する対象の <a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> str = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;str);</div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span>* cstr = <a class="code hl_function" href="#a7817b25a44830b3ac8998c49af78ca71">core_string_cstr</a>(&amp;str); <span class="comment">// cstr = &quot;Hello&quot;</span></div>
 <div class="line">printf(<span class="stringliteral">&quot;%s\n&quot;</span>, cstr);</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;str);</div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>c文字列を取得する対象のcore_string_tオブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">NULL</td><td>引数が NULL または未初期化のオブジェクトが渡された場合 </td></tr>
+    <tr><td class="paramname">NULL</td><td>引数がNULLまたはデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)のオブジェクトが渡された場合 </td></tr>
     <tr><td class="paramname">その他</td><td>内部バッファの先頭アドレス</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。">core_string_create()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。">core_string_create()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
 <dd>
-<a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad" title="core_string_t オブジェクトが保持している文字列の長さを取得する">core_string_length()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a28d66645d9588917933f8fa44a5794b3" name="a28d66645d9588917933f8fa44a5794b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28d66645d9588917933f8fa44a5794b3">&#9670;&#160;</a></span>core_string_cstr_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_cstr_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad" title="core_string_tオブジェクトが保持している文字列の長さを取得する">core_string_length()</a> </dd></dl>
 
 </div>
 </div>
@@ -926,43 +777,26 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>引数で与えたstring_オブジェクトを「デフォルト状態」に初期化する。 </p>
-<dl class="section note"><dt>Note</dt><dd>オブジェクトのデフォルト状態とは、core_string_t.internal_dataがNULLであり、 いかなるデータも保持していない状態を指す。</dd>
+<dl class="section note"><dt>Note</dt><dd>オブジェクトのデフォルト状態については、 <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> を参照のこと。</dd>
 <dd>
 内部にデータを保持している初期化済みオブジェクトに対して本関数を直接呼ぶと、 内部データのメモリが解放されず、メモリリークの原因となる可能性がある。 再利用する場合は、必ず事前に <a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy()</a> を呼んでメモリを解放してから使用すること。</dd>
 <dd>
 引数string_にNULLを与えた場合には、以下のワーニングメッセージを出力し、処理を終了する。 <code> [WARNING] core_string_default_create - Argument string_ requires a valid pointer. </code></dd></dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> string;</div>
-<div class="line"><a class="code hl_function" href="#a35af0c7da23e790d3666f3a5d9ae838c">core_string_default_create</a>(&amp;<span class="keywordtype">string</span>); <span class="comment">// オブジェクトが初期化される(internal_dataはNULLとなる)。</span></div>
+<div class="line"><a class="code hl_function" href="#a35af0c7da23e790d3666f3a5d9ae838c">core_string_default_create</a>(&amp;<span class="keywordtype">string</span>); <span class="comment">// オブジェクトがデフォルト状態となる(internal_dataはNULLとなる)。</span></div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;<span class="keywordtype">string</span>);</div>
 <div class="ttc" id="acore__string_8h_html_a35af0c7da23e790d3666f3a5d9ae838c"><div class="ttname"><a href="#a35af0c7da23e790d3666f3a5d9ae838c">core_string_default_create</a></div><div class="ttdeci">void core_string_default_create(core_string_t *const string_)</div><div class="ttdoc">引数で与えたstring_オブジェクトを「デフォルト状態」に初期化する。</div><div class="ttdef"><b>Definition</b> core_string.c:63</div></div>
 </div><!-- fragment --><p>なお、上記コードは下記のコードと等価である。 </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;<span class="keywordtype">string</span>);</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">string_</td><td>初期化対象オブジェクト</td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">string_</td><td>デフォルト状態とするオブジェクト</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd>
 <dd>
 <a class="el" href="core__memory_8h.html#a667aa5285fa0963d6b9acf463e8c0e44" title="対象バッファを全て0でクリアする">core_zero_memory()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a4fa0df60a0622a92e2d49c54702dad8a" name="a4fa0df60a0622a92e2d49c54702dad8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fa0df60a0622a92e2d49c54702dad8a">&#9670;&#160;</a></span>core_string_default_create_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_default_create_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -981,8 +815,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。 </p>
-<dl class="section note"><dt>Note</dt><dd>この関数を呼ぶことで、core_string_t型オブジェクトが保持しているinternal_dataのメモリおよび、 internal_data内に保持しているメモリ領域が解放される。 これにより、internal_dataにはNULLが設定される。なお、メモリの解放にはcore_free()を使用している。</dd>
+<p>string_が保持するメモリを破棄する。 </p>
+<dl class="section note"><dt>Note</dt><dd>この関数を呼ぶことで、core_string_t型オブジェクトが保持しているinternal_dataのメモリおよび、 internal_data内に保持しているメモリ領域が解放され、NULLが設定される。 これにより、internal_dataにはNULLが設定される。なお、メモリの解放にはcore_free()を使用している。</dd>
 <dd>
 本関数により破棄したオブジェクトを再度使用する場合には、下記の関数を使用する。<ul>
 <li><a class="el" href="#a2315ba27fe660a229700ed42941e7853">core_string_create()</a></li>
@@ -995,28 +829,11 @@ Functions</h2></td></tr>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;<span class="keywordtype">string</span>);    <span class="comment">// stringが保持するメモリが解放される</span></div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">string_</td><td>破棄対象オブジェクト</td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">string_</td><td>破棄対象オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="core__memory_8h.html#a8255797cb8abc41798f103a726644d77" title="指定されたメモリ領域を破棄する">core_free()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a7a9dd3ded43cf41443217ac65aff2f45" name="a7a9dd3ded43cf41443217ac65aff2f45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a9dd3ded43cf41443217ac65aff2f45">&#9670;&#160;</a></span>core_string_destroy_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_destroy_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -1041,17 +858,10 @@ Functions</h2></td></tr>
 
 <p>2つのcore_string_tオブジェクトが保持する文字列が等しいかを比較する </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>どちらかの引数が未初期化またはNULLの場合はfalseを返す</li>
+<li>どちらかの引数がデフォルト状態またはNULLの場合はfalseを返す( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</li>
 <li>比較はバッファの長さと各文字列の中身が完全一致するかどうかで判定される</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string1_</td><td>比較対象1 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">string2_</td><td>比較対象2</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> str1 = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> str2 = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;str1);</div>
@@ -1063,16 +873,23 @@ Functions</h2></td></tr>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;str1);</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;str2);</div>
 <div class="ttc" id="acore__string_8h_html_ad68b356d6a7ddfeb2cb13f8270797ad4"><div class="ttname"><a href="#ad68b356d6a7ddfeb2cb13f8270797ad4">core_string_equal</a></div><div class="ttdeci">bool core_string_equal(const core_string_t *const string1_, const core_string_t *const string2_)</div><div class="ttdoc">2つのcore_string_tオブジェクトが保持する文字列が等しいかを比較する</div><div class="ttdef"><b>Definition</b> core_string.c:275</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">true</td><td>2つの文字列が等しい </td></tr>
-    <tr><td class="paramname">false</td><td>引数がNULL/未初期化、または文字列が異なる</td></tr>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">string1_</td><td>比較対象1。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string2_</td><td>比較対象2。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。">core_string_create()</a> </dd>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>2つの文字列が等しい </td></tr>
+    <tr><td class="paramname">false</td><td>引数がNULL/デフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) / 文字列長や中身が一致しない場合</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。">core_string_create()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
 
 </div>
 </div>
@@ -1095,19 +912,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>char* 文字列と <a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクトが保持する文字列が等しいかを比較する </p>
+<p>char*型文字列とcore_string_tオブジェクトが保持する文字列が等しいかを比較する </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>引数のどちらかが NULL または未初期化の場合は false を返す</li>
+<li>引数のどちらかが NULL またはデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)の場合は false を返す</li>
 <li>比較は文字列長と各文字が完全一致するかどうかで判定される</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">str1_</td><td>比較対象の C 文字列 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">string2_</td><td>比較対象の <a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> str2 = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;str2);</div>
 <div class="line"> </div>
@@ -1115,53 +925,26 @@ Functions</h2></td></tr>
 <div class="line">    <span class="comment">// 一致</span></div>
 <div class="line">}</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;str2);</div>
-<div class="ttc" id="acore__string_8h_html_af0dd30489c2d7d0dba8afe011affa0ab"><div class="ttname"><a href="#af0dd30489c2d7d0dba8afe011affa0ab">core_string_equal_from_char</a></div><div class="ttdeci">bool core_string_equal_from_char(const char *const str1_, const core_string_t *const string2_)</div><div class="ttdoc">char* 文字列と core_string_t オブジェクトが保持する文字列が等しいかを比較する</div><div class="ttdef"><b>Definition</b> core_string.c:301</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<div class="ttc" id="acore__string_8h_html_af0dd30489c2d7d0dba8afe011affa0ab"><div class="ttname"><a href="#af0dd30489c2d7d0dba8afe011affa0ab">core_string_equal_from_char</a></div><div class="ttdeci">bool core_string_equal_from_char(const char *const str1_, const core_string_t *const string2_)</div><div class="ttdoc">char*型文字列とcore_string_tオブジェクトが保持する文字列が等しいかを比較する</div><div class="ttdef"><b>Definition</b> core_string.c:301</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str1_</td><td>比較対象の文字列 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">string2_</td><td>比較対象のcore_string_tオブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">true</td><td>文字列が等しい </td></tr>
-    <tr><td class="paramname">false</td><td>引数が NULL / 未初期化、または文字列が異なる</td></tr>
+    <tr><td class="paramname">false</td><td>引数が NULL / デフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) / 文字列長や中身が一致しない場合</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ad68b356d6a7ddfeb2cb13f8270797ad4" title="2つのcore_string_tオブジェクトが保持する文字列が等しいかを比較する">core_string_equal()</a> </dd>
 <dd>
-<a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。">core_string_create()</a> </dd>
+<a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。">core_string_create()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a337ba6dea7e2cfea988e3d99b2892a8a" name="a337ba6dea7e2cfea988e3d99b2892a8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a337ba6dea7e2cfea988e3d99b2892a8a">&#9670;&#160;</a></span>core_string_equal_from_char_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_equal_from_char_test </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a435fa175da4e565410c9fbd56379092e" name="a435fa175da4e565410c9fbd56379092e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a435fa175da4e565410c9fbd56379092e">&#9670;&#160;</a></span>core_string_equal_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_equal_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
 
 </div>
 </div>
@@ -1180,50 +963,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>core_string_tオブジェクトが空かどうかを判定する </p>
+<p>core_string_tオブジェクトが保持する文字列格納バッファが空かどうかを判定する </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>引数がNULLまたは未初期化の場合は true を返す</li>
+<li>引数がNULLまたはデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)の場合は true を返す</li>
 <li>長さが0の文字列を保持している場合も true を返す</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>判定対象オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> <span class="keywordtype">string</span> = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="#a2f75582274ba14fc62dba48314aa18e9">core_string_is_empty</a>(&amp;<span class="keywordtype">string</span>)) {</div>
 <div class="line">    <span class="comment">// まだ初期化されていない or 空文字列</span></div>
 <div class="line">}</div>
-<div class="ttc" id="acore__string_8h_html_a2f75582274ba14fc62dba48314aa18e9"><div class="ttname"><a href="#a2f75582274ba14fc62dba48314aa18e9">core_string_is_empty</a></div><div class="ttdeci">bool core_string_is_empty(const core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトが空かどうかを判定する</div><div class="ttdef"><b>Definition</b> core_string.c:260</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<div class="ttc" id="acore__string_8h_html_a2f75582274ba14fc62dba48314aa18e9"><div class="ttname"><a href="#a2f75582274ba14fc62dba48314aa18e9">core_string_is_empty</a></div><div class="ttdeci">bool core_string_is_empty(const core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトが保持する文字列格納バッファが空かどうかを判定する</div><div class="ttdef"><b>Definition</b> core_string.c:260</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>判定対象オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">true</td><td>オブジェクトがNULL / 未初期化 / 空文字列である </td></tr>
+    <tr><td class="paramname">true</td><td>オブジェクトがNULL / デフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) / 空文字列である </td></tr>
     <tr><td class="paramname">false</td><td>文字列が1文字以上存在する</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad" title="core_string_t オブジェクトが保持している文字列の長さを取得する">core_string_length()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad" title="core_string_tオブジェクトが保持している文字列の長さを取得する">core_string_length()</a> </dd>
 <dd>
-<a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する">core_string_buffer_capacity()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a01853d15c47c5a0f7fa4be48d03645ab" name="a01853d15c47c5a0f7fa4be48d03645ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01853d15c47c5a0f7fa4be48d03645ab">&#9670;&#160;</a></span>core_string_is_empty_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_is_empty_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する。">core_string_buffer_capacity()</a> </dd></dl>
 
 </div>
 </div>
@@ -1242,25 +1008,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクトが保持している文字列の長さを取得する </p>
+<p>core_string_tオブジェクトが保持している文字列の長さを取得する </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
 <li>文字列の長さは終端文字 ('\0') を含まない</li>
 <li>引数が NULL の場合は <a class="el" href="define_8h.html#ab8e09edc08ec19f44d43b64923b4fb9d">INVALID_VALUE_U64</a> を返す</li>
-<li>未初期化のオブジェクトが渡された場合は 0 を返す</li>
+<li>デフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)のオブジェクトが渡された場合は 0 を返す</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>長さを取得する対象の <a class="el" href="structcore__string__t.html" title="core_string ラリブラリの文字列オブジェクト構造体">core_string_t</a> オブジェクト</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> str = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello&quot;</span>, &amp;str);</div>
 <div class="line">uint64_t len = <a class="code hl_function" href="#a2745d8d1a6f8de8f14e872db9fe382ad">core_string_length</a>(&amp;str); <span class="comment">// len = 5</span></div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;str);</div>
-<div class="ttc" id="acore__string_8h_html_a2745d8d1a6f8de8f14e872db9fe382ad"><div class="ttname"><a href="#a2745d8d1a6f8de8f14e872db9fe382ad">core_string_length</a></div><div class="ttdeci">uint64_t core_string_length(const core_string_t *const string_)</div><div class="ttdoc">core_string_t オブジェクトが保持している文字列の長さを取得する</div><div class="ttdef"><b>Definition</b> core_string.c:323</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+<div class="ttc" id="acore__string_8h_html_a2745d8d1a6f8de8f14e872db9fe382ad"><div class="ttname"><a href="#a2745d8d1a6f8de8f14e872db9fe382ad">core_string_length</a></div><div class="ttdeci">uint64_t core_string_length(const core_string_t *const string_)</div><div class="ttdoc">core_string_tオブジェクトが保持している文字列の長さを取得する</div><div class="ttdef"><b>Definition</b> core_string.c:323</div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>長さを取得する対象のcore_string_tオブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">INVALID_VALUE_U64</td><td>引数が NULL の場合 </td></tr>
     <tr><td class="paramname">0</td><td>未初期化のオブジェクトが渡された場合 </td></tr>
@@ -1268,26 +1034,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数で与えたsrc_文字列をコピーしてdst_オブジェクトを初期化する。">core_string_create()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2315ba27fe660a229700ed42941e7853" title="引数のsrc_をコピーして、dst_オブジェクトを初期化済み状態にする。">core_string_create()</a> </dd>
 <dd>
-<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="引数で与えた文字列型オブジェクトstring_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
-
-</div>
-</div>
-<a id="ab4a12b59f006def78fa20943f41989a3" name="ab4a12b59f006def78fa20943f41989a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4a12b59f006def78fa20943f41989a3">&#9670;&#160;</a></span>core_string_length_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_length_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#afca6eec986d7ac34a2c62f1071ecefe7" title="string_が保持するメモリを破棄する。">core_string_destroy()</a> </dd></dl>
 
 </div>
 </div>
@@ -1322,20 +1071,11 @@ Functions</h2></td></tr>
 
 <p>src_ の [from_, to_] 範囲の部分文字列を dst_ にコピーする </p>
 <dl class="section note"><dt>Note</dt><dd><ul>
-<li>from_ から to_ の範囲は **両端を含むインデックス**として扱われる</li>
-<li>dst_ のバッファサイズが不足している場合は自動でリサイズが行われる</li>
-<li>部分文字列のコピー後、dst_ の末尾には必ず終端文字 '\0' が付加される</li>
+<li>from_からto_ の範囲は両端を含むインデックスとして扱われる</li>
+<li>dst_のバッファサイズが不足している場合は自動でリサイズが行われる</li>
+<li>部分文字列のコピー後、dst_の末尾には必ず終端文字'\0'が付加される</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>部分文字列を抽出する元の文字列オブジェクト </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>抽出結果を格納する文字列オブジェクト </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">from_</td><td>抽出を開始するインデックス (0-based) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">to_</td><td>抽出を終了するインデックス (0-based, inclusive)</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> src = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;Hello World&quot;</span>, &amp;src);</div>
 <div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
@@ -1349,7 +1089,16 @@ Functions</h2></td></tr>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;dst);</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;src);</div>
 <div class="ttc" id="acore__string_8h_html_a56936fa3e107a529eb06b3382310cdc8"><div class="ttname"><a href="#a56936fa3e107a529eb06b3382310cdc8">core_string_substring_copy</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_substring_copy(const core_string_t *const src_, core_string_t *const dst_, uint16_t from_, uint16_t to_)</div><div class="ttdoc">src_ の [from_, to_] 範囲の部分文字列を dst_ にコピーする</div><div class="ttdef"><b>Definition</b> core_string.c:389</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>部分文字列を抽出する元の文字列オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>抽出結果を格納する文字列オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">from_</td><td>抽出を開始するインデックス (0-based) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">to_</td><td>抽出を終了するインデックス (0-based, inclusive)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td><ul>
 <li>from_ または to_ が不正 (from_ &gt; to_)</li>
@@ -1357,7 +1106,7 @@ Functions</h2></td></tr>
 </ul>
 </td></tr>
     <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td><ul>
-<li>src_ または dst_ が未初期化</li>
+<li>src_または dst_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)</li>
 <li>バッファのリサイズに失敗 </li>
 </ul>
 </td></tr>
@@ -1365,28 +1114,11 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する">core_string_buffer_capacity()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a5b358a3aea52a94688d9c2264caae31a" title="core_string_tオブジェクトのバッファサイズを取得する。">core_string_buffer_capacity()</a> </dd>
 <dd>
 <a class="el" href="#af32d68e2e133076debb96547c0be4f7b" title="core_string_tオブジェクトのバッファサイズをbuffer_size_に拡張する">core_string_buffer_resize()</a> </dd>
 <dd>
-<a class="el" href="#a7817b25a44830b3ac8998c49af78ca71" title="core_string_t オブジェクトが保持している文字列の先頭ポインタを取得する">core_string_cstr()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a8c5d8c81ac1c3b766804c8e0bf8f63d2" name="a8c5d8c81ac1c3b766804c8e0bf8f63d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c5d8c81ac1c3b766804c8e0bf8f63d2">&#9670;&#160;</a></span>core_string_substring_copy_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_substring_copy_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#a7817b25a44830b3ac8998c49af78ca71" title="core_string_tオブジェクトが保持している文字列の先頭ポインタを取得する">core_string_cstr()</a> </dd></dl>
 
 </div>
 </div>
@@ -1415,13 +1147,6 @@ Functions</h2></td></tr>
 <li>変換結果がint32_tの範囲外の場合もエラーを返す</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>変換対象の文字列オブジェクト </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">out_value_</td><td>変換結果を格納するポインタ</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> str = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;1234&quot;</span>, &amp;str);</div>
 <div class="line">int32_t value = 0;</div>
@@ -1431,32 +1156,22 @@ Functions</h2></td></tr>
 <div class="line">}</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;str);</div>
 <div class="ttc" id="acore__string_8h_html_a0438ebc58481d2fc3b69231bdc6613e2"><div class="ttname"><a href="#a0438ebc58481d2fc3b69231bdc6613e2">core_string_to_i32</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_to_i32(const core_string_t *const string_, int32_t *out_value_)</div><div class="ttdoc">core_string_tオブジェクトの内容をint32_t型整数に変換する。</div><div class="ttdef"><b>Definition</b> core_string.c:486</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">string_</td><td>変換対象の文字列オブジェクト。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out_value_</td><td>変換結果を格納するポインタ</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>引数string_またはout_value_がNULL </td></tr>
-    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>string_が未初期化、空文字列、変換失敗、または範囲外の値 </td></tr>
+    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>string_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)、空文字列、変換失敗、または範囲外の値 </td></tr>
     <tr><td class="paramname">CORE_STRING_SUCCESS</td><td>正常に変換が完了</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd>strtol() </dd></dl>
-
-</div>
-</div>
-<a id="a63cac2326aff4358a911de5ab1fc163e" name="a63cac2326aff4358a911de5ab1fc163e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63cac2326aff4358a911de5ab1fc163e">&#9670;&#160;</a></span>core_string_to_i32_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_to_i32_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -1496,15 +1211,6 @@ Functions</h2></td></tr>
 <li>必要に応じてdst_のバッファサイズを再確保する</li>
 </ul>
 </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>トリム対象の文字列オブジェクト </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>トリム結果の出力先オブジェクト </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ltrim_</td><td>左端のトリム対象文字 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">rtrim_</td><td>右端のトリム対象文字</td></tr>
-  </table>
-  </dd>
-</dl>
 <p>使用例: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> src = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_struct" href="structcore__string__t.html">core_string_t</a> dst = <a class="code hl_define" href="#a8612384ec41e1cc811811d81e9e13a33">CORE_STRING_INITIALIZER</a>;</div>
 <div class="line"><a class="code hl_function" href="#a2315ba27fe660a229700ed42941e7853">core_string_create</a>(<span class="stringliteral">&quot;  hello  &quot;</span>, &amp;src);</div>
@@ -1515,37 +1221,29 @@ Functions</h2></td></tr>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;src);</div>
 <div class="line"><a class="code hl_function" href="#afca6eec986d7ac34a2c62f1071ecefe7">core_string_destroy</a>(&amp;dst);</div>
 <div class="ttc" id="acore__string_8h_html_a8c27fdf7f1465a3fccaaa4d080019868"><div class="ttname"><a href="#a8c27fdf7f1465a3fccaaa4d080019868">core_string_trim</a></div><div class="ttdeci">CORE_STRING_ERROR_CODE core_string_trim(const core_string_t *const src_, core_string_t *const dst_, char ltrim_, char rtrim_)</div><div class="ttdoc">指定したトリム文字を取り除いた文字列をdst_にコピーする。</div><div class="ttdef"><b>Definition</b> core_string.c:428</div></div>
-</div><!-- fragment --><dl class="retval"><dt>Return values</dt><dd>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_</td><td>トリム対象の文字列オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst_</td><td>トリム結果の出力先オブジェクト。未初期化状態は不可。( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ltrim_</td><td>左端のトリム対象文字 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rtrim_</td><td>右端のトリム対象文字</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">CORE_STRING_INVALID_ARGUMENT</td><td>引数がNULL </td></tr>
-    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>src_が未初期化 または長さ取得に失敗 </td></tr>
+    <tr><td class="paramname">CORE_STRING_RUNTIME_ERROR</td><td>src_がデフォルト状態( <a class="el" href="#core_string_initialization_rule">core_string_initialization_rule</a> 参照)または長さ取得に失敗 </td></tr>
     <tr><td class="paramname">CORE_STRING_MEMORY_ALLOCATE_ERROR</td><td>メモリ再確保に失敗 </td></tr>
     <tr><td class="paramname">CORE_STRING_SUCCESS</td><td>正常終了</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad" title="core_string_t オブジェクトが保持している文字列の長さを取得する">core_string_length()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2745d8d1a6f8de8f14e872db9fe382ad" title="core_string_tオブジェクトが保持している文字列の長さを取得する">core_string_length()</a> </dd>
 <dd>
 <a class="el" href="#a56936fa3e107a529eb06b3382310cdc8" title="src_ の [from_, to_] 範囲の部分文字列を dst_ にコピーする">core_string_substring_copy()</a> </dd>
 <dd>
-<a class="el" href="#a919004c0d49138203ae97de414688c70" title="core_string_tオブジェクト内の文字列格納バッファに対し、buffer_size_で指定したメモリ領域を確保する">core_string_buffer_reserve()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a9edaee95c94fb9c693a8d5f05763ad21" name="a9edaee95c94fb9c693a8d5f05763ad21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9edaee95c94fb9c693a8d5f05763ad21">&#9670;&#160;</a></span>core_string_trim_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core_string_trim_test </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a class="el" href="#a919004c0d49138203ae97de414688c70" title="string_オブジェクトに指定サイズの文字列バッファを確保する。">core_string_buffer_reserve()</a> </dd></dl>
 
 </div>
 </div>
