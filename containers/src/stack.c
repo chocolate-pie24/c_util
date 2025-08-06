@@ -107,7 +107,7 @@ STACK_ERROR_CODE stack_pop(const stack_t* const stack_, void* const out_data_) {
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
     char* dst = (char*)(out_data_);
-    char* src = (char*)(internal_data->memory_pool + internal_data->top_index * internal_data->aligned_element_size);
+    char* src = (char*)(internal_data->memory_pool + (internal_data->top_index - 1) * internal_data->aligned_element_size);
     for(uint64_t i = 0; i != internal_data->aligned_element_size; ++i) {
         dst[i] = src[i];
     }
@@ -128,7 +128,7 @@ STACK_ERROR_CODE stack_pop_peek_ptr(const stack_t* const stack_, const void* *ou
         return STACK_ERROR_STACK_EMPTY;
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
-    *out_data_ = (internal_data->memory_pool + internal_data->top_index * internal_data->aligned_element_size);
+    *out_data_ = (const void*)(internal_data->memory_pool + (internal_data->top_index - 1) * internal_data->aligned_element_size);
 
     return STACK_ERROR_CODE_SUCCESS;
 }
