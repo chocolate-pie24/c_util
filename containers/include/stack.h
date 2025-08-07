@@ -1,6 +1,6 @@
 // stackオブジェクトコンセプト
 // - 当面は最低限の機能のみでシンプルなオブジェクトを作成する。必要に応じて機能追加予定
-// - stack_createで作成したバッファサイズは変更されず、拡張はしない
+// - オブジェクトをpushする際のバッファの動的拡張は行わないが、明示的にresize、reserveにより拡張することは許可
 // - 拡張を要する場合にはdynamic_arrayを使用する
 #pragma once
 
@@ -28,6 +28,10 @@ void stack_default_create(stack_t* const stack_);
 STACK_ERROR_CODE stack_create(uint64_t element_size_, uint8_t alignment_requirement_, uint64_t max_element_count_, stack_t* const stack_);
 
 void stack_destroy(stack_t* const stack_);
+
+STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack_);
+
+STACK_ERROR_CODE stack_resize(uint64_t max_element_count_, stack_t* const stack_);
 
 STACK_ERROR_CODE stack_push(stack_t* const stack_, const void* const data_);
 

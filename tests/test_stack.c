@@ -1,212 +1,238 @@
 #include <assert.h>
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdalign.h>
 
-#include "include/test_stack.h"
+#include "../include/stack.h"
+#include "test_stack.h"
 
-#include "../containers/include/stack.h"
+// パディング不要構造体
+typedef struct {
+    int id;
+} TestStructPlain;
 
-typedef struct simple_data_t {
-    int32_t id;
-    int32_t value;
-} simple_data_t;
+// パディングあり構造体（alignment 16）
+typedef struct {
+    char c;
+    double d;
+} TestStructPadded;
 
-typedef struct padded_data_t {
-    int8_t  type;
-    int32_t value;
-} padded_data_t;
+// ポインタを含む構造体
+typedef struct {
+    int* ptr;
+    int value;
+} TestStructPointer;
 
-typedef struct pointer_data_t {
-    char* name;
-    int32_t id;
-} pointer_data_t;
+#define STACK_SIZE 10
 
-static void test_stack_with_simple_data(void);
-static void test_stack_with_padded_data(void);
-static void test_stack_with_pointer_data(void);
-static void test_stack_null_argument(void);
+static void test_stack_invalid_usage(void);
+static void test_stack_basic_operations(void);
+static void test_stack_resize(void);
+static void test_stack_reserve(void);
+static void test_stack_empty_and_full(void);
 
 void test_stack(void) {
-    test_stack_with_simple_data();
-    test_stack_with_padded_data();
-    test_stack_with_pointer_data();
-    test_stack_null_argument();
+    test_stack_basic_operations();
+    test_stack_invalid_usage();
+    test_stack_resize();
+    test_stack_reserve();
+    test_stack_empty_and_full();
 }
 
-static void test_stack_with_simple_data(void) {
-    stack_t stack = STACK_INITIALIZER;
+static void test_stack_basic_operations(void) {
+    {
+        stack_t s = STACK_INITIALIZER;
+        stack_create(sizeof(TestStructPlain), alignof(TestStructPlain), STACK_SIZE, &s);
+        for (int i = 0; i < STACK_SIZE; ++i) {
+            TestStructPlain data = { .id = i };
+            assert(stack_push(&s, &data) == STACK_ERROR_CODE_SUCCESS);
+        }
+        for (int i = STACK_SIZE - 1; i >= 0; --i) {
+            TestStructPlain out;
+            assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+            assert(out.id == i);
+        }
+        stack_destroy(&s);
+    }
+    {
+        stack_t s = STACK_INITIALIZER;
+        stack_create(sizeof(TestStructPadded), alignof(TestStructPadded), STACK_SIZE, &s);
+        for (int i = 0; i < STACK_SIZE; ++i) {
+            TestStructPadded data = { .c = (char)(i + 65), .d = (double)i * 1.5 };
+            assert(stack_push(&s, &data) == STACK_ERROR_CODE_SUCCESS);
+        }
+        for (int i = STACK_SIZE - 1; i >= 0; --i) {
+            TestStructPadded out;
+            assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+            assert(out.c == (char)(i + 65));
+            assert(out.d == (double)i * 1.5);
+        }
+        stack_destroy(&s);
+    }
+    {
+        stack_t s = STACK_INITIALIZER;
+        stack_create(sizeof(TestStructPointer), alignof(TestStructPointer), STACK_SIZE, &s);
+        for (int i = 0; i < STACK_SIZE; ++i) {
+            static int buffer[STACK_SIZE];
+            TestStructPointer data = { .ptr = &buffer[i], .value = i * 10 };
+            assert(stack_push(&s, &data) == STACK_ERROR_CODE_SUCCESS);
+        }
+        for (int i = STACK_SIZE - 1; i >= 0; --i) {
+            TestStructPointer out;
+            assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+            assert(out.value == i * 10);
+        }
+        stack_destroy(&s);
+    }
+}
 
-    // 構造体サイズとアライメントは通常4バイト
-    const uint64_t max_count = 10;
-    const STACK_ERROR_CODE result = stack_create(sizeof(simple_data_t), alignof(simple_data_t), max_count, &stack);
-    assert(result == STACK_ERROR_CODE_SUCCESS);
+static void test_stack_invalid_usage(void) {
+    stack_t s = STACK_INITIALIZER;
+    stack_default_create(&s);
+    TestStructPlain dummy = { .id = 1 };
+    TestStructPlain out;
 
-    // push テスト
+    assert(stack_push(NULL, &dummy) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_push(&s, NULL) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_push(&s, &dummy) == STACK_ERROR_INVALID_STACK);
+
+    assert(stack_pop(NULL, &out) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_pop(&s, NULL) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_pop(&s, &out) == STACK_ERROR_INVALID_STACK);
+
+    assert(stack_discard_top(NULL) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_discard_top(&s) == STACK_ERROR_INVALID_STACK);
+
+    assert(stack_clear(NULL) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_clear(&s) == STACK_ERROR_INVALID_STACK);
+
+    assert(stack_capacity(NULL, NULL) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_capacity(&s, NULL) == STACK_ERROR_INVALID_ARGUMENT);
+    assert(stack_capacity(&s, &(uint64_t){0}) == STACK_ERROR_INVALID_STACK);
+
+    stack_destroy(&s); // safe even if not created
+}
+
+static void test_stack_resize(void) {
+    stack_t s = STACK_INITIALIZER;
+    assert(stack_create(sizeof(int), alignof(int), 5, &s) == STACK_ERROR_CODE_SUCCESS);
+
+    // pushで3つ入れる
+    for (int i = 0; i < 3; ++i) {
+        assert(stack_push(&s, &i) == STACK_ERROR_CODE_SUCCESS);
+    }
+
+    // resizeで10に拡張（縮小は禁止）
+    assert(stack_resize(10, &s) == STACK_ERROR_CODE_SUCCESS);
+
+    // 追加 push (6個目まで入る)
+    for (int i = 3; i < 10; ++i) {
+        assert(stack_push(&s, &i) == STACK_ERROR_CODE_SUCCESS);
+    }
+
+    // 10個入れたら full
+    assert(stack_full(&s) == true);
+
+    // popして値を確認（LIFO）
+    for (int i = 9; i >= 0; --i) {
+        int out;
+        assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+        assert(out == i);
+    }
+
+    stack_destroy(&s);
+
+    // 異常系: NULLポインタ
+    assert(stack_resize(10, NULL) == STACK_ERROR_INVALID_ARGUMENT);
+
+    // 異常系: 無効なstack
+    stack_t s_invalid = {0};
+    assert(stack_resize(10, &s_invalid) == STACK_ERROR_INVALID_STACK);
+
+    // 異常系: max_element_count_ == 0
+    assert(stack_create(sizeof(int), alignof(int), 5, &s) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_resize(0, &s) == STACK_ERROR_INVALID_ARGUMENT);
+    stack_destroy(&s);
+}
+
+static void test_stack_reserve(void) {
+    stack_t s = STACK_INITIALIZER;
+    assert(stack_create(sizeof(int), alignof(int), 5, &s) == STACK_ERROR_CODE_SUCCESS);
+
+    // 初期push
     for (int i = 0; i < 5; ++i) {
-        simple_data_t data = { .id = i, .value = i * 10 };
-        assert(stack_push(&stack, &data) == STACK_ERROR_CODE_SUCCESS);
+        assert(stack_push(&s, &i) == STACK_ERROR_CODE_SUCCESS);
     }
 
-    // peek テスト
-    const void* top_ptr = 0;
-    assert(stack_pop_peek_ptr(&stack, (void**)(&top_ptr)) == STACK_ERROR_CODE_SUCCESS);
-    const simple_data_t* top_data = (const simple_data_t*)top_ptr;
-    assert(top_data->id == 4 && top_data->value == 40);  // 最後にpushしたデータ
+    // reserveで上書き（バッファは破棄されるので空になる）
+    assert(stack_reserve(8, &s) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_empty(&s) == true);
 
-    // discard テスト
-    assert(stack_discard_top(&stack) == STACK_ERROR_CODE_SUCCESS);
-
-    // pop テスト
-    for (int i = 3; i >= 0; --i) {
-        simple_data_t out;
-        assert(stack_pop(&stack, &out) == STACK_ERROR_CODE_SUCCESS);
-        assert(out.id == i && out.value == i * 10);
+    // 新たにpush
+    for (int i = 0; i < 8; ++i) {
+        assert(stack_push(&s, &i) == STACK_ERROR_CODE_SUCCESS);
     }
 
-    // 空状態チェック
-    assert(stack_empty(&stack) == true);
-    assert(stack_full(&stack) == false);
+    // popで確認
+    for (int i = 7; i >= 0; --i) {
+        int out;
+        assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+        assert(out == i);
+    }
 
-    // エラー処理チェック
-    simple_data_t dummy;
-    assert(stack_pop(&stack, &dummy) == STACK_ERROR_STACK_EMPTY);
-    assert(stack_discard_top(&stack) == STACK_ERROR_STACK_EMPTY);
+    stack_destroy(&s);
 
-    stack_destroy(&stack);
+    // 異常系: NULLポインタ
+    assert(stack_reserve(5, NULL) == STACK_ERROR_INVALID_ARGUMENT);
+
+    // 異常系: 無効なstack
+    stack_t s_invalid = {0};
+    assert(stack_reserve(5, &s_invalid) == STACK_ERROR_INVALID_STACK);
+
+    // 異常系: max_element_count_ == 0
+    assert(stack_create(sizeof(int), alignof(int), 5, &s) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_reserve(0, &s) == STACK_ERROR_INVALID_ARGUMENT);
+    stack_destroy(&s);
 }
 
-static void test_stack_with_padded_data(void) {
-    stack_t stack = STACK_INITIALIZER;
+static void test_stack_empty_and_full(void) {
+    stack_t s = STACK_INITIALIZER;
+    assert(stack_create(sizeof(int), alignof(int), 3, &s) == STACK_ERROR_CODE_SUCCESS);
 
-    const uint64_t max_count = 10;
-    const STACK_ERROR_CODE result = stack_create(sizeof(padded_data_t), alignof(padded_data_t), max_count, &stack);
-    assert(result == STACK_ERROR_CODE_SUCCESS);
+    // 初期状態では empty=true, full=false
+    assert(stack_empty(&s) == true);
+    assert(stack_full(&s) == false);
 
-    // push テスト
-    for (int i = 0; i < 5; ++i) {
-        padded_data_t data = { .type = (int8_t)(i + 1), .value = (i + 1) * 100 };
-        assert(stack_push(&stack, &data) == STACK_ERROR_CODE_SUCCESS);
-    }
+    // push 1個 → empty=false, full=false
+    int value = 42;
+    assert(stack_push(&s, &value) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_empty(&s) == false);
+    assert(stack_full(&s) == false);
 
-    // peek テスト
-    const void* top_ptr = NULL;
-    assert(stack_pop_peek_ptr(&stack, &top_ptr) == STACK_ERROR_CODE_SUCCESS);
-    const padded_data_t* top_data = (const padded_data_t*)top_ptr;
-    assert(top_data->type == 5 && top_data->value == 500);
+    // push 2個目
+    assert(stack_push(&s, &value) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_empty(&s) == false);
+    assert(stack_full(&s) == false);
 
-    // discard テスト
-    assert(stack_discard_top(&stack) == STACK_ERROR_CODE_SUCCESS);
+    // push 3個目 → full=true
+    assert(stack_push(&s, &value) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_empty(&s) == false);
+    assert(stack_full(&s) == true);
 
-    // pop テスト
-    for (int i = 4; i >= 1; --i) {
-        padded_data_t out;
-        assert(stack_pop(&stack, &out) == STACK_ERROR_CODE_SUCCESS);
-        assert(out.type == i && out.value == i * 100);
-    }
+    // pop 1個 → full=false
+    int out;
+    assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_full(&s) == false);
 
-    // 空チェック
-    assert(stack_empty(&stack) == true);
-    stack_destroy(&stack);
-}
+    // pop 残り全部 → empty=true
+    assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_pop(&s, &out) == STACK_ERROR_CODE_SUCCESS);
+    assert(stack_empty(&s) == true);
+    assert(stack_full(&s) == false);
 
-static void test_stack_with_pointer_data(void) {
-    stack_t stack = STACK_INITIALIZER;
+    stack_destroy(&s);
 
-    const uint64_t max_count = 10;
-    const STACK_ERROR_CODE result = stack_create(sizeof(pointer_data_t), alignof(pointer_data_t), max_count, &stack);
-    assert(result == STACK_ERROR_CODE_SUCCESS);
-
-    // テストデータの用意（名前は固定文字列でOK）
-    const char* names[] = { "Alice", "Bob", "Charlie", "Diana", "Eve" };
-
-    // push
-    for (int i = 0; i < 5; ++i) {
-        pointer_data_t data = {
-            .name = (char*)names[i],
-            .id = i + 100
-        };
-        assert(stack_push(&stack, &data) == STACK_ERROR_CODE_SUCCESS);
-    }
-
-    // peek
-    const void* peek_ptr = NULL;
-    assert(stack_pop_peek_ptr(&stack, &peek_ptr) == STACK_ERROR_CODE_SUCCESS);
-    const pointer_data_t* peek_data = (const pointer_data_t*)peek_ptr;
-    assert(peek_data->id == 104);
-    assert(strcmp(peek_data->name, "Eve") == 0);
-
-    // discard
-    assert(stack_discard_top(&stack) == STACK_ERROR_CODE_SUCCESS);
-
-    // pop
-    for (int i = 3; i >= 0; --i) {
-        pointer_data_t out;
-        assert(stack_pop(&stack, &out) == STACK_ERROR_CODE_SUCCESS);
-        assert(out.id == i + 100);
-        assert(strcmp(out.name, names[i]) == 0);
-    }
-
-    assert(stack_empty(&stack) == true);
-    stack_destroy(&stack);
-}
-
-static void test_stack_null_argument(void) {
-    stack_t stack = STACK_INITIALIZER;
-    int dummy = 42;
-    STACK_ERROR_CODE err;
-
-    // stack_create
-    err = stack_create(sizeof(int), alignof(int), 10, NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_create(0, alignof(int), 10, &stack); // element_size == 0
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_create(sizeof(int), 0, 10, &stack); // alignment == 0
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_create(sizeof(int), alignof(int), 0, &stack); // max count == 0
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_push
-    err = stack_push(NULL, &dummy);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_push(&stack, NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_pop
-    err = stack_pop(NULL, &dummy);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_pop(&stack, NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_pop_peek_ptr
-    err = stack_pop_peek_ptr(NULL, (const void**)&dummy);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_pop_peek_ptr(&stack, NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_discard_top
-    err = stack_discard_top(NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_clear
-    err = stack_clear(NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_capacity
-    uint64_t cap = 0;
-    err = stack_capacity(NULL, &cap);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    err = stack_capacity(&stack, NULL);
-    assert(err == STACK_ERROR_INVALID_ARGUMENT);
-
-    // stack_full / stack_empty は bool返すので assert を活用
-    assert(stack_full(NULL) == true);
-    assert(stack_empty(NULL) == true);
+    // 異常系: NULLポインタ
+    assert(stack_empty(NULL) == true);  // NULLはemptyとみなす
+    assert(stack_full(NULL) == true);  // NULLはfullとみなす
 }

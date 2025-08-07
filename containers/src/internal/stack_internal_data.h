@@ -9,5 +9,6 @@ typedef struct stack_internal_data_t {
     uint64_t aligned_element_size;  /**< アライメントされた各オブジェクトに必要なメモリ領域 */
     uint64_t top_index;
     uint8_t alignment_requirement;  /**< 格納するオブジェクトのメモリアラインメント要件 */
+    uint8_t valid_flags;
     void* memory_pool;              /**< オブジェクト格納先バッファ */
 } stack_internal_data_t;
