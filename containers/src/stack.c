@@ -1,3 +1,14 @@
+/**
+ * @file stack.c
+ * @author chocolate-pie24
+ * @brief スタックオブジェクト(stack_t)用API関数の実装ファイル
+ *
+ * @version 0.1
+ * @date 2025-07-20
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdalign.h>
@@ -37,7 +48,6 @@ void stack_default_create(stack_t* const stack_) {
     stack_->internal_data = 0;
 }
 
-// max_element_count_は0を指定しても良いが、この関数の後でのresize、reserveは必須。
 STACK_ERROR_CODE stack_create(uint64_t element_size_, uint8_t alignment_requirement_, uint64_t max_element_count_, stack_t* const stack_) {
     CHECK_ARG_NULL_RETURN_ERROR("stack_create", "stack_", stack_);
     if(0 == element_size_ || 0 == alignment_requirement_ || 0 == max_element_count_) {
@@ -96,8 +106,6 @@ void stack_destroy(stack_t* const stack_) {
     stack_->internal_data = 0;
 }
 
-// stack_reserveを読んだ場合は、スタックの内部メモリは全て破棄される(このため、内部データを破棄して良い場合はresizeではなく、こちらを呼ぶ方が良い)
-// stack_reserveを呼ぶ前に、stack_createでオブジェクトのアライメント要件等を初期化していく必要がある(=valid_stackである必要性がある)
 STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack_) {
     CHECK_ARG_NULL_RETURN_ERROR("stack_reserve", "stack_", stack_);
     if(0 == max_element_count_) {
@@ -124,8 +132,6 @@ STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack
     return STACK_ERROR_CODE_SUCCESS;
 }
 
-// resizeはスタック内部のデータを保持した状態でメモリを拡張する
-// サイズを縮小する方向は許可しない
 STACK_ERROR_CODE stack_resize(uint64_t max_element_count_, stack_t* const stack_) {
     CHECK_ARG_NULL_RETURN_ERROR("stack_resize", "stack_", stack_);
     if(0 == max_element_count_) {
@@ -220,7 +226,6 @@ STACK_ERROR_CODE stack_pop(const stack_t* const stack_, void* const out_data_) {
     return STACK_ERROR_CODE_SUCCESS;
 }
 
-// スタックのtopへの参照をconst void*として出力(スタックの中身は削除しない)
 STACK_ERROR_CODE stack_pop_peek_ptr(const stack_t* const stack_, const void* *out_data_) {
     CHECK_ARG_NULL_RETURN_ERROR("stack_pop_peek_ptr", "stack_", stack_);
     CHECK_ARG_NULL_RETURN_ERROR("stack_pop_peek_ptr", "out_data_", out_data_);
@@ -238,7 +243,6 @@ STACK_ERROR_CODE stack_pop_peek_ptr(const stack_t* const stack_, const void* *ou
     return STACK_ERROR_CODE_SUCCESS;
 }
 
-// スタックのtopのデータを破棄
 STACK_ERROR_CODE stack_discard_top(const stack_t* const stack_) {
     CHECK_ARG_NULL_RETURN_ERROR("stack_discard_top", "stack_", stack_);
     if(!valid_stack(stack_)) {    // internal_dataが0の場合にstack_empty=trueとなるため、この判定と下のstack_emptyの判定を入れ替えないこと！！
@@ -277,7 +281,6 @@ STACK_ERROR_CODE stack_capacity(const stack_t* const stack_, uint64_t* const out
     return STACK_ERROR_CODE_SUCCESS;
 }
 
-// 与えられたスタックが未初期であればワーニングを出し、trueを返す
 bool stack_full(const stack_t* const stack_) {
     if(!valid_stack(stack_)) {
         WARN_MESSAGE("stack_full - Provided stack is not valid.");
@@ -290,7 +293,6 @@ bool stack_full(const stack_t* const stack_) {
     return false;
 }
 
-// 与えられたスタックが未初期であればワーニングを出し、trueを返す
 bool stack_empty(const stack_t* const stack_) {
     if(!valid_stack(stack_)) {
         WARN_MESSAGE("stack_empty - Provided stack is not valid.");
