@@ -11,7 +11,7 @@
  */
 #include <stdint.h>
 #include <stdbool.h>
-#include <stdalign.h>
+#include <inttypes.h>
 
 #include "../include/stack.h"
 
@@ -24,7 +24,7 @@ typedef enum FLAG_BIT_POSITION {
     FLAG_BIT_ELEMENT_SIZE = 0x00,
     FLAG_BIT_MAX_ELEMENT_COUNT = 0x01,
     FLAG_BIT_ALIGNMENT_REQUIREMENT = 0x02,
-    FLAG_BIT_MAX = 0x05,
+    FLAG_BIT_MAX = 0x03,
 } FLAG_BIT_POSITION;
 
 #define CHECK_ARG_NULL_RETURN_ERROR(func_name_, arg_name_, ptr_) \
@@ -42,6 +42,7 @@ typedef enum FLAG_BIT_POSITION {
 static bool valid_stack(const stack_t* const stack_);
 static void flag_set(FLAG_BIT_POSITION bit_pos_, bool should_on_, uint8_t* dst_);
 static bool flag_get(FLAG_BIT_POSITION bit_pos_, uint8_t flags_);
+static bool is_power_of_two(uint64_t val_);
 
 void stack_default_create(stack_t* const stack_) {
     CHECK_ARG_NULL_RETURN_VOID("stack_default_create", "stack_", stack_);
@@ -54,13 +55,17 @@ STACK_ERROR_CODE stack_create(uint64_t element_size_, uint8_t alignment_requirem
         ERROR_MESSAGE("stack_create - Arguments element_size_ , alignment_requirement_ and max_element_count_ require non zero value.");
         return STACK_ERROR_INVALID_ARGUMENT;
     }
+    if(!is_power_of_two(alignment_requirement_)) {
+        ERROR_MESSAGE("stack_create - Argument alignment_requirement_ must be a power of two.");
+        return STACK_ERROR_INVALID_ARGUMENT;
+    }
     stack_destroy(stack_);
     stack_->internal_data = core_malloc(sizeof(stack_internal_data_t));
     if(0 == stack_->internal_data) {
         ERROR_MESSAGE("stack_create - Failed to allocate internal_data memory.");
         return STACK_ERROR_MEMORY_ALLOCATE_ERROR;
     }
-    core_zero_memory(stack_->internal_data, sizeof(stack_t));
+    core_zero_memory(stack_->internal_data, sizeof(stack_internal_data_t));
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
     internal_data->valid_flags = 0;
 
@@ -82,15 +87,19 @@ STACK_ERROR_CODE stack_create(uint64_t element_size_, uint8_t alignment_requirem
     uint64_t padding_size = internal_data->alignment_requirement - diff;    // パディングサイズ
     padding_size = padding_size % internal_data->alignment_requirement;     // ピッタリの時のために計算
     internal_data->aligned_element_size = internal_data->element_size + padding_size;
-    internal_data->buffer_capacity = internal_data->aligned_element_size * internal_data->max_element_count;
+    if(internal_data->aligned_element_size > (UINT64_MAX / max_element_count_)) {
+        ERROR_MESSAGE("stack_create - Provided max_element_count_ is too big.");
+        return STACK_ERROR_INVALID_ARGUMENT;
+    }
+    internal_data->buffer_size = internal_data->aligned_element_size * internal_data->max_element_count;
     internal_data->top_index = 0;
 
-    internal_data->memory_pool = core_malloc(internal_data->buffer_capacity);
+    internal_data->memory_pool = core_malloc(internal_data->buffer_size);
     if(0 == internal_data->memory_pool) {
         ERROR_MESSAGE("stack_create - Failed to allocate memory_pool memory.");
         return STACK_ERROR_MEMORY_ALLOCATE_ERROR;
     }
-    core_zero_memory(internal_data->memory_pool, internal_data->buffer_capacity);
+    core_zero_memory(internal_data->memory_pool, internal_data->buffer_size);
 
     return STACK_ERROR_CODE_SUCCESS;
 }
@@ -117,18 +126,26 @@ STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack
         return STACK_ERROR_INVALID_STACK;
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
-    internal_data->max_element_count = max_element_count_;
-    internal_data->buffer_capacity = internal_data->aligned_element_size * max_element_count_;
-    internal_data->top_index = 0;
+    if(internal_data->aligned_element_size > (UINT64_MAX / max_element_count_)) {
+        ERROR_MESSAGE("stack_reserve - Provided max_element_count_ is too big.");
+        return STACK_ERROR_INVALID_ARGUMENT;
+    }
 
-    core_free(internal_data->memory_pool);
-    internal_data->memory_pool = 0;
-    internal_data->memory_pool = core_malloc(internal_data->buffer_capacity);
-    if(0 == internal_data->memory_pool) {
-        ERROR_MESSAGE("stack_create - Failed to allocate memory_pool memory.");
+    const uint64_t new_buffer_size = internal_data->aligned_element_size * max_element_count_;
+    void* new_buffer = core_malloc(new_buffer_size);
+    if(0 == new_buffer) {
+        ERROR_MESSAGE("stack_reserve - Failed to allocate new buffer memory.");
         return STACK_ERROR_MEMORY_ALLOCATE_ERROR;
     }
-    core_zero_memory(internal_data->memory_pool, internal_data->buffer_capacity);
+    core_zero_memory(new_buffer, new_buffer_size);
+
+    void* old_buffer_ptr = internal_data->memory_pool;
+    internal_data->memory_pool = new_buffer;
+    internal_data->max_element_count = max_element_count_;
+    internal_data->buffer_size = internal_data->aligned_element_size * max_element_count_;
+    internal_data->top_index = 0;
+
+    core_free((void*)old_buffer_ptr);
     return STACK_ERROR_CODE_SUCCESS;
 }
 
@@ -147,40 +164,39 @@ STACK_ERROR_CODE stack_resize(uint64_t max_element_count_, stack_t* const stack_
         ERROR_MESSAGE("stack_resize - Shrinking the buffer is not allowed.");
         return STACK_ERROR_INVALID_ARGUMENT;
     }
+    if(internal_data->aligned_element_size > (UINT64_MAX / max_element_count_)) {
+        ERROR_MESSAGE("stack_resize - Provided max_element_count_ is too big.");
+        return STACK_ERROR_INVALID_ARGUMENT;
+    }
 
-    // 旧データを退避
-    const uint64_t old_capacity = internal_data->buffer_capacity;
+    // データコピートランザクション
+    //  新領域の確保とデータのコピーに失敗した際に元の状態に戻せるようにするため、
+    //  新領域確保 -> データコピー -> ポインタ差し替え -> 旧領域削除
+    //  の手順を踏む
+
+    // 新バッファメモリ確保
+    const uint64_t new_buffer_size = internal_data->aligned_element_size * max_element_count_;
+    void* new_buffer = core_malloc(new_buffer_size);
+    if(0 == new_buffer) {
+        ERROR_MESSAGE("stack_resize - Failed to allocate new buffer memory.");
+        return STACK_ERROR_MEMORY_ALLOCATE_ERROR;
+    }
+    core_zero_memory(new_buffer, new_buffer_size);
+
+    // 旧バッファからデータコピー
     char* old_buffer_ptr = (char*)(internal_data->memory_pool);
-    char* tmp_buffer_ptr = core_malloc(old_capacity);
-    if(0 == tmp_buffer_ptr) {
-        ERROR_MESSAGE("stack_resize - Failed to allocate temporary buffer.");
-        return STACK_ERROR_MEMORY_ALLOCATE_ERROR;
-    }
-    for(uint64_t i = 0; i != old_capacity; ++i) {
-        tmp_buffer_ptr[i] = old_buffer_ptr[i];
+    char* new_buffer_ptr = (char*)(new_buffer);
+    for(uint64_t i = 0; i != (internal_data->aligned_element_size * internal_data->top_index); ++i) {
+        new_buffer_ptr[i] = old_buffer_ptr[i];
     }
 
-    // 新バッファ用internal_data更新
+    // ポインタ差し替え
+    internal_data->memory_pool = new_buffer;
+
     internal_data->max_element_count = max_element_count_;
-    internal_data->buffer_capacity = internal_data->aligned_element_size * max_element_count_;
+    internal_data->buffer_size = new_buffer_size;
 
-    // 新バッファ用メモリーを確保
-    core_free(internal_data->memory_pool);
-    internal_data->memory_pool = 0;
-    internal_data->memory_pool = core_malloc(internal_data->buffer_capacity);
-    if(0 == internal_data->memory_pool) {
-        core_free(tmp_buffer_ptr);
-        ERROR_MESSAGE("stack_create - Failed to allocate memory_pool memory.");
-        return STACK_ERROR_MEMORY_ALLOCATE_ERROR;
-    }
-    core_zero_memory(internal_data->memory_pool, internal_data->buffer_capacity);
-
-    // 退避してあるデータを復元
-    char* new_buffer_ptr = (char*)(internal_data->memory_pool);
-    for(uint64_t i = 0; i != old_capacity; ++i) {
-        new_buffer_ptr[i] = tmp_buffer_ptr[i];
-    }
-    core_free(tmp_buffer_ptr);
+    core_free((void*)(old_buffer_ptr));
     return STACK_ERROR_CODE_SUCCESS;
 }
 
@@ -196,9 +212,12 @@ STACK_ERROR_CODE stack_push(stack_t* const stack_, const void* const data_) {
         return STACK_ERROR_STACK_FULL;
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
-    char* dst = (char*)(internal_data->memory_pool + internal_data->top_index * internal_data->aligned_element_size);
+    char* base = (char*)(internal_data->memory_pool);
+    char* dst = base + (internal_data->top_index * internal_data->aligned_element_size);
     char* src = (char*)(data_);
-    for(uint64_t i = 0; i != internal_data->aligned_element_size; ++i) {
+    core_zero_memory((void*)dst, internal_data->aligned_element_size);  // この後のコピーではelement_size分しかコピーされないため、パディング領域が未初期化になる。
+                                                                        // この場合、resizeでバッファをコピーする際に未初期化領域にアクセスすることになり、valgrind等でワーニングが出る
+    for(uint64_t i = 0; i != internal_data->element_size; ++i) {
         dst[i] = src[i];
     }
     internal_data->top_index++;
@@ -218,8 +237,9 @@ STACK_ERROR_CODE stack_pop(const stack_t* const stack_, void* const out_data_) {
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
     char* dst = (char*)(out_data_);
-    char* src = (char*)(internal_data->memory_pool + (internal_data->top_index - 1) * internal_data->aligned_element_size);
-    for(uint64_t i = 0; i != internal_data->aligned_element_size; ++i) {
+    char* base = (char*)(internal_data->memory_pool);
+    char* src = base + ((internal_data->top_index - 1) * internal_data->aligned_element_size);
+    for(uint64_t i = 0; i != internal_data->element_size; ++i) {
         dst[i] = src[i];
     }
     internal_data->top_index--;
@@ -238,7 +258,8 @@ STACK_ERROR_CODE stack_pop_peek_ptr(const stack_t* const stack_, const void* *ou
         return STACK_ERROR_STACK_EMPTY;
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
-    *out_data_ = (const void*)(internal_data->memory_pool + (internal_data->top_index - 1) * internal_data->aligned_element_size);
+    char* base = (char*)(internal_data->memory_pool);
+    *out_data_ = (const void*)(base + (internal_data->top_index - 1) * internal_data->aligned_element_size);
 
     return STACK_ERROR_CODE_SUCCESS;
 }
@@ -277,7 +298,7 @@ STACK_ERROR_CODE stack_capacity(const stack_t* const stack_, uint64_t* const out
         return STACK_ERROR_INVALID_STACK;
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
-    *out_capacity_ = internal_data->buffer_capacity;
+    *out_capacity_ = internal_data->max_element_count;
     return STACK_ERROR_CODE_SUCCESS;
 }
 
@@ -337,17 +358,17 @@ void stack_debug_print(const stack_t* const stack_) {
         return;
     }
     stack_internal_data_t* internal_data = (stack_internal_data_t*)(stack_->internal_data);
-    DEBUG_MESSAGE("\telement_size          : %lld", internal_data->element_size);
-    DEBUG_MESSAGE("\tbuffer_capacity(byte) : %lld", internal_data->buffer_capacity);
-    DEBUG_MESSAGE("\tmax_element_count     : %lld", internal_data->max_element_count);
-    DEBUG_MESSAGE("\taligned_element_size  : %lld", internal_data->aligned_element_size);
-    DEBUG_MESSAGE("\ttop_index             : %lld", internal_data->top_index);
-    DEBUG_MESSAGE("\talignment_requirement : %lld", internal_data->alignment_requirement);
+    DEBUG_MESSAGE("\telement_size          : %" PRIu64, internal_data->element_size);
+    DEBUG_MESSAGE("\tbuffer_size(byte)     : %" PRIu64, internal_data->buffer_size);
+    DEBUG_MESSAGE("\tmax_element_count     : %" PRIu64, internal_data->max_element_count);
+    DEBUG_MESSAGE("\taligned_element_size  : %" PRIu64, internal_data->aligned_element_size);
+    DEBUG_MESSAGE("\ttop_index             : %" PRIu64, internal_data->top_index);
+    DEBUG_MESSAGE("\talignment_requirement : %" PRIu64, internal_data->alignment_requirement);
 }
 
 static bool valid_stack(const stack_t* const stack_) {
     if(0 == stack_) {
-        WARN_MESSAGE("valid_stack - Argument stack_ requiers a valid pointer.");
+        WARN_MESSAGE("valid_stack - Argument stack_ requires a valid pointer.");
         return false;
     }
     if(0 == stack_->internal_data) {
@@ -394,4 +415,9 @@ static bool flag_get(FLAG_BIT_POSITION bit_pos_, uint8_t flags_) {
         return false;
     }
     return (flags_ & (0x01 << bit_pos_)) != 0;
+}
+
+// 引数val_が2の冪乗かを判定する
+static bool is_power_of_two(uint64_t val_) {
+    return (0 != val_) && (0 == (val_ & (val_ - 1)));
 }
