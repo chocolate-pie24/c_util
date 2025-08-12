@@ -123,6 +123,8 @@ void stack_default_create(stack_t* const stack_);
  *       stack_がすでに初期化済みで内部にデータを保持している場合は、
  *       保持しているメモリがすべて解放された後に再初期化される。
  *
+ * @note 引数alignment_requirement_は2の冪乗でなければいけない(1, 2, 4...)。
+ *
  * 使用例:
  * @code
  * typedef struct sample_object_t {
@@ -145,7 +147,11 @@ void stack_default_create(stack_t* const stack_);
  * @param[in] max_element_count_ スタックに格納するオブジェクトの数(1以上を指定する)
  * @param[out] stack_ 初期化対象オブジェクト
  *
- * @retval STACK_ERROR_INVALID_ARGUMENT 引数stack_がNULLまたは、引数element_size_、alignment_requirement_、max_element_count_に0が含まれる
+ * @retval STACK_ERROR_INVALID_ARGUMENT
+ *                                      - 引数stack_がNULL
+ *                                      - 引数element_size_、alignment_requirement_、max_element_count_に0が含まれる
+ *                                      - max_element_count_の値が大きすぎる(バッファサイズの値がuint64_tの最大値を超過する)
+ *                                      - alignment_requirement_が2の冪乗ではない
  * @retval STACK_ERROR_MEMORY_ALLOCATE_ERROR オブジェクト内部データまたはオブジェクト格納用メモリ領域の確保に失敗
  * @retval STACK_ERROR_CODE_SUCCESS オブジェクトの初期化に成功し、正常終了
  *
@@ -223,7 +229,9 @@ void stack_destroy(stack_t* const stack_);
  * @param[in] max_element_count_ 拡張(or縮小)後のオブジェクト格納数
  * @param[out] stack_ 拡張(or縮小)対象スタックオブジェクト
  *
- * @retval STACK_ERROR_INVALID_ARGUMENT 引数stack_がNULLまたはmax_element_count_が0
+ * @retval STACK_ERROR_INVALID_ARGUMENT
+ *                                       - 引数stack_がNULL、またはmax_element_count_が0
+ *                                       - max_element_count_の値が大きすぎる(バッファサイズの値がuint64_tの最大値を超過する)
  * @retval STACK_ERROR_INVALID_STACK スタックオブジェクトに必要なデータが与えられていない(デバッグモード(-DDEBUG_MODEを指定しビルド)で動作させることで未初期化変数の表示が可能)
  * @retval STACK_ERROR_MEMORY_ALLOCATE_ERROR オブジェクトを格納するメモリ領域の取得に失敗
  * @retval STACK_ERROR_CODE_SUCCESS オブジェクト格納用メモリ領域の確保に成功し、正常終了
@@ -276,10 +284,11 @@ STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack
  *
  * @retval STACK_ERROR_INVALID_ARGUMENT
  *  - 引数stack_がNULLまたは
- *  - max_element_count_が0または
+ *  - max_element_count_が0
  *  - max_element_count_が現在格納可能なオブジェクト数以下
+ *  - max_element_count_の値が大きすぎる(バッファサイズの値がuint64_tの最大値を超過する)
  * @retval STACK_ERROR_INVALID_STACK スタックオブジェクトに必要なデータが与えられていない(デバッグモード(-DDEBUG_MODEを指定しビルド)で動作させることで未初期化変数の表示が可能)
- * @retval STACK_ERROR_MEMORY_ALLOCATE_ERROR データ一時退避用バッファもしくはオブジェクトを格納するメモリ領域の取得に失敗
+ * @retval STACK_ERROR_MEMORY_ALLOCATE_ERROR 新しいサイズのバッファのメモリ確保に失敗
  * @retval STACK_ERROR_CODE_SUCCESS オブジェクト格納用メモリ領域の確保とコピーに成功し、正常終了
  *
  * @see core_malloc()
