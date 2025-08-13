@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "core_memory.h"
+#include "core/core_memory.h"
 
 void core_zero_memory(void* const buff_, uint32_t buff_size_) {
     char* const tmp = buff_;

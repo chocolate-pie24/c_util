@@ -2,7 +2,7 @@
 #include "include/test_dynamic_array.h"
 #include "include/test_stack.h"
 
-#include "../../core/include/message.h"
+#include "core//message.h"
 
 int main(void) {
     INFO_MESSAGE("[TEST] core_string_t: started");

@@ -8,16 +8,15 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "message.h"
-
 #include <stdint.h>
 #include <stdbool.h>
 #include <memory.h>
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "core_string.h"
-#include "core_memory.h"
+#include "core/message.h"
+#include "core/core_string.h"
+#include "core/core_memory.h"
 
 static CORE_STRING_ERROR_CODE msg_header_create(MESSAGE_SEVERITY severity_, core_string_t* const header_);
 
