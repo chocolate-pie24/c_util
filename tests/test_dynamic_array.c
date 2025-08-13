@@ -4,7 +4,7 @@
 
 #include "include/test_dynamic_array.h"
 
-#include "../containers/include/dynamic_array.h"
+#include "containers/dynamic_array.h"
 
 typedef struct {
     int id;

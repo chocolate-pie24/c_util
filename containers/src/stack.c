@@ -13,12 +13,12 @@
 #include <stdbool.h>
 #include <inttypes.h>
 
-#include "../include/stack.h"
+#include "containers/stack.h"
 
-#include "internal/stack_internal_data.h"
+#include "../internal/stack_internal_data.h"
 
-#include "../../core/include/message.h"
-#include "../../core/include/core_memory.h"
+#include "core/message.h"
+#include "core/core_memory.h"
 
 typedef enum FLAG_BIT_POSITION {
     FLAG_BIT_ELEMENT_SIZE = 0x00,

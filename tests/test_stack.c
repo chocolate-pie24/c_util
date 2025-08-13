@@ -1,12 +1,12 @@
-#include "test_stack.h"
-
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdalign.h>
 #include <inttypes.h>
 
-#include "../include/stack.h"
+#include "include/test_stack.h"
+
+#include "containers/stack.h"
 
 // ======== テスト用サンプル型 ========
 

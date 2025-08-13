@@ -1,13 +1,13 @@
-#include "../include/dynamic_array.h"
-
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdalign.h>
 
-#include "../../core/include/message.h"
-#include "../../core/include/core_memory.h"
+#include "containers/dynamic_array.h"
 
-#include "internal/dynamic_array_internal_data.h"
+#include "../internal/dynamic_array_internal_data.h"
+
+#include "core/message.h"
+#include "core/core_memory.h"
 
 /**
  * @brief 引数のNULLチェックを行い、NULLであればCORE_STRING_INVALID_ARGUMENTで処理を終了するマクロ

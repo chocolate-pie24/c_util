@@ -23,19 +23,18 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include "core_string.h"
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h> // for strtol
 #include <limits.h> // for INT32_MAX
 
-#include "core_memory.h"
-#include "message.h"
+#include "core/core_string.h"
+#include "core/core_memory.h"
+#include "core/message.h"
 
-#include "internal/core_string_internal_data.h"
+#include "../internal/core_string_internal_data.h"
 
-#include "../../include/define.h"
+#include "define.h"
 
 static uint64_t pfn_string_length_from_char(const char* const str_);
 static bool pfn_core_string_copy(const char* const src_, char* const dst_, uint64_t dst_buff_size_);

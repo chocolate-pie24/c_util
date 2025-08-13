@@ -8,7 +8,7 @@ SRC_FILES = $(shell find core/src containers/src tests -name '*.c')
 DIRECTORIES = $(shell find $(SRC_DIR) tests -type d)
 OBJ_FILES = $(SRC_FILES:%=$(OBJ_DIR)/%.o)
 
-INCLUDE_FLAGS = -Iinclude -Icore/include -Icontainers/include -Itests/include
+INCLUDE_FLAGS = -Iinclude
 
 LINKER_FLAGS += -fprofile-instr-generate -fcoverage-mapping
 CC = /opt/homebrew/opt/llvm/bin/clang

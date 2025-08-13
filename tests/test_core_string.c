@@ -1,12 +1,12 @@
-#include "include/test_core_string.h"
-
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "../../core/include/core_string.h"
+#include "include/test_core_string.h"
 
-#include "../../include/define.h"
+#include "core/core_string.h"
+
+#include "define.h"
 
 static void test_core_string_default_create(void);
 static void test_core_string_create(void);
