@@ -32,7 +32,7 @@
 #include "core/core_memory.h"
 #include "core/message.h"
 
-#include "../internal/core_string_internal_data.h"
+#include "internal/core_string_internal_data.h"
 
 #include "define.h"
 
