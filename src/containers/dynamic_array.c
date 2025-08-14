@@ -4,7 +4,7 @@
 
 #include "containers/dynamic_array.h"
 
-#include "../internal/dynamic_array_internal_data.h"
+#include "internal/dynamic_array_internal_data.h"
 
 #include "core/message.h"
 #include "core/core_memory.h"

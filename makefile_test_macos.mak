@@ -1,10 +1,10 @@
 TARGET = test
 
-SRC_DIR = core/src containers/src tests
+SRC_DIR = src tests
 BUILD_DIR = bin
 OBJ_DIR = obj
 
-SRC_FILES = $(shell find core/src containers/src tests -name '*.c')
+SRC_FILES = $(shell find src tests -name '*.c')
 DIRECTORIES = $(shell find $(SRC_DIR) tests -type d)
 OBJ_FILES = $(SRC_FILES:%=$(OBJ_DIR)/%.o)
 
