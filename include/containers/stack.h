@@ -13,9 +13,9 @@
  * 本APIでは、stack_t型の扱いにおいて以下の状態を区別する:
  *
  * - NULLポインタ: オブジェクト自体がNULLの場合(例: core_string_t* object = 0)
- * - 未初期化状態: オブジェクト自体は存在するが、メンバの初期化がされていない状態(例: stack_t object;)
- * - デフォルト状態: オブジェクト内部管理データinternal_data == NULLの状態。使用前に明示的な初期化が必要。
- * - 初期化済み状態: internal_dataが有効な領域を指しており、APIでの使用が可能な状態。
+ * - 未初期化状態: オブジェクト自体は存在するが、メンバの値が不定の状態(例: stack_t object;)
+ * - デフォルト状態: オブジェクト内部管理データが全て0で、stackへのデータ格納領域のメモリ確保も行われていない状態。使用前に明示的な初期化が必要。
+ * - 初期化済み状態: stackへデータを格納する準備が整った状態で、APIでの使用が可能な状態。
  *
  * 未初期化状態のオブジェクトをAPIに渡すと未定義の動作を引き起こす可能性があるため、
  * 必ず次のいずれかの方法で「デフォルト状態」に初期化してから使用すること:
@@ -55,58 +55,7 @@ typedef enum STACK_ERROR_CODE {
     STACK_ERROR_STACK_FULL = 0x06,              /**< スタックが満杯 */
 } STACK_ERROR_CODE;
 
-/**
- * @brief スタックオブジェクト構造体
- *
- * スタックに格納するオブジェクトとそれに付随する管理情報を格納する。
- * オブジェクトの初期化については、 @ref stack_initialization_rule を参照のこと。
- */
-typedef struct stack_t {
-    void* internal_data;    /**< オブジェクト内部データ */
-} stack_t;
-
-/** @brief オブジェクト初期化用マクロ
- *
- * 使用例:
- * @code
- *  stack_t stack = STACK_INITIALIZER;
- * @endcode
- */
-#define STACK_INITIALIZER { 0 }
-
-/**
- * @brief 引数で与えたstack_オブジェクトを「デフォルト状態」に初期化する。
- *
- * @note オブジェクトのデフォルト状態については、 @ref stack_initialization_rule を参照のこと。
- *
- * @note 内部にデータを保持している初期化済みオブジェクトに対して本関数を直接呼ぶと、
- *       内部データのメモリが解放されず、メモリリークの原因となる可能性がある。
- *       再利用する場合は、必ず事前に @ref stack_destroy() を呼んでメモリを解放してから使用すること。
- *
- * @note 引数stack_にNULLを与えた場合には、以下のワーニングメッセージを出力し、処理を終了する。
- *       ```
- *       [WARNING] stack_default_create - Argument stack_ requires a valid pointer.
- *       ```
- *
- * 使用例:
- * @code
- * stack_t stack;
- * stack_default_create(&stack); // オブジェクトがデフォルト状態となる(internal_dataはNULLとなる)。
- * stack_destroy(&stack);
- * @endcode
- *
- * なお、上記コードは下記のコードと等価である。
- * @code
- * stack_t stack = STACK_INITIALIZER;
- * stack_destroy(&stack);
- * @endcode
- *
- * @param[in,out] stack_ デフォルト状態とするオブジェクト
- *
- * @see stack_destroy()
- * @see core_zero_memory()
- */
-void stack_default_create(stack_t* const stack_);
+typedef struct stack_t stack_t;
 
 /**
  * @brief スタックに格納するオブジェクトのメモリ要件を指定してstack_を初期化する。
@@ -158,15 +107,10 @@ void stack_default_create(stack_t* const stack_);
  * @see core_malloc()
  * @see core_zero_memory
  * @see stack_destroy()
+ * @see stack_default_create()
  *
- * @see core_string_destroy()
- * @see core_string_default_create()
- * @see core_string_buffer_reserve()
- *
- * @todo TODO: if(0 != element_size_) {} によるエラーチェックとエラー処理は不要。関数頭ですでにチェック済み。
- * @todo TODO: if(0 != max_element_count_) {} によるエラーチェックとエラー処理は不要。関数頭ですでにチェック済み。
  */
-STACK_ERROR_CODE stack_create(uint64_t element_size_, uint8_t alignment_requirement_, uint64_t max_element_count_, stack_t* const stack_);
+STACK_ERROR_CODE stack_create(size_t element_size_, size_t alignment_requirement_, size_t max_element_count_, struct stack_t** stack_);
 
 /**
  * @brief stack_が保持するメモリを破棄する。
@@ -192,8 +136,9 @@ STACK_ERROR_CODE stack_create(uint64_t element_size_, uint8_t alignment_requirem
  * @param[in,out] stack_ 破棄対象オブジェクト。未初期化状態は不可。( @ref stack_initialization_rule 参照)
  *
  * @see core_free()
+ * @see stack_default_create()
  */
-void stack_destroy(stack_t* const stack_);
+void stack_destroy(struct stack_t* const stack_);
 
 /**
  * @brief スタックオブジェクトのオブジェクト格納用メモリ領域を拡張または縮小する
@@ -242,7 +187,7 @@ void stack_destroy(stack_t* const stack_);
  * @see stack_create()
  *
  */
-STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack_);
+STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, struct stack_t* const stack_);
 
 /**
  * @brief スタックオブジェクトのオブジェクト格納用メモリ領域を内部のデータを保持したまま拡張する(縮小方向は不可)。
@@ -298,7 +243,7 @@ STACK_ERROR_CODE stack_reserve(uint64_t max_element_count_, stack_t* const stack
  * @see stack_create()
  *
  */
-STACK_ERROR_CODE stack_resize(uint64_t max_element_count_, stack_t* const stack_);
+STACK_ERROR_CODE stack_resize(uint64_t max_element_count_, struct stack_t* const stack_);
 
 /**
  * @brief stack_に対してdata_オブジェクトを追加する。
@@ -339,7 +284,7 @@ STACK_ERROR_CODE stack_resize(uint64_t max_element_count_, stack_t* const stack_
  * @see stack_full()
  * @see stack_create()
  */
-STACK_ERROR_CODE stack_push(stack_t* const stack_, const void* const data_);
+STACK_ERROR_CODE stack_push(struct stack_t* const stack_, const void* const data_);
 
 /**
  * @brief stack_からデータを取り出し、out_data_に格納する(stack_の一番上のデータは削除される)
@@ -387,7 +332,7 @@ STACK_ERROR_CODE stack_push(stack_t* const stack_, const void* const data_);
  * @see stack_empty()
  * @see stack_create()
  */
-STACK_ERROR_CODE stack_pop(const stack_t* const stack_, void* const out_data_);
+STACK_ERROR_CODE stack_pop(struct stack_t* const stack_, void* const out_data_);
 
 /**
  * @brief stack_の一番上のデータへの参照を、out_data_に格納する(stack_の一番上のデータは削除されない)
@@ -441,7 +386,7 @@ STACK_ERROR_CODE stack_pop(const stack_t* const stack_, void* const out_data_);
  * @see stack_discard_top()
  * @see stack_pop()
  */
-STACK_ERROR_CODE stack_pop_peek_ptr(const stack_t* const stack_, const void* *out_data_);
+STACK_ERROR_CODE stack_pop_peek_ptr(const struct stack_t* const stack_, const void* *out_data_);
 
 /**
  * @brief スタックに格納されている一番上のデータを破棄する
@@ -493,7 +438,7 @@ STACK_ERROR_CODE stack_pop_peek_ptr(const stack_t* const stack_, const void* *ou
  * @see stack_pop_peek_ptr()
  * @see stack_empty
  */
-STACK_ERROR_CODE stack_discard_top(const stack_t* const stack_);
+STACK_ERROR_CODE stack_discard_top(struct stack_t* const stack_);
 
 // これは危険なので禁止
 // STACK_ERROR_CODE stack_pop_ptr(const stack_t* const stack_, void** out_data_);
@@ -539,7 +484,7 @@ STACK_ERROR_CODE stack_discard_top(const stack_t* const stack_);
  *
  * @see stack_create()
  */
-STACK_ERROR_CODE stack_clear(stack_t* const stack_);
+STACK_ERROR_CODE stack_clear(struct stack_t* const stack_);
 
 /**
  * @brief スタックに格納可能なオブジェクトの数を取得する。
@@ -579,7 +524,7 @@ STACK_ERROR_CODE stack_clear(stack_t* const stack_);
  *
  * @see stack_create()
  */
-STACK_ERROR_CODE stack_capacity(const stack_t* const stack_, uint64_t* const out_capacity_);
+STACK_ERROR_CODE stack_capacity(const struct stack_t* const stack_, uint64_t* const out_capacity_);
 
 /**
  * @brief stack_で管理しているオブジェクトが満杯を判定する。
@@ -615,7 +560,7 @@ STACK_ERROR_CODE stack_capacity(const stack_t* const stack_, uint64_t* const out
  * @retval true スタックが満杯、もしくは初期化済み状態ではない。
  * @retval false スタックが満杯ではない。
  */
-bool stack_full(const stack_t* const stack_);
+bool stack_full(const struct stack_t* const stack_);
 
 /**
  * @brief stack_で管理しているオブジェクトが空かを判定する。
@@ -651,7 +596,7 @@ bool stack_full(const stack_t* const stack_);
  * @retval true スタックが空、もしくは初期化済み状態ではない。
  * @retval false スタックが空ではない。
  */
-bool stack_empty(const stack_t* const stack_);
+bool stack_empty(const struct stack_t* const stack_);
 
 /**
  * @brief スタックオブジェクトが出力するエラーコードを文字列にして出力する。
@@ -692,12 +637,6 @@ const char* stack_error_code_to_string(STACK_ERROR_CODE err_code_);
  * [DEBUG] Argument stack_ requires a valid pointer.
  * ```
  *
- * @note stack_がデフォルト状態で内部データがNULLの場合は、以下のワーニングメッセージを出し処理を終了する。
- * 各状態の詳細については、@ref stack_initialization_rule を参照のこと。
- * ```
- * [DEBUG] Provided stack is not initialized.
- * ```
- *
  * 使用例:
  * @code
  * typedef struct sample_object_t {
@@ -719,4 +658,4 @@ const char* stack_error_code_to_string(STACK_ERROR_CODE err_code_);
  * @param[in] stack_ 内部管理データを表示するスタックオブジェクト
  *
  */
-void stack_debug_print(const stack_t* const stack_);
+void stack_debug_print(const struct stack_t* const stack_);
